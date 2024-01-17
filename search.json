@@ -1,38 +1,24 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "objectID": "Extra_Resources/R Resources/Readme.html",
+    "href": "Extra_Resources/R Resources/Readme.html",
+    "title": "R Resources",
     "section": "",
-    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
+    "text": "Tutorial and the source of much of this content LINK\n\n\n\nSWIRL a cool R package that teaches you R in R Quick R by datacamp Short Introduction to R\n\n\n\nRopenSci Guide to Reproducible Research LINK\nMore Open Science Guidance! LINK"
   },
   {
-    "objectID": "index.html#location-and-date",
-    "href": "index.html#location-and-date",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "objectID": "Extra_Resources/R Resources/Readme.html#overall",
+    "href": "Extra_Resources/R Resources/Readme.html#overall",
+    "title": "R Resources",
     "section": "",
-    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
+    "text": "Tutorial and the source of much of this content LINK"
   },
   {
-    "objectID": "index.html#description",
-    "href": "index.html#description",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
-    "section": "Description",
-    "text": "Description\nCome learn about exciting new genomic tools for the eastern oyster that can be used to enhance aquaculture and management. The workshop will feature lightning talks highlighting findings and applications of genomic data in aquaculture, presentations on how to non-destructively sample oysters for DNA and the benefits of incorporating genomic data. The second half of the workshop will be hands-on instruction with genomic data from the eastern oyster breeding array."
-  },
-  {
-    "objectID": "index.html#agenda",
-    "href": "index.html#agenda",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
-    "section": "Agenda",
-    "text": "Agenda\n\n\n\nStart\nEnd\nEvent\nSpeaker\n\n\n\n\n13:00\n13:10\nWelcome and Introduction\nJon Puritz\n\n\n\n\nPart 1: What can genomic data answer?\n\n\n\n13:10\n13:18\nUnderstanding Oyster Population Connectivity and Adaptation in Narragansett Bay\nAmy Zyck\n\n\n13:20\n13:28\nGenomic and phenotypic variation in wild and selectively bred oysters\nAngel Carrasquillo\n\n\n13:30\n13:40\nDo farm oysters contribute to ecosystem services? Assessing interbreeding between aquaculture strains and native stocks\nYuqing Chen\n\n\n13:42\n13:50\nNo oysters were harmed in the making of this: how to non-destructively sample oyster DNA\nUSDA-ARS\n\n\n13:50\n14:05\nBreak\n\n\n\n\n\nPart 2: Hands-on workshop with the Eastern Oyster SNP Breeding Array\n\n\n\n14:05\n14:20\nFrom DNA to SNP and what is a SNP anyway?\nJon Puritz\n\n\n14:20\n14:40\nIntroduction to R\nJon Puritz\n\n\n14:40\n15:20\nCalculating Genetic Diversity\nJon Puritz\n\n\n15:20\n16:00\nPrincipal Component Analysis and Discrimininant Analysis\nJon Puritz\n\n\n\n:{.striped .hover}"
-  },
-  {
-    "objectID": "index.html#support",
-    "href": "index.html#support",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
-    "section": "Support",
-    "text": "Support\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
+    "objectID": "Extra_Resources/R Resources/Readme.html#introduction",
+    "href": "Extra_Resources/R Resources/Readme.html#introduction",
+    "title": "R Resources",
+    "section": "",
+    "text": "SWIRL a cool R package that teaches you R in R Quick R by datacamp Short Introduction to R\n\n\n\nRopenSci Guide to Reproducible Research LINK\nMore Open Science Guidance! LINK"
   },
   {
     "objectID": "content/rmarkdown.html",
@@ -56,83 +42,6 @@
     "text": "Including Plots\nYou can also embed plots, for example:\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot."
   },
   {
-    "objectID": "content/publishing.html",
-    "href": "content/publishing.html",
-    "title": "Publishing",
-    "section": "",
-    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
-  },
-  {
-    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "title": "Publishing",
-    "section": "Turn on GitHub Pages for your repo",
-    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
-  },
-  {
-    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "title": "Publishing",
-    "section": "Do your first publish to gh-pages",
-    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
-  },
-  {
-    "objectID": "content/publishing.html#dont-like-using-gh-pages",
-    "href": "content/publishing.html#dont-like-using-gh-pages",
-    "title": "Publishing",
-    "section": "Don’t like using gh-pages?",
-    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
-  },
-  {
-    "objectID": "content/code.html",
-    "href": "content/code.html",
-    "title": "Rendering with Code",
-    "section": "",
-    "text": "You can have code (R, Python or Julia) in your qmd file. You will need to have these installed on your local computer, but presumably you do already if you are adding code to your qmd files.\nx &lt;- c(5, 15, 25, 35, 45, 55)\ny &lt;- c(5, 20, 14, 32, 22, 38)\nlm(x ~ y)\n\n\nCall:\nlm(formula = x ~ y)\n\nCoefficients:\n(Intercept)            y  \n      1.056        1.326"
-  },
-  {
-    "objectID": "content/code.html#modify-the-github-action",
-    "href": "content/code.html#modify-the-github-action",
-    "title": "Rendering with Code",
-    "section": "Modify the GitHub Action",
-    "text": "Modify the GitHub Action\nYou will need to change the GitHub Action in .github/workflows to install these and any needed packages in order for GitHub to be able to render your webpage. The GitHub Action install R since I used that in code.qmd. If you use Python or Julia instead, then you will need to update the GitHub Action to install those.\nIf getting the GitHub Action to work is too much hassle (and that definitely happens), you can alway render locally and publish to the gh-pages branch. If you do this, make sure to delete or rename the GitHub Action to something like\nrender-and-publish.old_yml\nso GitHub does not keep trying to run it. Nothing bad will happen if you don’t do this, but if you are not using the action (because it keeps failing), then you don’t need GitHub to run it."
-  },
-  {
-    "objectID": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
-    "href": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
-    "title": "Rendering with Code",
-    "section": "Render locally and publish to gh-pages branch",
-    "text": "Render locally and publish to gh-pages branch\nTo render locally and push up to the gh-pages branch, open a terminal window and then cd to the directory with the Quarto project. Type this in the terminal:\nquarto render gh-pages"
-  },
-  {
-    "objectID": "content/acknowledgements.html",
-    "href": "content/acknowledgements.html",
-    "title": "Acknowledgments",
-    "section": "",
-    "text": "This website was made with the quarto template from NOAA NMFS Open Science This repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland."
-  },
-  {
-    "objectID": "Extra_Resources/R Resources/Readme.html",
-    "href": "Extra_Resources/R Resources/Readme.html",
-    "title": "R Resources",
-    "section": "",
-    "text": "Tutorial and the source of much of this content LINK\n\n\n\nSWIRL a cool R package that teaches you R in R Quick R by datacamp Short Introduction to R\n\n\n\nRopenSci Guide to Reproducible Research LINK\nMore Open Science Guidance! LINK"
-  },
-  {
-    "objectID": "Extra_Resources/R Resources/Readme.html#overall",
-    "href": "Extra_Resources/R Resources/Readme.html#overall",
-    "title": "R Resources",
-    "section": "",
-    "text": "Tutorial and the source of much of this content LINK"
-  },
-  {
-    "objectID": "Extra_Resources/R Resources/Readme.html#introduction",
-    "href": "Extra_Resources/R Resources/Readme.html#introduction",
-    "title": "R Resources",
-    "section": "",
-    "text": "SWIRL a cool R package that teaches you R in R Quick R by datacamp Short Introduction to R\n\n\n\nRopenSci Guide to Reproducible Research LINK\nMore Open Science Guidance! LINK"
-  },
-  {
     "objectID": "content/add-content.html",
     "href": "content/add-content.html",
     "title": "Customize",
@@ -154,60 +63,11 @@
     "text": "Add your pages the project\n\nAdd the files to _quarto.yml"
   },
   {
-    "objectID": "content/customizing.html",
-    "href": "content/customizing.html",
-    "title": "Customization",
-    "section": "",
-    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
-  },
-  {
-    "objectID": "content/customizing.html#quarto-documentation",
-    "href": "content/customizing.html#quarto-documentation",
-    "title": "Customization",
-    "section": "",
-    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
-  },
-  {
-    "objectID": "content/customizing.html#examples",
-    "href": "content/customizing.html#examples",
-    "title": "Customization",
-    "section": "Examples",
-    "text": "Examples\nLooking at other people’s Quarto code is a great way to figure out how to do stuff. Most will have a link to a GitHub repo where you can see the raw code. Look for a link to edit page or see source code. This will usually be on the right. Or look for the GitHub icon somewhere.\n\nQuarto gallery\nnmfs-openscapes\nFaye lab manual\nquarto-titlepages Note the link to edit is broken. Go to repo and look in documentation directory."
-  },
-  {
-    "objectID": "content/rendering.html",
-    "href": "content/rendering.html",
-    "title": "Rendering",
-    "section": "",
-    "text": "The repo includes a GitHub Action that will render (build) the website automatically when you make changes to the files. It will be pushed to the gh-pages branch.\nBut when you are developing your content, you will want to render it locally."
-  },
-  {
-    "objectID": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
-    "href": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
-    "title": "Rendering",
-    "section": "Step 1. Make sure you have a recent RStudio",
-    "text": "Step 1. Make sure you have a recent RStudio\nHave you updated RStudio since about August 2022? No? Then update to a newer version of RStudio. In general, you want to keep RStudio updated and it is required to have a recent version to use Quarto."
-  },
-  {
-    "objectID": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
-    "href": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
-    "title": "Rendering",
-    "section": "Step 2. Clone and create RStudio project",
-    "text": "Step 2. Clone and create RStudio project\nFirst, clone the repo onto your local computer. How? You can click File &gt; New Project and then select “Version Control”. Paste in the url of the repository. That will clone the repo on to your local computer. When you make changes, you will need to push those up."
-  },
-  {
-    "objectID": "content/rendering.html#step-3.-render-within-rstudio",
-    "href": "content/rendering.html#step-3.-render-within-rstudio",
-    "title": "Rendering",
-    "section": "Step 3. Render within RStudio",
-    "text": "Step 3. Render within RStudio\nRStudio will recognize that this is a Quarto project by the presence of the _quarto.yml file and will see the “Build” tab. Click the “Render website” button to render to the _site folder.\nPreviewing: You can either click index.html in the _site folder and specify “preview in browser” or set up RStudio to preview to the viewer panel. To do the latter, go to Tools &gt; Global Options &gt; R Markdown. Then select “Show output preview in: Viewer panel”."
-  },
-  {
     "objectID": "content/R_Intro.html",
     "href": "content/R_Intro.html",
     "title": "Introduction to R",
     "section": "",
-    "text": "R is a statistical programming language that allows users to do advanced computational analysis. It can store a variety of different data types and then perform computation on them.\nHere, we can assign x a value of 5 with:\n\nx&lt;- 5\n\nWe can then ask R to recall that value\n\nx\n\n[1] 5\n\n\nWe can make this more complicated\n\nx &lt;- 5 + 5\nx\n\n[1] 10\n\n\n\nx &lt;- 5\ny &lt;- x + 5\ny\n\n[1] 10\n\n\nR can also store vectors (or a list) of variables. They can be various types: numbers, characters, etc.\n\nvector_a &lt;- c(1,2,3,4,5)\nvector_b &lt;- c(\"a\",\"b\", \"c\")\n\nWe can also use R to access specific values of that array (or list)\n\nvector_a[1]\n\n[1] 1\n\nvector_b[2]\n\n[1] \"b\"\n\n\nThis can be expanded to tables or data frames. R has some example data that’s loaded by default. One is the cars data set\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\n\nThe function summary summarizes the data table for us. We can see there are two columns. We can sample a particular column or row with the index of the table or data frame. For example:\n\nsummary(cars[,1])\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    4.0    12.0    15.0    15.4    19.0    25.0 \n\n\nYou’ll notice these values are the same for speed in the output above. This is because we only gave the function the first column of cars\nWe can also subset it using the name of the column\n\nsummary(cars$speed)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    4.0    12.0    15.0    15.4    19.0    25.0 \n\n\nAgain, we get the same answer. Instead of summarizing, we can also print the first 10 lines with the function head\n\nhead(cars)\n\n  speed dist\n1     4    2\n2     4   10\n3     7    4\n4     7   22\n5     8   16\n6     9   10\n\n\n\n\nR also allows programmers to develop and distribute packages which allow reproducible research in nearly any field. We load a package (or also called a library) with the command library\n\nlibrary(ggplot2)\n\nNow we can use the functions that are part of the package! We could spend a whole semester on ggplot, but this package is widely used for plotting data. Here, I’m going to take advantage of more example data: mtcars which has much more data than cars\n\nsummary(mtcars)\n\n      mpg             cyl             disp             hp       \n Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  \n 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  \n Median :19.20   Median :6.000   Median :196.3   Median :123.0  \n Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  \n 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  \n Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  \n      drat             wt             qsec             vs        \n Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  \n 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  \n Median :3.695   Median :3.325   Median :17.71   Median :0.0000  \n Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  \n 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  \n Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  \n       am              gear            carb      \n Min.   :0.0000   Min.   :3.000   Min.   :1.000  \n 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  \n Median :0.0000   Median :4.000   Median :2.000  \n Mean   :0.4062   Mean   :3.688   Mean   :2.812  \n 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  \n Max.   :1.0000   Max.   :5.000   Max.   :8.000  \n\n\n\nmy_scatplot &lt;- ggplot(mtcars,aes(x=wt,y=mpg,col=cyl)) + geom_point()\nmy_scatplot\n\n\n\n\nHere, we are using ggplot to make a scatter plot. The first command ggplot sets the framework of the plot with a subcommand aes which is short for aethetics. This command tells ggplot to set the variable wt in mtcars as the x variable, mgp as the y variable, and cyl as a variable for coloring.\nWe can do so much more, like customizing lablels by simply “adding” to the plot variable my_scatplot\n\nmy_scatplot + labs(x='Weight (x1000lbs)',y='MPG',colour='Number of\\n Cylinders')\n\n\n\n\nWe have so little time for this workshop, but here is one more example. This is a box plot with customized labels. Hopefully, you can start to see some patterns in how the code works.\n\nmy_boxplot &lt;- ggplot(mtcars,aes(x=cyl,y=mpg, group=cyl, fill=cyl)) + geom_boxplot() + xlab('Cylinders') + ylab('Miles per Gallon')\nmy_boxplot \n\n\n\n\n\n\n\nThere’s lots of different ways to get help in R. Try the examples below, but this code block doesn’t execute on it’s own. Vignettes are minitutorials usually with data and example code, but not all packages have them.\n\nhelp(package = \"pcadapt\")\nhelp(amova)     \n\nbrowseVignettes(package = 'vcfR')\nvignette('vcf_data')\n\n\n\n\nThis intro was done live and is difficult to reproduce, but here’s an annotated image: \n\n\n\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. It also can be used to render a markdown file (.md) that is suitable for publishing directly on Github. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.\n\n\n\nYou can include R code in the document as follows:\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\n\n\n\n\nYou can also embed plots, for example:\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n\n\n\nRStudio and RMarkdown allow you to run commands through a system terminal. This means we can embed BASH code to run on the machine\n\necho \"Hi, I'm a BASH code output\"\n\nHi, I'm a BASH code output\n\n\n\necho -e \"The Current Directory is $(pwd)\"\n\nThe Current Directory is /home/jpuritz/NACE_MAS_Genomics_Workshop/content"
+    "text": "R is a statistical programming language that allows users to do advanced computational analysis. It can store a variety of different data types and then perform computation on them.\nHere, we can assign x a value of 5 with:\n\nx&lt;- 5\n\nWe can then ask R to recall that value\n\nx\n\n[1] 5\n\n\nWe can make this more complicated\n\nx &lt;- 5 + 5\nx\n\n[1] 10\n\n\n\nx &lt;- 5\ny &lt;- x + 5\ny\n\n[1] 10\n\n\nR can also store vectors (or a list) of variables. They can be various types: numbers, characters, etc.\n\nvector_a &lt;- c(1,2,3,4,5)\nvector_b &lt;- c(\"a\",\"b\", \"c\")\n\nWe can also use R to access specific values of that array (or list)\n\nvector_a[1]\n\n[1] 1\n\nvector_b[2]\n\n[1] \"b\"\n\n\nThis can be expanded to tables or data frames. R has some example data that’s loaded by default. One is the cars data set\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\n\nThe function summary summarizes the data table for us. We can see there are two columns. We can sample a particular column or row with the index of the table or data frame. For example:\n\nsummary(cars[,1])\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    4.0    12.0    15.0    15.4    19.0    25.0 \n\n\nYou’ll notice these values are the same for speed in the output above. This is because we only gave the function the first column of cars\nWe can also subset it using the name of the column\n\nsummary(cars$speed)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n    4.0    12.0    15.0    15.4    19.0    25.0 \n\n\nAgain, we get the same answer. Instead of summarizing, we can also print the first 10 lines with the function head\n\nhead(cars)\n\n  speed dist\n1     4    2\n2     4   10\n3     7    4\n4     7   22\n5     8   16\n6     9   10\n\n\n\n\nR also allows programmers to develop and distribute packages which allow reproducible research in nearly any field. We load a package (or also called a library) with the command library\n\nlibrary(ggplot2)\n\nNow we can use the functions that are part of the package! We could spend a whole semester on ggplot, but this package is widely used for plotting data. Here, I’m going to take advantage of more example data: mtcars which has much more data than cars\n\nsummary(mtcars)\n\n      mpg             cyl             disp             hp       \n Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  \n 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  \n Median :19.20   Median :6.000   Median :196.3   Median :123.0  \n Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  \n 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  \n Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  \n      drat             wt             qsec             vs        \n Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  \n 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  \n Median :3.695   Median :3.325   Median :17.71   Median :0.0000  \n Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  \n 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  \n Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  \n       am              gear            carb      \n Min.   :0.0000   Min.   :3.000   Min.   :1.000  \n 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  \n Median :0.0000   Median :4.000   Median :2.000  \n Mean   :0.4062   Mean   :3.688   Mean   :2.812  \n 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  \n Max.   :1.0000   Max.   :5.000   Max.   :8.000  \n\n\n\nmy_scatplot &lt;- ggplot(mtcars,aes(x=wt,y=mpg,col=cyl)) + geom_point()\nmy_scatplot\n\n\n\n\nHere, we are using ggplot to make a scatter plot. The first command ggplot sets the framework of the plot with a subcommand aes which is short for aethetics. This command tells ggplot to set the variable wt in mtcars as the x variable, mgp as the y variable, and cyl as a variable for coloring.\nWe can do so much more, like customizing lablels by simply “adding” to the plot variable my_scatplot\n\nmy_scatplot + labs(x='Weight (x1000lbs)',y='MPG',colour='Number of\\n Cylinders')\n\n\n\n\nWe have so little time for this workshop, but here is one more example. This is a box plot with customized labels. Hopefully, you can start to see some patterns in how the code works.\n\nmy_boxplot &lt;- ggplot(mtcars,aes(x=cyl,y=mpg, group=cyl, fill=cyl)) + geom_boxplot() + xlab('Cylinders') + ylab('Miles per Gallon')\nmy_boxplot \n\n\n\n\n\n\n\nThere’s lots of different ways to get help in R. Try the examples below, but this code block doesn’t execute on it’s own. Vignettes are minitutorials usually with data and example code, but not all packages have them.\n\nhelp(package = \"pcadapt\")\nhelp(amova)     \n\nbrowseVignettes(package = 'vcfR')\nvignette('vcf_data')\n\n\n\n\nThis intro was done live and is difficult to reproduce, but here’s an annotated image: \n\n\n\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. It also can be used to render a markdown file (.md) that is suitable for publishing directly on Github. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.\n\n\n\nYou can include R code in the document as follows:\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00  \n\n\n\n\n\nYou can also embed plots, for example:\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot.\n\n\n\nRStudio and RMarkdown allow you to run commands through a system terminal. This means we can embed BASH code to run on the machine\n\necho \"Hi, I'm a BASH code output\"\n\nHi, I'm a BASH code output\n\n\n\necho -e \"The Current Directory is $(pwd)\"\n\nThe Current Directory is /home/runner/work/NACE_MAS_Genomics_Workshop/NACE_MAS_Genomics_Workshop/content"
   },
   {
     "objectID": "content/R_Intro.html#packages-and-loading-them",
@@ -256,6 +116,146 @@
     "href": "content/R_Intro.html#running-commands-outside-of-r",
     "title": "Introduction to R",
     "section": "",
-    "text": "RStudio and RMarkdown allow you to run commands through a system terminal. This means we can embed BASH code to run on the machine\n\necho \"Hi, I'm a BASH code output\"\n\nHi, I'm a BASH code output\n\n\n\necho -e \"The Current Directory is $(pwd)\"\n\nThe Current Directory is /home/jpuritz/NACE_MAS_Genomics_Workshop/content"
+    "text": "RStudio and RMarkdown allow you to run commands through a system terminal. This means we can embed BASH code to run on the machine\n\necho \"Hi, I'm a BASH code output\"\n\nHi, I'm a BASH code output\n\n\n\necho -e \"The Current Directory is $(pwd)\"\n\nThe Current Directory is /home/runner/work/NACE_MAS_Genomics_Workshop/NACE_MAS_Genomics_Workshop/content"
+  },
+  {
+    "objectID": "content/code.html",
+    "href": "content/code.html",
+    "title": "Rendering with Code",
+    "section": "",
+    "text": "You can have code (R, Python or Julia) in your qmd file. You will need to have these installed on your local computer, but presumably you do already if you are adding code to your qmd files.\nx &lt;- c(5, 15, 25, 35, 45, 55)\ny &lt;- c(5, 20, 14, 32, 22, 38)\nlm(x ~ y)\n\n\nCall:\nlm(formula = x ~ y)\n\nCoefficients:\n(Intercept)            y  \n      1.056        1.326"
+  },
+  {
+    "objectID": "content/code.html#modify-the-github-action",
+    "href": "content/code.html#modify-the-github-action",
+    "title": "Rendering with Code",
+    "section": "Modify the GitHub Action",
+    "text": "Modify the GitHub Action\nYou will need to change the GitHub Action in .github/workflows to install these and any needed packages in order for GitHub to be able to render your webpage. The GitHub Action install R since I used that in code.qmd. If you use Python or Julia instead, then you will need to update the GitHub Action to install those.\nIf getting the GitHub Action to work is too much hassle (and that definitely happens), you can alway render locally and publish to the gh-pages branch. If you do this, make sure to delete or rename the GitHub Action to something like\nrender-and-publish.old_yml\nso GitHub does not keep trying to run it. Nothing bad will happen if you don’t do this, but if you are not using the action (because it keeps failing), then you don’t need GitHub to run it."
+  },
+  {
+    "objectID": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
+    "href": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
+    "title": "Rendering with Code",
+    "section": "Render locally and publish to gh-pages branch",
+    "text": "Render locally and publish to gh-pages branch\nTo render locally and push up to the gh-pages branch, open a terminal window and then cd to the directory with the Quarto project. Type this in the terminal:\nquarto render gh-pages"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "",
+    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
+  },
+  {
+    "objectID": "index.html#location-and-date",
+    "href": "index.html#location-and-date",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "",
+    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
+  },
+  {
+    "objectID": "index.html#description",
+    "href": "index.html#description",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "Description",
+    "text": "Description\nCome learn about exciting new genomic tools for the eastern oyster that can be used to enhance aquaculture and management. The workshop will feature lightning talks highlighting findings and applications of genomic data in aquaculture, presentations on how to non-destructively sample oysters for DNA and the benefits of incorporating genomic data. The second half of the workshop will be hands-on instruction with genomic data from the eastern oyster breeding array."
+  },
+  {
+    "objectID": "index.html#agenda",
+    "href": "index.html#agenda",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "Agenda",
+    "text": "Agenda\n\n\n\nStart\nEnd\nEvent\nSpeaker\n\n\n\n\n13:00\n13:10\nWelcome and Introduction\nJon Puritz\n\n\n\n\nPart 1: What can genomic data answer?\n\n\n\n13:10\n13:18\nUnderstanding Oyster Population Connectivity and Adaptation in Narragansett Bay\nAmy Zyck\n\n\n13:20\n13:28\nGenomic and phenotypic variation in wild and selectively bred oysters\nAngel Carrasquillo\n\n\n13:30\n13:40\nDo farm oysters contribute to ecosystem services? Assessing interbreeding between aquaculture strains and native stocks\nYuqing Chen\n\n\n13:42\n13:50\nNo oysters were harmed in the making of this: how to non-destructively sample oyster DNA\nUSDA-ARS\n\n\n13:50\n14:05\nBreak\n\n\n\n\n\nPart 2: Hands-on workshop with the Eastern Oyster SNP Breeding Array\n\n\n\n14:05\n14:20\nFrom DNA to SNP and what is a SNP anyway?\nJon Puritz\n\n\n14:20\n14:40\nIntroduction to R\nJon Puritz\n\n\n14:40\n15:20\nCalculating Genetic Diversity\nJon Puritz\n\n\n15:20\n16:00\nPrincipal Component Analysis and Discrimininant Analysis\nJon Puritz\n\n\n\n:{.striped .hover}"
+  },
+  {
+    "objectID": "index.html#support",
+    "href": "index.html#support",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "Support",
+    "text": "Support\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
+  },
+  {
+    "objectID": "content/rendering.html",
+    "href": "content/rendering.html",
+    "title": "Rendering",
+    "section": "",
+    "text": "The repo includes a GitHub Action that will render (build) the website automatically when you make changes to the files. It will be pushed to the gh-pages branch.\nBut when you are developing your content, you will want to render it locally."
+  },
+  {
+    "objectID": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
+    "href": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
+    "title": "Rendering",
+    "section": "Step 1. Make sure you have a recent RStudio",
+    "text": "Step 1. Make sure you have a recent RStudio\nHave you updated RStudio since about August 2022? No? Then update to a newer version of RStudio. In general, you want to keep RStudio updated and it is required to have a recent version to use Quarto."
+  },
+  {
+    "objectID": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
+    "href": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
+    "title": "Rendering",
+    "section": "Step 2. Clone and create RStudio project",
+    "text": "Step 2. Clone and create RStudio project\nFirst, clone the repo onto your local computer. How? You can click File &gt; New Project and then select “Version Control”. Paste in the url of the repository. That will clone the repo on to your local computer. When you make changes, you will need to push those up."
+  },
+  {
+    "objectID": "content/rendering.html#step-3.-render-within-rstudio",
+    "href": "content/rendering.html#step-3.-render-within-rstudio",
+    "title": "Rendering",
+    "section": "Step 3. Render within RStudio",
+    "text": "Step 3. Render within RStudio\nRStudio will recognize that this is a Quarto project by the presence of the _quarto.yml file and will see the “Build” tab. Click the “Render website” button to render to the _site folder.\nPreviewing: You can either click index.html in the _site folder and specify “preview in browser” or set up RStudio to preview to the viewer panel. To do the latter, go to Tools &gt; Global Options &gt; R Markdown. Then select “Show output preview in: Viewer panel”."
+  },
+  {
+    "objectID": "content/publishing.html",
+    "href": "content/publishing.html",
+    "title": "Publishing",
+    "section": "",
+    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
+  },
+  {
+    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "title": "Publishing",
+    "section": "Turn on GitHub Pages for your repo",
+    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
+  },
+  {
+    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "title": "Publishing",
+    "section": "Do your first publish to gh-pages",
+    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
+  },
+  {
+    "objectID": "content/publishing.html#dont-like-using-gh-pages",
+    "href": "content/publishing.html#dont-like-using-gh-pages",
+    "title": "Publishing",
+    "section": "Don’t like using gh-pages?",
+    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
+  },
+  {
+    "objectID": "content/acknowledgements.html",
+    "href": "content/acknowledgements.html",
+    "title": "Acknowledgments",
+    "section": "",
+    "text": "This website was made with the quarto template from NOAA NMFS Open Science This repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland."
+  },
+  {
+    "objectID": "content/customizing.html",
+    "href": "content/customizing.html",
+    "title": "Customization",
+    "section": "",
+    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
+  },
+  {
+    "objectID": "content/customizing.html#quarto-documentation",
+    "href": "content/customizing.html#quarto-documentation",
+    "title": "Customization",
+    "section": "",
+    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
+  },
+  {
+    "objectID": "content/customizing.html#examples",
+    "href": "content/customizing.html#examples",
+    "title": "Customization",
+    "section": "Examples",
+    "text": "Examples\nLooking at other people’s Quarto code is a great way to figure out how to do stuff. Most will have a link to a GitHub repo where you can see the raw code. Look for a link to edit page or see source code. This will usually be on the right. Or look for the GitHub icon somewhere.\n\nQuarto gallery\nnmfs-openscapes\nFaye lab manual\nquarto-titlepages Note the link to edit is broken. Go to repo and look in documentation directory."
   }
 ]
