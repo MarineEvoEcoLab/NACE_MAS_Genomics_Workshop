@@ -1,0 +1,35 @@
+PLINK v2.00a3 SSE4.2 (18 Feb 2022)
+Options in effect:
+  --allow-extra-chr
+  --bfile ../Example_Data/final
+  --chr 1-10
+  --geno 0.05
+  --make-bed
+  --max-alleles 2
+  --min-alleles 2
+  --mind 0.1
+  --out ../Processed_Data/array
+
+Hostname: eogwparticipant-VirtualBox
+Working directory: /home/eogwparticipant/NACE_MAS_Genomics_Workshop/content
+Start time: Wed Jan 17 17:30:34 2024
+
+Random number seed: 1705530634
+3912 MiB RAM detected; reserving 1956 MiB for main workspace.
+Using 1 compute thread.
+45 samples (0 females, 0 males, 45 ambiguous; 45 founders) loaded from
+../Example_Data/final.fam.
+64935 out of 65893 variants loaded from ../Example_Data/final.bim.
+Note: No phenotype data present.
+Calculating sample missingness rates... done.
+0 samples removed due to missing genotype data (--mind).
+45 samples (0 females, 0 males, 45 ambiguous; 45 founders) remaining after main
+filters.
+Calculating allele frequencies... done.
+--geno: 4418 variants removed due to missing genotype data.
+60517 variants remaining after main filters.
+Writing ../Processed_Data/array.fam ... done.
+Writing ../Processed_Data/array.bim ... done.
+Writing ../Processed_Data/array.bed ... done.
+
+End time: Wed Jan 17 17:30:34 2024
