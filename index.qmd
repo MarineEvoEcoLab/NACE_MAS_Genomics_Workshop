@@ -17,6 +17,7 @@ Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)
 Come learn about exciting new genomic tools for the eastern oyster that can be used to enhance aquaculture and management.  The workshop will feature lightning talks highlighting findings and applications of genomic data in aquaculture, presentations on how to non-destructively sample oysters for DNA and the benefits of incorporating genomic data. The second half of the workshop will be hands-on instruction with genomic data from the eastern oyster breeding array.  
 
 ## Agenda
+
 | Start | End|  Event | Speaker|
 |-|-|-----|-|
 | 13:00 | 13:10| Welcome and Introduction | Jon Puritz|
