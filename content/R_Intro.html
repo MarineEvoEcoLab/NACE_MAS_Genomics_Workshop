@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Oyster genomics for everyone: applications to conservation, management, and aquaculture - R Markdown</title>
+<title>Oyster genomics for everyone: applications to conservation, management, and aquaculture - Introduction to R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">R Markdown</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Introduction to R</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -170,17 +170,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link active" data-scroll-target="#r-markdown">R Markdown</a></li>
+  <li><a href="#intro-to-r" id="toc-intro-to-r" class="nav-link active" data-scroll-target="#intro-to-r">Intro to R</a>
+  <ul class="collapse">
+  <li><a href="#packages-and-loading-them" id="toc-packages-and-loading-them" class="nav-link" data-scroll-target="#packages-and-loading-them">Packages and loading them</a></li>
+  <li><a href="#getting-help" id="toc-getting-help" class="nav-link" data-scroll-target="#getting-help">Getting help</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
+  <li><a href="#rmarkdown" id="toc-rmarkdown" class="nav-link" data-scroll-target="#rmarkdown">RMarkdown</a></li>
+  <li><a href="#including-code" id="toc-including-code" class="nav-link" data-scroll-target="#including-code">Including Code</a></li>
   <li><a href="#including-plots" id="toc-including-plots" class="nav-link" data-scroll-target="#including-plots">Including Plots</a></li>
+  <li><a href="#running-commands-outside-of-r" id="toc-running-commands-outside-of-r" class="nav-link" data-scroll-target="#running-commands-outside-of-r">Running commands outside of R</a></li>
+  </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/edit/main/content/rmarkdown.Rmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/blob/main/content/rmarkdown.Rmd" class="toc-action">View source</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/edit/main/content/R_Intro.Rmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/blob/main/content/R_Intro.Rmd" class="toc-action">View source</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">R Markdown</h1>
+<h1 class="title">Introduction to R</h1>
 </div>
 
 
@@ -195,13 +203,177 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </header>
 
-<p>You can include R Markdown files in your project.</p>
-<section id="r-markdown" class="level2">
-<h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
+<section id="intro-to-r" class="level1">
+<h1>Intro to R</h1>
+<p>R is a statistical programming language that allows users to do advanced computational analysis. It can store a variety of different data types and then perform computation on them.</p>
+<p>Here, we can assign <code>x</code> a value of 5 with:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span> <span class="dv">5</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can then ask R to recall that value</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5</code></pre>
+</div>
+</div>
+<p>We can make this more complicated</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span> <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>x</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="dv">5</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>y</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>R can also store vectors (or a list) of variables. They can be various types: numbers, characters, etc.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vector_a <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>vector_b <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"a"</span>,<span class="st">"b"</span>, <span class="st">"c"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can also use R to access specific values of that array (or list)</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vector_a[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>vector_b[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "b"</code></pre>
+</div>
+</div>
+<p>This can be expanded to tables or data frames. R has some example data that’s loaded by default. One is the <code>cars</code> data set</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     speed           dist       
+ Min.   : 4.0   Min.   :  2.00  
+ 1st Qu.:12.0   1st Qu.: 26.00  
+ Median :15.0   Median : 36.00  
+ Mean   :15.4   Mean   : 42.98  
+ 3rd Qu.:19.0   3rd Qu.: 56.00  
+ Max.   :25.0   Max.   :120.00  </code></pre>
+</div>
+</div>
+<p>The function <code>summary</code> summarizes the data table for us. We can see there are two columns. We can sample a particular column or row with the index of the table or data frame. For example:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars[,<span class="dv">1</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    4.0    12.0    15.0    15.4    19.0    25.0 </code></pre>
+</div>
+</div>
+<p>You’ll notice these values are the same for <code>speed</code> in the output above. This is because we only gave the function the first column of <code>cars</code></p>
+<p>We can also subset it using the name of the column</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars<span class="sc">$</span>speed)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+    4.0    12.0    15.0    15.4    19.0    25.0 </code></pre>
+</div>
+</div>
+<p>Again, we get the same answer. Instead of summarizing, we can also print the first 10 lines with the function <code>head</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  speed dist
+1     4    2
+2     4   10
+3     7    4
+4     7   22
+5     8   16
+6     9   10</code></pre>
+</div>
+</div>
+<section id="packages-and-loading-them" class="level2">
+<h2 class="anchored" data-anchor-id="packages-and-loading-them">Packages and loading them</h2>
+<p>R also allows programmers to develop and distribute packages which allow reproducible research in nearly any field. We load a package (or also called a library) with the command <code>library</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can use the functions that are part of the package! We could spend a whole semester on ggplot, but this package is widely used for plotting data. Here, I’m going to take advantage of more example data: <code>mtcars</code> which has much more data than <code>cars</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      mpg             cyl             disp             hp       
+ Min.   :10.40   Min.   :4.000   Min.   : 71.1   Min.   : 52.0  
+ 1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8   1st Qu.: 96.5  
+ Median :19.20   Median :6.000   Median :196.3   Median :123.0  
+ Mean   :20.09   Mean   :6.188   Mean   :230.7   Mean   :146.7  
+ 3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0   3rd Qu.:180.0  
+ Max.   :33.90   Max.   :8.000   Max.   :472.0   Max.   :335.0  
+      drat             wt             qsec             vs        
+ Min.   :2.760   Min.   :1.513   Min.   :14.50   Min.   :0.0000  
+ 1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89   1st Qu.:0.0000  
+ Median :3.695   Median :3.325   Median :17.71   Median :0.0000  
+ Mean   :3.597   Mean   :3.217   Mean   :17.85   Mean   :0.4375  
+ 3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90   3rd Qu.:1.0000  
+ Max.   :4.930   Max.   :5.424   Max.   :22.90   Max.   :1.0000  
+       am              gear            carb      
+ Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+ 1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+ Median :0.0000   Median :4.000   Median :2.000  
+ Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+ 3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+ Max.   :1.0000   Max.   :5.000   Max.   :8.000  </code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>my_scatplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars,<span class="fu">aes</span>(<span class="at">x=</span>wt,<span class="at">y=</span>mpg,<span class="at">col=</span>cyl)) <span class="sc">+</span> <span class="fu">geom_point</span>()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>my_scatplot</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_Intro_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Here, we are using ggplot to make a scatter plot. The first command <code>ggplot</code> sets the framework of the plot with a subcommand <code>aes</code> which is short for aethetics. This command tells ggplot to set the variable <code>wt</code> in <code>mtcars</code> as the x variable, <code>mgp</code> as the y variable, and <code>cyl</code> as a variable for coloring.</p>
+<p>We can do so much more, like customizing lablels by simply “adding” to the plot variable <code>my_scatplot</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>my_scatplot <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x=</span><span class="st">'Weight (x1000lbs)'</span>,<span class="at">y=</span><span class="st">'MPG'</span>,<span class="at">colour=</span><span class="st">'Number of</span><span class="sc">\n</span><span class="st"> Cylinders'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_Intro_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We have so little time for this workshop, but here is one more example. This is a box plot with customized labels. Hopefully, you can start to see some patterns in how the code works.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>my_boxplot <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(mtcars,<span class="fu">aes</span>(<span class="at">x=</span>cyl,<span class="at">y=</span>mpg, <span class="at">group=</span>cyl, <span class="at">fill=</span>cyl)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>() <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">'Cylinders'</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">'Miles per Gallon'</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>my_boxplot </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="R_Intro_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="getting-help" class="level2">
+<h2 class="anchored" data-anchor-id="getting-help">Getting help</h2>
+<p>There’s lots of different ways to get help in R. Try the examples below, but this code block doesn’t execute on it’s own. Vignettes are minitutorials usually with data and example code, but not all packages have them.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(<span class="at">package =</span> <span class="st">"pcadapt"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="fu">help</span>(amova)     </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a><span class="fu">browseVignettes</span>(<span class="at">package =</span> <span class="st">'vcfR'</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a><span class="fu">vignette</span>(<span class="st">'vcf_data'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio">RStudio</h2>
+<p>This intro was done live and is difficult to reproduce, but here’s an annotated image: <img src="img/Rstudio.png" class="img-fluid" alt="RStudio"></p>
+</section>
+<section id="rmarkdown" class="level2">
+<h2 class="anchored" data-anchor-id="rmarkdown">RMarkdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. It also can be used to render a <code>markdown</code> file (<code>.md</code>) that is suitable for publishing directly on Github. For more details on using R Markdown see http://rmarkdown.rstudio.com.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document.</p>
+</section>
+<section id="including-code" class="level2">
+<h2 class="anchored" data-anchor-id="including-code">Including Code</h2>
+<p>You can include R code in the document as follows:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(cars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     speed           dist       
  Min.   : 4.0   Min.   :  2.00  
@@ -218,12 +390,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can also embed plots, for example:</p>
 <div class="cell">
 <div class="cell-output-display">
-<p><img src="rmarkdown_files/figure-html/pressure-1.png" class="img-fluid" width="672"></p>
+<p><img src="R_Intro_files/figure-html/pressure-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+</section>
+<section id="running-commands-outside-of-r" class="level2">
+<h2 class="anchored" data-anchor-id="running-commands-outside-of-r">Running commands outside of R</h2>
+<p>RStudio and RMarkdown allow you to run commands through a system terminal. This means we can embed <code>BASH</code> code to run on the machine</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="st">"Hi, I'm a BASH code output"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hi, I'm a BASH code output</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="bu">echo</span> <span class="at">-e</span> <span class="st">"The Current Directory is </span><span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span><span class="st">"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The Current Directory is /home/jpuritz/NACE_MAS_Genomics_Workshop/content</code></pre>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
