@@ -114,7 +114,7 @@ my_boxplot
 ## Getting help
 There's lots of different ways to get help in R. Try the examples below, but this code block doesn't execute on it's own.  Vignettes are minitutorials usually with data and example code, but not all packages have them.
 
-```{r EVAL=FALSE}
+```{r, eval=F, echo=T}
 help(package = "pcadapt")
 help(amova)     
 
