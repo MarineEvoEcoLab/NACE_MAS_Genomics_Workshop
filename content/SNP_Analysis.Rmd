@@ -12,7 +12,7 @@ This actually happens outside of R.  A cool feature of RStudio
 
 ### Filter by missing genotypes, missing individuals and create a VCF File
 
-```{bash}
+```{bash, eval=FALSE}
 plink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10
 ```
 
@@ -34,7 +34,7 @@ Here, we are using the program `plink` to convert the files we got from the geno
 
 
 It will help us to have both a `.bed` file and `.vcf` later one.  The code below does the same as the above, but outputs a `.bed` file instead
-```{bash}
+```{bash, eval=FALSE}
 plink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out array
 ```
 
