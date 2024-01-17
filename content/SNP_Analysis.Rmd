@@ -1,0 +1,289 @@
+---
+title: "Working with SNP Data"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Quick Filtering and Management of Array Data
+This actually happens outside of R.  A cool feature of RStudio
+
+### Filter by missing genotypes, missing individuals and create a VCF File
+
+```{bash}
+plink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10
+```
+
+Here, we are using the program `plink` to convert the files we got from the genotyping service (`final.ped`, `final.bed`, `final.fam`).  This command has several options:
+
+`--bfile ../Example_Data/final` this is saying the input is a binary and `../Example_Data/final` is a relative PATH to the data files.  In the virtual machine, this could aslo be written as `/home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data` or `~/NACE_MAS_Genomics_Workshop/Example_Data`
+
+`--recode vcf id-paste=iid` is telling it to recode the file as a VCF file using the "individual id" from the `.fam` file as the individual label
+
+`--out array` is telling it to name the output files with the prefix "array"
+
+`--allow-extra-chr` is a Plink specific setting needed when you're not working with human data
+
+#### Important part
+`--mind 0.1` This is saying we only want individuals with less than 10% missing data
+`--geno 0.05` This is saying we only want SNPs with less than 5% missing data
+`--max-alleles 2 --min-alleles 2` This says we only want SNPs with two alleles
+`--chr 1-10` This says we only want nuclear SNPs.  The array has other markser on it including mtDNA and pathogens, "chr 1-10" means only the SNPs on the 10 oyster genome chromosomes
+
+
+It will help us to have both a `.bed` file and `.vcf` later one.  The code below does the same as the above, but outputs a `.bed` file instead
+```{bash}
+plink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out array
+```
+
+
+
+
+## Import data into R
+
+Now we're ready to import that data into R for processing.  We will first use the library [vcfR](https://cran.r-project.org/web/packages/vcfR/index.html) to do this
+```{r}
+library(vcfR)
+my_vcf <- read.vcfR("array.vcf")
+```
+
+Above, we load the library and then use a function to read our vcf and store it as `my_vcf`
+
+## Calculating heterozygosity
+
+`.vcf` and `.bed` files do not contain information about populations or localities.  We need to tell our analyses which individuals below to which populations.  To do this, one was is to use a simple text table.  We can read the one I made for this data like so:
+
+```{r}
+table <- read.table("../Example_Data/strata", header = TRUE)
+head(table)
+
+poplist.names <- table$Population
+```
+
+As you can see our data has 45 individuals total, 15 in PopA, 15 in PopB, and 15 in PopC.
+
+
+Next, the package vcfR can actually calculate heterozygosity for our data using the `genetic_diff` function
+
+```{r}
+het_results <- genetic_diff(my_vcf, pop=as.factor(poplist.names), method= 'nei')
+
+head(het_results)
+```
+
+You can see that this dataframe has the value calculated per SNP (each row).  We can take a look at the columns that we are interested in and then take the mean values to get the mean genome-wide values
+
+```{r}
+head(het_results[,3:6])
+```
+
+```{r}
+round(colMeans(het_results[,c(3:6)], na.rm = TRUE), digits = 3)
+```
+
+Hs_PopA is the observed heterozygostiy for PopA and so on.  Ht is the observed across all individuals.
+
+### Plotting heterozygosity
+I'm a fan of ggplot, but in order to use ggplot we need data in a "tidy" format.  We can use the package reshape to do this for us
+
+```{r}
+library(reshape2)
+het_df <- melt(het_results[,c(3:6)], varnames=c('Index', 'Sample'), value.name = 'Heterozygosity', na.rm=TRUE)
+head(het_df)
+```
+
+
+Now we can easily plot with ggplot.  I'm going to use a simple box plot.
+
+```{r}
+p <- ggplot(het_df, aes(x=variable, y=Heterozygosity)) + geom_boxplot(fill="#1F78B4")
+p <- p + xlab("Population")
+p <- p + ylab("Observed Heterozygosity")
+p <- p + theme_bw() + ggtitle("Observed Heterozygosity by population and total")
+p
+```
+
+## Calculating *F<sub>IS</sub>* (Inbreeding Coeffecient)
+```{r}
+library(adegenet)
+my_genind <- vcfR2genind(my_vcf)
+strata<- read.table("../Example_Data/strata", header=TRUE)
+strata_df <- data.frame(strata)
+
+strata(my_genind) <- strata_df
+
+setPop(my_genind) <- ~Population
+```
+
+```{r}
+library(hierfstat)
+basicstat <- basic.stats(my_genind, diploid = TRUE, digits = 3)
+```
+
+```{r}
+summary(basicstat)
+head(basicstat$Fis)
+fis_df <- melt(basicstat$Fis, varnames=c('Index', 'Sample'), value.name = 'FIS', na.rm=TRUE)
+```
+```{r}
+p <- ggplot(fis_df, aes(x=Sample, y=FIS)) + geom_boxplot(fill="#1F78B4", notch= FALSE)
+p <- p + xlab("Population")
+p <- p + ylab("FIS")
+p <- p + theme_bw() + ggtitle("FIS by population")
+p
+```
+
+## PCA and DAPC
+
+One important consideration is that we need to deal with linkage in our data set we will use PCAdapt to help us with this and to illustrate why.
+
+
+```{r}
+library(pcadapt)
+filename <- read.pcadapt("array.bed", type = "bed")
+
+```
+
+```{r}
+
+res <- pcadapt(filename, K = 5)
+plot(res, option = "screeplot")
+```
+
+
+```{r}
+par(mfrow = c(2, 2))
+for (i in 1:4)
+  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0("Loadings PC", i))
+```
+
+```{r, warning=FALSE}
+plot(res, option = "scores", pop = poplist.names)
+```
+
+
+```{r}
+res <- pcadapt(filename, K = 10, LD.clumping = list(size = 500, thr = 0.2))
+plot(res, option = "screeplot")
+```
+
+```{r}
+res <- pcadapt(filename, K = 4, LD.clumping = list(size = 500, thr = 0.2))
+par(mfrow = c(2, 2))
+for (i in 1:4)
+  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0("Loadings PC", i))
+```
+
+
+```{r, warning = FALSE}
+plot(res, option = "scores", pop = poplist.names)
+```
+
+
+
+## Filter data for PCA and DAPC
+```{r}
+ld_filtered_vcf <- my_vcf[!is.na(res$loadings[,1]),]
+mygl <- vcfR2genlight(ld_filtered_vcf,n.cores =2)
+
+strata(mygl) <- strata_df
+
+setPop(mygl) <- ~Population
+
+
+```
+
+```{r}
+oyster.pca <- glPca(mygl, nf = 3)
+
+```
+
+
+```{r}
+barplot(100*oyster.pca$eig/sum(oyster.pca$eig), col = heat.colors(50), main="PCA Variance Explained")
+title(ylab="Percent of variance\nexplained", line = 2)
+title(xlab="PC", line = 1)
+
+```
+
+
+```{r}
+
+myCol <- colorplot(oyster.pca$scores,oyster.pca$scores, transp=TRUE, cex=4)
+abline(h=0,v=0, col="grey")
+add.scatter.eig(oyster.pca$eig[1:10],2,1,2, posi="bottomright", ratio=.16)
+```
+
+```{r}
+
+oyster.pca.df <- as.data.frame(oyster.pca$scores)
+oyster.pca.df$pop <- pop(mygl)
+cols <-c("#871a1a","#33A02C","#1F78B4")
+
+p <- ggplot(oyster.pca.df, aes(x=PC1, y=PC2, colour=pop)) 
+p <- p + geom_point(size=2)
+p <- p + stat_ellipse(level = 0.95, size = 1)
+p <- p + scale_color_manual(values = cols) 
+p <- p + geom_hline(yintercept = 0) 
+p <- p + geom_vline(xintercept = 0) 
+p <- p + theme_bw()
+
+p
+```
+
+```{r}
+grp <- find.clusters(mygl, max.n.clust=10)
+table(pop(mygl), grp$grp)
+```
+
+```{r}
+oyster.dapc <- dapc(mygl, n.pca = 3, n.da = 2, grp$grp)
+scatter(oyster.dapc,col=cols,bg="white", solid=1)
+```
+
+```{r}
+compoplot(oyster.dapc, posi="bottom",txt.leg=paste("Cluster", 1:6), lab="", ncol=1, xlab="individuals")
+```
+
+```{r}
+```
+
+```{r}
+oyster.dapc <- dapc(mygl, n.pca = 3, n.da = 2)
+scatter(oyster.dapc, col = cols, cex = 2, legend = TRUE, clabel = F, posi.leg = "bottomleft", scree.pca = TRUE,
+        posi.pca = "topleft", cleg = 0.75, posi.da = "topright")
+```
+
+```{r}
+compoplot(oyster.dapc, posi="bottom",txt.leg=paste("Cluster", 1:3), lab="", ncol=1, xlab="individuals")
+```
+```{r}
+dapc.df <- as.data.frame(oyster.dapc$posterior)
+dapc.df$pop <- pop(mygl)
+dapc.df$indNames <- rownames(dapc.df)
+
+library(tidyr)
+dapc.df <- pivot_longer(dapc.df, -c(pop, indNames))
+colnames(dapc.df) <- c("Original_Pop","Sample","Assigned_Pop","Posterior_membership_probability")
+
+p <- ggplot(dapc.df, aes(x=Sample, y=Posterior_membership_probability, fill=Assigned_Pop))
+p <- p + geom_bar(stat='identity') 
+p <- p + scale_fill_manual(values = cols) 
+p <- p + facet_grid(~Original_Pop, scales = "free")
+p <- p + theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))
+p <- p + ylab("Posterior membership probability")
+p
+```
+
+
+
+
+```{r}
+adegenetServer(what = "DAPC")
+```
+
+
+
+
