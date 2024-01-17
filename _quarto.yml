@@ -34,7 +34,7 @@ website:
       - href: index.qmd
         text: Home
       - section: "Workshop"
-      - href: R_Intro.Rmd
+      - href: content/R_Intro.Rmd
         text: Introduction to R
       - href: content/acknowledgements.qmd
         text: Acknowledgements
