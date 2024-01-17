@@ -1,1 +1,1 @@
-Sitemap: https://jpuritz.github.io/NACE_MAS_Genomics_Workshop/sitemap.xml
+Sitemap: https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/sitemap.xml
