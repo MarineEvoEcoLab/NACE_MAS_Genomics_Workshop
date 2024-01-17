@@ -13,7 +13,7 @@ This actually happens outside of R.  A cool feature of RStudio
 ### Filter by missing genotypes, missing individuals and create a VCF File
 
 ```{bash, eval=FALSE}
-plink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10
+plink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out ../Processed_Data/array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10
 ```
 
 Here, we are using the program `plink` to convert the files we got from the genotyping service (`final.ped`, `final.bed`, `final.fam`).  This command has several options:
@@ -35,7 +35,7 @@ Here, we are using the program `plink` to convert the files we got from the geno
 
 It will help us to have both a `.bed` file and `.vcf` later one.  The code below does the same as the above, but outputs a `.bed` file instead
 ```{bash, eval=FALSE}
-plink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out array
+plink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array
 ```
 
 
@@ -46,7 +46,7 @@ plink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-al
 Now we're ready to import that data into R for processing.  We will first use the library [vcfR](https://cran.r-project.org/web/packages/vcfR/index.html) to do this
 ```{r}
 library(vcfR)
-my_vcf <- read.vcfR("array.vcf")
+my_vcf <- read.vcfR("../Processed_Data/array.vcf")
 ```
 
 Above, we load the library and then use a function to read our vcf and store it as `my_vcf`
@@ -142,7 +142,7 @@ One important consideration is that we need to deal with linkage in our data set
 
 ```{r}
 library(pcadapt)
-filename <- read.pcadapt("array.bed", type = "bed")
+filename <- read.pcadapt("../Processed_Data/array.bed", type = "bed")
 
 ```
 
