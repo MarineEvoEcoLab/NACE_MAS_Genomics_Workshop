@@ -42,25 +42,151 @@
     "text": "Including Plots\nYou can also embed plots, for example:\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot."
   },
   {
-    "objectID": "content/add-content.html",
-    "href": "content/add-content.html",
-    "title": "Customize",
+    "objectID": "content/SNP_Analysis.html",
+    "href": "content/SNP_Analysis.html",
+    "title": "Working with SNP Data",
     "section": "",
-    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
+    "text": "This actually happens outside of R. A cool feature of RStudio\n\n\n\nplink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out ../Processed_Data/array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10\n\nHere, we are using the program plink to convert the files we got from the genotyping service (final.ped, final.bed, final.fam). This command has several options:\n--bfile ../Example_Data/final this is saying the input is a binary and ../Example_Data/final is a relative PATH to the data files. In the virtual machine, this could aslo be written as /home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data or ~/NACE_MAS_Genomics_Workshop/Example_Data\n--recode vcf id-paste=iid is telling it to recode the file as a VCF file using the “individual id” from the .fam file as the individual label\n--out array is telling it to name the output files with the prefix “array”\n--allow-extra-chr is a Plink specific setting needed when you’re not working with human data\n\n\n--mind 0.1 This is saying we only want individuals with less than 10% missing data --geno 0.05 This is saying we only want SNPs with less than 5% missing data --max-alleles 2 --min-alleles 2 This says we only want SNPs with two alleles --chr 1-10 This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes\nIt will help us to have both a .bed file and .vcf later one. The code below does the same as the above, but outputs a .bed file instead\n\nplink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array"
   },
   {
-    "objectID": "content/add-content.html#edit-and-add-your-pages",
-    "href": "content/add-content.html#edit-and-add-your-pages",
-    "title": "Customize",
+    "objectID": "content/SNP_Analysis.html#quick-filtering-and-management-of-array-data",
+    "href": "content/SNP_Analysis.html#quick-filtering-and-management-of-array-data",
+    "title": "Working with SNP Data",
     "section": "",
-    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
+    "text": "This actually happens outside of R. A cool feature of RStudio\n\n\n\nplink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out ../Processed_Data/array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10\n\nHere, we are using the program plink to convert the files we got from the genotyping service (final.ped, final.bed, final.fam). This command has several options:\n--bfile ../Example_Data/final this is saying the input is a binary and ../Example_Data/final is a relative PATH to the data files. In the virtual machine, this could aslo be written as /home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data or ~/NACE_MAS_Genomics_Workshop/Example_Data\n--recode vcf id-paste=iid is telling it to recode the file as a VCF file using the “individual id” from the .fam file as the individual label\n--out array is telling it to name the output files with the prefix “array”\n--allow-extra-chr is a Plink specific setting needed when you’re not working with human data\n\n\n--mind 0.1 This is saying we only want individuals with less than 10% missing data --geno 0.05 This is saying we only want SNPs with less than 5% missing data --max-alleles 2 --min-alleles 2 This says we only want SNPs with two alleles --chr 1-10 This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes\nIt will help us to have both a .bed file and .vcf later one. The code below does the same as the above, but outputs a .bed file instead\n\nplink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array"
   },
   {
-    "objectID": "content/add-content.html#add-your-pages-the-project",
-    "href": "content/add-content.html#add-your-pages-the-project",
-    "title": "Customize",
-    "section": "Add your pages the project",
-    "text": "Add your pages the project\n\nAdd the files to _quarto.yml"
+    "objectID": "content/SNP_Analysis.html#import-data-into-r",
+    "href": "content/SNP_Analysis.html#import-data-into-r",
+    "title": "Working with SNP Data",
+    "section": "Import data into R",
+    "text": "Import data into R\nNow we’re ready to import that data into R for processing. We will first use the library vcfR to do this\n\nlibrary(vcfR)\n\n\n   *****       ***   vcfR   ***       *****\n   This is vcfR 1.15.0 \n     browseVignettes('vcfR') # Documentation\n     citation('vcfR') # Citation\n   *****       *****      *****       *****\n\nmy_vcf &lt;- read.vcfR(\"../Processed_Data/array.vcf\")\n\nScanning file to determine attributes.\nFile attributes:\n  meta lines: 15\n  header_line: 16\n  variant count: 60517\n  column count: 54\n\nMeta line 15 read in.\nAll meta lines processed.\ngt matrix initialized.\nCharacter matrix gt created.\n  Character matrix gt rows: 60517\n  Character matrix gt cols: 54\n  skip: 0\n  nrows: 60517\n  row_num: 0\n\nProcessed variant 1000\nProcessed variant 2000\nProcessed variant 3000\nProcessed variant 4000\nProcessed variant 5000\nProcessed variant 6000\nProcessed variant 7000\nProcessed variant 8000\nProcessed variant 9000\nProcessed variant 10000\nProcessed variant 11000\nProcessed variant 12000\nProcessed variant 13000\nProcessed variant 14000\nProcessed variant 15000\nProcessed variant 16000\nProcessed variant 17000\nProcessed variant 18000\nProcessed variant 19000\nProcessed variant 20000\nProcessed variant 21000\nProcessed variant 22000\nProcessed variant 23000\nProcessed variant 24000\nProcessed variant 25000\nProcessed variant 26000\nProcessed variant 27000\nProcessed variant 28000\nProcessed variant 29000\nProcessed variant 30000\nProcessed variant 31000\nProcessed variant 32000\nProcessed variant 33000\nProcessed variant 34000\nProcessed variant 35000\nProcessed variant 36000\nProcessed variant 37000\nProcessed variant 38000\nProcessed variant 39000\nProcessed variant 40000\nProcessed variant 41000\nProcessed variant 42000\nProcessed variant 43000\nProcessed variant 44000\nProcessed variant 45000\nProcessed variant 46000\nProcessed variant 47000\nProcessed variant 48000\nProcessed variant 49000\nProcessed variant 50000\nProcessed variant 51000\nProcessed variant 52000\nProcessed variant 53000\nProcessed variant 54000\nProcessed variant 55000\nProcessed variant 56000\nProcessed variant 57000\nProcessed variant 58000\nProcessed variant 59000\nProcessed variant 60000\nProcessed variant: 60517\nAll variants processed\n\n\nAbove, we load the library and then use a function to read our vcf and store it as my_vcf"
+  },
+  {
+    "objectID": "content/SNP_Analysis.html#calculating-heterozygosity",
+    "href": "content/SNP_Analysis.html#calculating-heterozygosity",
+    "title": "Working with SNP Data",
+    "section": "Calculating heterozygosity",
+    "text": "Calculating heterozygosity\n.vcf and .bed files do not contain information about populations or localities. We need to tell our analyses which individuals below to which populations. To do this, one was is to use a simple text table. We can read the one I made for this data like so:\n\ntable &lt;- read.table(\"../Example_Data/strata\", header = TRUE)\nhead(table)\n\n  Individual Population\n1         B1       PopB\n2         B2       PopB\n3         B3       PopB\n4         B4       PopB\n5         B5       PopB\n6         B6       PopB\n\npoplist.names &lt;- table$Population\n\nAs you can see our data has 45 individuals total, 15 in PopA, 15 in PopB, and 15 in PopC.\nNext, the package vcfR can actually calculate heterozygosity for our data using the genetic_diff function\n\nhet_results &lt;- genetic_diff(my_vcf, pop=as.factor(poplist.names), method= 'nei')\n\nhead(het_results)\n\n  CHROM   POS    Hs_PopA    Hs_PopB   Hs_PopC        Ht n_PopA n_PopB n_PopC\n1     1 29363 0.27777778 0.37500000 0.2933673 0.3171985     30     28     28\n2     1 30115 0.32000000 0.46444444 0.4800000 0.4367901     30     30     30\n3     1 30567 0.23111111 0.32000000 0.3200000 0.2923457     30     30     30\n4     1 32192 0.06444444 0.06444444 0.2311111 0.1244444     30     30     30\n5     1 38807 0.23111111 0.19132653 0.1244444 0.1836260     30     28     30\n6     1 44310 0.46444444 0.49777778 0.4200000 0.4701235     30     30     30\n          Gst     Htmax    Gstmax   Gprimest\n1 0.008484553 0.7709573 0.5920563 0.01433065\n2 0.035048050 0.8071605 0.4778220 0.07334960\n3 0.006756757 0.7634568 0.6196636 0.01090391\n4 0.035714286 0.7066667 0.8301887 0.04301948\n5 0.008371844 0.7270145 0.7495390 0.01116932\n6 0.019957983 0.8202469 0.4382902 0.04553600\n\n\nYou can see that this dataframe has the value calculated per SNP (each row). We can take a look at the columns that we are interested in and then take the mean values to get the mean genome-wide values\n\nhead(het_results[,3:6])\n\n     Hs_PopA    Hs_PopB   Hs_PopC        Ht\n1 0.27777778 0.37500000 0.2933673 0.3171985\n2 0.32000000 0.46444444 0.4800000 0.4367901\n3 0.23111111 0.32000000 0.3200000 0.2923457\n4 0.06444444 0.06444444 0.2311111 0.1244444\n5 0.23111111 0.19132653 0.1244444 0.1836260\n6 0.46444444 0.49777778 0.4200000 0.4701235\n\n\n\nround(colMeans(het_results[,c(3:6)], na.rm = TRUE), digits = 3)\n\nHs_PopA Hs_PopB Hs_PopC      Ht \n  0.254   0.272   0.281   0.291 \n\n\nHs_PopA is the observed heterozygostiy for PopA and so on. Ht is the observed across all individuals.\n\nPlotting heterozygosity\nI’m a fan of ggplot, but in order to use ggplot we need data in a “tidy” format. We can use the package reshape to do this for us\n\nlibrary(reshape2)\nhet_df &lt;- melt(het_results[,c(3:6)], varnames=c('Index', 'Sample'), value.name = 'Heterozygosity', na.rm=TRUE)\n\nNo id variables; using all as measure variables\n\nhead(het_df)\n\n  variable Heterozygosity\n1  Hs_PopA     0.27777778\n2  Hs_PopA     0.32000000\n3  Hs_PopA     0.23111111\n4  Hs_PopA     0.06444444\n5  Hs_PopA     0.23111111\n6  Hs_PopA     0.46444444\n\n\nNow we can easily plot with ggplot. I’m going to use a simple box plot.\n\nlibrary(ggplot2)\np &lt;- ggplot(het_df, aes(x=variable, y=Heterozygosity)) + geom_boxplot(fill=\"#1F78B4\")\np &lt;- p + xlab(\"Population\")\np &lt;- p + ylab(\"Observed Heterozygosity\")\np &lt;- p + theme_bw() + ggtitle(\"Observed Heterozygosity by population and total\")\np"
+  },
+  {
+    "objectID": "content/SNP_Analysis.html#calculating-fis-inbreeding-coeffecient",
+    "href": "content/SNP_Analysis.html#calculating-fis-inbreeding-coeffecient",
+    "title": "Working with SNP Data",
+    "section": "Calculating FIS (Inbreeding Coeffecient)",
+    "text": "Calculating FIS (Inbreeding Coeffecient)\n\nlibrary(adegenet)\n\nLoading required package: ade4\n\n\n\n   /// adegenet 2.1.10 is loaded ////////////\n\n   &gt; overview: '?adegenet'\n   &gt; tutorials/doc/questions: 'adegenetWeb()' \n   &gt; bug reports/feature requests: adegenetIssues()\n\nmy_genind &lt;- vcfR2genind(my_vcf)\nstrata&lt;- read.table(\"../Example_Data/strata\", header=TRUE)\nstrata_df &lt;- data.frame(strata)\n\nstrata(my_genind) &lt;- strata_df\n\nsetPop(my_genind) &lt;- ~Population\n\n\nlibrary(hierfstat)\n\n\nAttaching package: 'hierfstat'\n\n\nThe following objects are masked from 'package:adegenet':\n\n    Hs, read.fstat\n\nbasicstat &lt;- basic.stats(my_genind, diploid = TRUE, digits = 3)\n\n\nsummary(basicstat)\n\n           Length Class      Mode   \nn.ind.samp 181551 -none-     numeric\npop.freq    60517 -none-     list   \nHo         181551 -none-     numeric\nHs         181551 -none-     numeric\nFis        181551 -none-     numeric\nperloc         10 data.frame list   \noverall        10 -none-     numeric\n\nhead(basicstat$Fis)\n\n               PopB   PopA   PopC\nAX.574114010  0.458  0.774  0.772\nAX.564298109  0.030  0.200  0.200\nAX.564298112 -0.217 -0.120 -0.217\nAX.574114011  0.000  0.000  0.451\nAX.563423214 -0.083 -0.120 -0.037\nAX.575660822 -0.037  0.030  0.548\n\nfis_df &lt;- melt(basicstat$Fis, varnames=c('Index', 'Sample'), value.name = 'FIS', na.rm=TRUE)\n\n\np &lt;- ggplot(fis_df, aes(x=Sample, y=FIS)) + geom_boxplot(fill=\"#1F78B4\", notch= FALSE)\np &lt;- p + xlab(\"Population\")\np &lt;- p + ylab(\"FIS\")\np &lt;- p + theme_bw() + ggtitle(\"FIS by population\")\np"
+  },
+  {
+    "objectID": "content/publishing.html",
+    "href": "content/publishing.html",
+    "title": "Publishing",
+    "section": "",
+    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
+  },
+  {
+    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "title": "Publishing",
+    "section": "Turn on GitHub Pages for your repo",
+    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
+  },
+  {
+    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "title": "Publishing",
+    "section": "Do your first publish to gh-pages",
+    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
+  },
+  {
+    "objectID": "content/publishing.html#dont-like-using-gh-pages",
+    "href": "content/publishing.html#dont-like-using-gh-pages",
+    "title": "Publishing",
+    "section": "Don’t like using gh-pages?",
+    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
+  },
+  {
+    "objectID": "content/rendering.html",
+    "href": "content/rendering.html",
+    "title": "Rendering",
+    "section": "",
+    "text": "The repo includes a GitHub Action that will render (build) the website automatically when you make changes to the files. It will be pushed to the gh-pages branch.\nBut when you are developing your content, you will want to render it locally."
+  },
+  {
+    "objectID": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
+    "href": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
+    "title": "Rendering",
+    "section": "Step 1. Make sure you have a recent RStudio",
+    "text": "Step 1. Make sure you have a recent RStudio\nHave you updated RStudio since about August 2022? No? Then update to a newer version of RStudio. In general, you want to keep RStudio updated and it is required to have a recent version to use Quarto."
+  },
+  {
+    "objectID": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
+    "href": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
+    "title": "Rendering",
+    "section": "Step 2. Clone and create RStudio project",
+    "text": "Step 2. Clone and create RStudio project\nFirst, clone the repo onto your local computer. How? You can click File &gt; New Project and then select “Version Control”. Paste in the url of the repository. That will clone the repo on to your local computer. When you make changes, you will need to push those up."
+  },
+  {
+    "objectID": "content/rendering.html#step-3.-render-within-rstudio",
+    "href": "content/rendering.html#step-3.-render-within-rstudio",
+    "title": "Rendering",
+    "section": "Step 3. Render within RStudio",
+    "text": "Step 3. Render within RStudio\nRStudio will recognize that this is a Quarto project by the presence of the _quarto.yml file and will see the “Build” tab. Click the “Render website” button to render to the _site folder.\nPreviewing: You can either click index.html in the _site folder and specify “preview in browser” or set up RStudio to preview to the viewer panel. To do the latter, go to Tools &gt; Global Options &gt; R Markdown. Then select “Show output preview in: Viewer panel”."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "",
+    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
+  },
+  {
+    "objectID": "index.html#location-and-date",
+    "href": "index.html#location-and-date",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "",
+    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
+  },
+  {
+    "objectID": "index.html#description",
+    "href": "index.html#description",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "Description",
+    "text": "Description\nCome learn about exciting new genomic tools for the eastern oyster that can be used to enhance aquaculture and management. The workshop will feature lightning talks highlighting findings and applications of genomic data in aquaculture, presentations on how to non-destructively sample oysters for DNA and the benefits of incorporating genomic data. The second half of the workshop will be hands-on instruction with genomic data from the eastern oyster breeding array."
+  },
+  {
+    "objectID": "index.html#agenda",
+    "href": "index.html#agenda",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "Agenda",
+    "text": "Agenda\n\n\n\nStart\nEnd\nEvent\nSpeaker\n\n\n\n\n13:00\n13:10\nWelcome and Introduction\nJon Puritz\n\n\n\n\nPart 1: What can genomic data answer?\n\n\n\n13:10\n13:18\nUnderstanding Oyster Population Connectivity and Adaptation in Narragansett Bay\nAmy Zyck\n\n\n13:20\n13:28\nGenomic and phenotypic variation in wild and selectively bred oysters\nAngel Carrasquillo\n\n\n13:30\n13:40\nDo farm oysters contribute to ecosystem services? Assessing interbreeding between aquaculture strains and native stocks\nYuqing Chen\n\n\n13:42\n13:50\nNo oysters were harmed in the making of this: how to non-destructively sample oyster DNA\nUSDA-ARS\n\n\n13:50\n14:05\nBreak\n\n\n\n\n\nPart 2: Hands-on workshop with the Eastern Oyster SNP Breeding Array\n\n\n\n14:05\n14:20\nFrom DNA to SNP and what is a SNP anyway?\nJon Puritz\n\n\n14:20\n14:40\nIntroduction to R\nJon Puritz\n\n\n14:40\n15:20\nCalculating Genetic Diversity\nJon Puritz\n\n\n15:20\n16:00\nPrincipal Component Analysis and Discrimininant Analysis\nJon Puritz\n\n\n\n:{.striped .hover}"
+  },
+  {
+    "objectID": "index.html#support",
+    "href": "index.html#support",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "Support",
+    "text": "Support\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
+  },
+  {
+    "objectID": "content/code.html",
+    "href": "content/code.html",
+    "title": "Rendering with Code",
+    "section": "",
+    "text": "You can have code (R, Python or Julia) in your qmd file. You will need to have these installed on your local computer, but presumably you do already if you are adding code to your qmd files.\nx &lt;- c(5, 15, 25, 35, 45, 55)\ny &lt;- c(5, 20, 14, 32, 22, 38)\nlm(x ~ y)\n\n\nCall:\nlm(formula = x ~ y)\n\nCoefficients:\n(Intercept)            y  \n      1.056        1.326"
+  },
+  {
+    "objectID": "content/code.html#modify-the-github-action",
+    "href": "content/code.html#modify-the-github-action",
+    "title": "Rendering with Code",
+    "section": "Modify the GitHub Action",
+    "text": "Modify the GitHub Action\nYou will need to change the GitHub Action in .github/workflows to install these and any needed packages in order for GitHub to be able to render your webpage. The GitHub Action install R since I used that in code.qmd. If you use Python or Julia instead, then you will need to update the GitHub Action to install those.\nIf getting the GitHub Action to work is too much hassle (and that definitely happens), you can alway render locally and publish to the gh-pages branch. If you do this, make sure to delete or rename the GitHub Action to something like\nrender-and-publish.old_yml\nso GitHub does not keep trying to run it. Nothing bad will happen if you don’t do this, but if you are not using the action (because it keeps failing), then you don’t need GitHub to run it."
+  },
+  {
+    "objectID": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
+    "href": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
+    "title": "Rendering with Code",
+    "section": "Render locally and publish to gh-pages branch",
+    "text": "Render locally and publish to gh-pages branch\nTo render locally and push up to the gh-pages branch, open a terminal window and then cd to the directory with the Quarto project. Type this in the terminal:\nquarto render gh-pages"
   },
   {
     "objectID": "content/R_Intro.html",
@@ -119,116 +245,25 @@
     "text": "RStudio and RMarkdown allow you to run commands through a system terminal. This means we can embed BASH code to run on the machine\n\necho \"Hi, I'm a BASH code output\"\n\nHi, I'm a BASH code output\n\n\n\necho -e \"The Current Directory is $(pwd)\"\n\nThe Current Directory is /home/runner/work/NACE_MAS_Genomics_Workshop/NACE_MAS_Genomics_Workshop/content"
   },
   {
-    "objectID": "content/code.html",
-    "href": "content/code.html",
-    "title": "Rendering with Code",
+    "objectID": "content/add-content.html",
+    "href": "content/add-content.html",
+    "title": "Customize",
     "section": "",
-    "text": "You can have code (R, Python or Julia) in your qmd file. You will need to have these installed on your local computer, but presumably you do already if you are adding code to your qmd files.\nx &lt;- c(5, 15, 25, 35, 45, 55)\ny &lt;- c(5, 20, 14, 32, 22, 38)\nlm(x ~ y)\n\n\nCall:\nlm(formula = x ~ y)\n\nCoefficients:\n(Intercept)            y  \n      1.056        1.326"
+    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
   },
   {
-    "objectID": "content/code.html#modify-the-github-action",
-    "href": "content/code.html#modify-the-github-action",
-    "title": "Rendering with Code",
-    "section": "Modify the GitHub Action",
-    "text": "Modify the GitHub Action\nYou will need to change the GitHub Action in .github/workflows to install these and any needed packages in order for GitHub to be able to render your webpage. The GitHub Action install R since I used that in code.qmd. If you use Python or Julia instead, then you will need to update the GitHub Action to install those.\nIf getting the GitHub Action to work is too much hassle (and that definitely happens), you can alway render locally and publish to the gh-pages branch. If you do this, make sure to delete or rename the GitHub Action to something like\nrender-and-publish.old_yml\nso GitHub does not keep trying to run it. Nothing bad will happen if you don’t do this, but if you are not using the action (because it keeps failing), then you don’t need GitHub to run it."
-  },
-  {
-    "objectID": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
-    "href": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
-    "title": "Rendering with Code",
-    "section": "Render locally and publish to gh-pages branch",
-    "text": "Render locally and publish to gh-pages branch\nTo render locally and push up to the gh-pages branch, open a terminal window and then cd to the directory with the Quarto project. Type this in the terminal:\nquarto render gh-pages"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "objectID": "content/add-content.html#edit-and-add-your-pages",
+    "href": "content/add-content.html#edit-and-add-your-pages",
+    "title": "Customize",
     "section": "",
-    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
+    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
   },
   {
-    "objectID": "index.html#location-and-date",
-    "href": "index.html#location-and-date",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
-    "section": "",
-    "text": "Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)\nDate: January 10, 2024 Time: 1:00 PM to 4:00 PM Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)\nRoom: Bristol/Kent"
-  },
-  {
-    "objectID": "index.html#description",
-    "href": "index.html#description",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
-    "section": "Description",
-    "text": "Description\nCome learn about exciting new genomic tools for the eastern oyster that can be used to enhance aquaculture and management. The workshop will feature lightning talks highlighting findings and applications of genomic data in aquaculture, presentations on how to non-destructively sample oysters for DNA and the benefits of incorporating genomic data. The second half of the workshop will be hands-on instruction with genomic data from the eastern oyster breeding array."
-  },
-  {
-    "objectID": "index.html#agenda",
-    "href": "index.html#agenda",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
-    "section": "Agenda",
-    "text": "Agenda\n\n\n\nStart\nEnd\nEvent\nSpeaker\n\n\n\n\n13:00\n13:10\nWelcome and Introduction\nJon Puritz\n\n\n\n\nPart 1: What can genomic data answer?\n\n\n\n13:10\n13:18\nUnderstanding Oyster Population Connectivity and Adaptation in Narragansett Bay\nAmy Zyck\n\n\n13:20\n13:28\nGenomic and phenotypic variation in wild and selectively bred oysters\nAngel Carrasquillo\n\n\n13:30\n13:40\nDo farm oysters contribute to ecosystem services? Assessing interbreeding between aquaculture strains and native stocks\nYuqing Chen\n\n\n13:42\n13:50\nNo oysters were harmed in the making of this: how to non-destructively sample oyster DNA\nUSDA-ARS\n\n\n13:50\n14:05\nBreak\n\n\n\n\n\nPart 2: Hands-on workshop with the Eastern Oyster SNP Breeding Array\n\n\n\n14:05\n14:20\nFrom DNA to SNP and what is a SNP anyway?\nJon Puritz\n\n\n14:20\n14:40\nIntroduction to R\nJon Puritz\n\n\n14:40\n15:20\nCalculating Genetic Diversity\nJon Puritz\n\n\n15:20\n16:00\nPrincipal Component Analysis and Discrimininant Analysis\nJon Puritz\n\n\n\n:{.striped .hover}"
-  },
-  {
-    "objectID": "index.html#support",
-    "href": "index.html#support",
-    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
-    "section": "Support",
-    "text": "Support\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
-  },
-  {
-    "objectID": "content/rendering.html",
-    "href": "content/rendering.html",
-    "title": "Rendering",
-    "section": "",
-    "text": "The repo includes a GitHub Action that will render (build) the website automatically when you make changes to the files. It will be pushed to the gh-pages branch.\nBut when you are developing your content, you will want to render it locally."
-  },
-  {
-    "objectID": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
-    "href": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
-    "title": "Rendering",
-    "section": "Step 1. Make sure you have a recent RStudio",
-    "text": "Step 1. Make sure you have a recent RStudio\nHave you updated RStudio since about August 2022? No? Then update to a newer version of RStudio. In general, you want to keep RStudio updated and it is required to have a recent version to use Quarto."
-  },
-  {
-    "objectID": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
-    "href": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
-    "title": "Rendering",
-    "section": "Step 2. Clone and create RStudio project",
-    "text": "Step 2. Clone and create RStudio project\nFirst, clone the repo onto your local computer. How? You can click File &gt; New Project and then select “Version Control”. Paste in the url of the repository. That will clone the repo on to your local computer. When you make changes, you will need to push those up."
-  },
-  {
-    "objectID": "content/rendering.html#step-3.-render-within-rstudio",
-    "href": "content/rendering.html#step-3.-render-within-rstudio",
-    "title": "Rendering",
-    "section": "Step 3. Render within RStudio",
-    "text": "Step 3. Render within RStudio\nRStudio will recognize that this is a Quarto project by the presence of the _quarto.yml file and will see the “Build” tab. Click the “Render website” button to render to the _site folder.\nPreviewing: You can either click index.html in the _site folder and specify “preview in browser” or set up RStudio to preview to the viewer panel. To do the latter, go to Tools &gt; Global Options &gt; R Markdown. Then select “Show output preview in: Viewer panel”."
-  },
-  {
-    "objectID": "content/publishing.html",
-    "href": "content/publishing.html",
-    "title": "Publishing",
-    "section": "",
-    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
-  },
-  {
-    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "title": "Publishing",
-    "section": "Turn on GitHub Pages for your repo",
-    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
-  },
-  {
-    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "title": "Publishing",
-    "section": "Do your first publish to gh-pages",
-    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
-  },
-  {
-    "objectID": "content/publishing.html#dont-like-using-gh-pages",
-    "href": "content/publishing.html#dont-like-using-gh-pages",
-    "title": "Publishing",
-    "section": "Don’t like using gh-pages?",
-    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
+    "objectID": "content/add-content.html#add-your-pages-the-project",
+    "href": "content/add-content.html#add-your-pages-the-project",
+    "title": "Customize",
+    "section": "Add your pages the project",
+    "text": "Add your pages the project\n\nAdd the files to _quarto.yml"
   },
   {
     "objectID": "content/acknowledgements.html",

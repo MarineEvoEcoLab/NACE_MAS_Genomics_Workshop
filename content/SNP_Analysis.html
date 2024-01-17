@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Oyster genomics for everyone: applications to conservation, management, and aquaculture - Working with SNP Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Working with SNP Data</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="https://raw.githubusercontent.com/MarineEvoEcoLab/Lab_Resources/master/LabLogo/PuritzMEE2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://MarineEvoEco.com" rel="" title="Puritz Lab of Marine Evolutionary Ecology" class="quarto-navigation-tool px-1" aria-label="Puritz Lab of Marine Evolutionary Ecology"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/MarineEvoEcoLab" rel="" title="Puritz Lab of Marine Evolutionary Ecology Lab Github" class="quarto-navigation-tool px-1" aria-label="Puritz Lab of Marine Evolutionary Ecology Lab Github"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Workshop</span></span>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/R_Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/Genomics.Rmd" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with SNP data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#quick-filtering-and-management-of-array-data" id="toc-quick-filtering-and-management-of-array-data" class="nav-link active" data-scroll-target="#quick-filtering-and-management-of-array-data">Quick Filtering and Management of Array Data</a>
+  <ul class="collapse">
+  <li><a href="#filter-by-missing-genotypes-missing-individuals-and-create-a-vcf-file" id="toc-filter-by-missing-genotypes-missing-individuals-and-create-a-vcf-file" class="nav-link" data-scroll-target="#filter-by-missing-genotypes-missing-individuals-and-create-a-vcf-file">Filter by missing genotypes, missing individuals and create a VCF File</a></li>
+  </ul></li>
+  <li><a href="#import-data-into-r" id="toc-import-data-into-r" class="nav-link" data-scroll-target="#import-data-into-r">Import data into R</a></li>
+  <li><a href="#calculating-heterozygosity" id="toc-calculating-heterozygosity" class="nav-link" data-scroll-target="#calculating-heterozygosity">Calculating heterozygosity</a>
+  <ul class="collapse">
+  <li><a href="#plotting-heterozygosity" id="toc-plotting-heterozygosity" class="nav-link" data-scroll-target="#plotting-heterozygosity">Plotting heterozygosity</a></li>
+  </ul></li>
+  <li><a href="#calculating-fis-inbreeding-coeffecient" id="toc-calculating-fis-inbreeding-coeffecient" class="nav-link" data-scroll-target="#calculating-fis-inbreeding-coeffecient">Calculating <em>F<sub>IS</sub></em> (Inbreeding Coeffecient)</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/edit/main/content/SNP_Analysis.Rmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/blob/main/content/SNP_Analysis.Rmd" class="toc-action">View source</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Working with SNP Data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="quick-filtering-and-management-of-array-data" class="level2">
+<h2 class="anchored" data-anchor-id="quick-filtering-and-management-of-array-data">Quick Filtering and Management of Array Data</h2>
+<p>This actually happens outside of R. A cool feature of RStudio</p>
+<section id="filter-by-missing-genotypes-missing-individuals-and-create-a-vcf-file" class="level3">
+<h3 class="anchored" data-anchor-id="filter-by-missing-genotypes-missing-individuals-and-create-a-vcf-file">Filter by missing genotypes, missing individuals and create a VCF File</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> ../Example_Data/final <span class="at">--recode</span> vcf id-paste=iid <span class="at">--out</span> ../Processed_Data/array <span class="at">--allow-extra-chr</span> <span class="at">--mind</span> 0.1 <span class="at">--geno</span> 0.05 <span class="at">--max-alleles</span> 2 <span class="at">--min-alleles</span> 2 <span class="at">--chr</span> 1-10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here, we are using the program <code>plink</code> to convert the files we got from the genotyping service (<code>final.ped</code>, <code>final.bed</code>, <code>final.fam</code>). This command has several options:</p>
+<p><code>--bfile ../Example_Data/final</code> this is saying the input is a binary and <code>../Example_Data/final</code> is a relative PATH to the data files. In the virtual machine, this could aslo be written as <code>/home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data</code> or <code>~/NACE_MAS_Genomics_Workshop/Example_Data</code></p>
+<p><code>--recode vcf id-paste=iid</code> is telling it to recode the file as a VCF file using the “individual id” from the <code>.fam</code> file as the individual label</p>
+<p><code>--out array</code> is telling it to name the output files with the prefix “array”</p>
+<p><code>--allow-extra-chr</code> is a Plink specific setting needed when you’re not working with human data</p>
+<section id="important-part" class="level4">
+<h4 class="anchored" data-anchor-id="important-part">Important part</h4>
+<p><code>--mind 0.1</code> This is saying we only want individuals with less than 10% missing data <code>--geno 0.05</code> This is saying we only want SNPs with less than 5% missing data <code>--max-alleles 2 --min-alleles 2</code> This says we only want SNPs with two alleles <code>--chr 1-10</code> This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes</p>
+<p>It will help us to have both a <code>.bed</code> file and <code>.vcf</code> later one. The code below does the same as the above, but outputs a <code>.bed</code> file instead</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> ../Example_Data/final <span class="at">--make-bed</span>  <span class="at">--mind</span> 0.1 <span class="at">--geno</span> 0.05 <span class="at">--max-alleles</span> 2 <span class="at">--min-alleles</span> 2 <span class="at">--chr</span> 1-10 <span class="at">--allow-extra-chr</span> <span class="at">--out</span> ../Processed_Data/array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="import-data-into-r" class="level2">
+<h2 class="anchored" data-anchor-id="import-data-into-r">Import data into R</h2>
+<p>Now we’re ready to import that data into R for processing. We will first use the library <a href="https://cran.r-project.org/web/packages/vcfR/index.html">vcfR</a> to do this</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcfR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+   *****       ***   vcfR   ***       *****
+   This is vcfR 1.15.0 
+     browseVignettes('vcfR') # Documentation
+     citation('vcfR') # Citation
+   *****       *****      *****       *****</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>my_vcf <span class="ot">&lt;-</span> <span class="fu">read.vcfR</span>(<span class="st">"../Processed_Data/array.vcf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Scanning file to determine attributes.
+File attributes:
+  meta lines: 15
+  header_line: 16
+  variant count: 60517
+  column count: 54
+
+Meta line 15 read in.
+All meta lines processed.
+gt matrix initialized.
+Character matrix gt created.
+  Character matrix gt rows: 60517
+  Character matrix gt cols: 54
+  skip: 0
+  nrows: 60517
+  row_num: 0
+
+Processed variant 1000
+Processed variant 2000
+Processed variant 3000
+Processed variant 4000
+Processed variant 5000
+Processed variant 6000
+Processed variant 7000
+Processed variant 8000
+Processed variant 9000
+Processed variant 10000
+Processed variant 11000
+Processed variant 12000
+Processed variant 13000
+Processed variant 14000
+Processed variant 15000
+Processed variant 16000
+Processed variant 17000
+Processed variant 18000
+Processed variant 19000
+Processed variant 20000
+Processed variant 21000
+Processed variant 22000
+Processed variant 23000
+Processed variant 24000
+Processed variant 25000
+Processed variant 26000
+Processed variant 27000
+Processed variant 28000
+Processed variant 29000
+Processed variant 30000
+Processed variant 31000
+Processed variant 32000
+Processed variant 33000
+Processed variant 34000
+Processed variant 35000
+Processed variant 36000
+Processed variant 37000
+Processed variant 38000
+Processed variant 39000
+Processed variant 40000
+Processed variant 41000
+Processed variant 42000
+Processed variant 43000
+Processed variant 44000
+Processed variant 45000
+Processed variant 46000
+Processed variant 47000
+Processed variant 48000
+Processed variant 49000
+Processed variant 50000
+Processed variant 51000
+Processed variant 52000
+Processed variant 53000
+Processed variant 54000
+Processed variant 55000
+Processed variant 56000
+Processed variant 57000
+Processed variant 58000
+Processed variant 59000
+Processed variant 60000
+Processed variant: 60517
+All variants processed</code></pre>
+</div>
+</div>
+<p>Above, we load the library and then use a function to read our vcf and store it as <code>my_vcf</code></p>
+</section>
+<section id="calculating-heterozygosity" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-heterozygosity">Calculating heterozygosity</h2>
+<p><code>.vcf</code> and <code>.bed</code> files do not contain information about populations or localities. We need to tell our analyses which individuals below to which populations. To do this, one was is to use a simple text table. We can read the one I made for this data like so:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../Example_Data/strata"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Individual Population
+1         B1       PopB
+2         B2       PopB
+3         B3       PopB
+4         B4       PopB
+5         B5       PopB
+6         B6       PopB</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>poplist.names <span class="ot">&lt;-</span> table<span class="sc">$</span>Population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>As you can see our data has 45 individuals total, 15 in PopA, 15 in PopB, and 15 in PopC.</p>
+<p>Next, the package vcfR can actually calculate heterozygosity for our data using the <code>genetic_diff</code> function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>het_results <span class="ot">&lt;-</span> <span class="fu">genetic_diff</span>(my_vcf, <span class="at">pop=</span><span class="fu">as.factor</span>(poplist.names), <span class="at">method=</span> <span class="st">'nei'</span>)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(het_results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  CHROM   POS    Hs_PopA    Hs_PopB   Hs_PopC        Ht n_PopA n_PopB n_PopC
+1     1 29363 0.27777778 0.37500000 0.2933673 0.3171985     30     28     28
+2     1 30115 0.32000000 0.46444444 0.4800000 0.4367901     30     30     30
+3     1 30567 0.23111111 0.32000000 0.3200000 0.2923457     30     30     30
+4     1 32192 0.06444444 0.06444444 0.2311111 0.1244444     30     30     30
+5     1 38807 0.23111111 0.19132653 0.1244444 0.1836260     30     28     30
+6     1 44310 0.46444444 0.49777778 0.4200000 0.4701235     30     30     30
+          Gst     Htmax    Gstmax   Gprimest
+1 0.008484553 0.7709573 0.5920563 0.01433065
+2 0.035048050 0.8071605 0.4778220 0.07334960
+3 0.006756757 0.7634568 0.6196636 0.01090391
+4 0.035714286 0.7066667 0.8301887 0.04301948
+5 0.008371844 0.7270145 0.7495390 0.01116932
+6 0.019957983 0.8202469 0.4382902 0.04553600</code></pre>
+</div>
+</div>
+<p>You can see that this dataframe has the value calculated per SNP (each row). We can take a look at the columns that we are interested in and then take the mean values to get the mean genome-wide values</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(het_results[,<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     Hs_PopA    Hs_PopB   Hs_PopC        Ht
+1 0.27777778 0.37500000 0.2933673 0.3171985
+2 0.32000000 0.46444444 0.4800000 0.4367901
+3 0.23111111 0.32000000 0.3200000 0.2923457
+4 0.06444444 0.06444444 0.2311111 0.1244444
+5 0.23111111 0.19132653 0.1244444 0.1836260
+6 0.46444444 0.49777778 0.4200000 0.4701235</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">colMeans</span>(het_results[,<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>)], <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hs_PopA Hs_PopB Hs_PopC      Ht 
+  0.254   0.272   0.281   0.291 </code></pre>
+</div>
+</div>
+<p>Hs_PopA is the observed heterozygostiy for PopA and so on. Ht is the observed across all individuals.</p>
+<section id="plotting-heterozygosity" class="level3">
+<h3 class="anchored" data-anchor-id="plotting-heterozygosity">Plotting heterozygosity</h3>
+<p>I’m a fan of ggplot, but in order to use ggplot we need data in a “tidy” format. We can use the package reshape to do this for us</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>het_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(het_results[,<span class="fu">c</span>(<span class="dv">3</span><span class="sc">:</span><span class="dv">6</span>)], <span class="at">varnames=</span><span class="fu">c</span>(<span class="st">'Index'</span>, <span class="st">'Sample'</span>), <span class="at">value.name =</span> <span class="st">'Heterozygosity'</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>No id variables; using all as measure variables</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(het_df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  variable Heterozygosity
+1  Hs_PopA     0.27777778
+2  Hs_PopA     0.32000000
+3  Hs_PopA     0.23111111
+4  Hs_PopA     0.06444444
+5  Hs_PopA     0.23111111
+6  Hs_PopA     0.46444444</code></pre>
+</div>
+</div>
+<p>Now we can easily plot with ggplot. I’m going to use a simple box plot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(het_df, <span class="fu">aes</span>(<span class="at">x=</span>variable, <span class="at">y=</span>Heterozygosity)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">"#1F78B4"</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Population"</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Observed Heterozygosity"</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"Observed Heterozygosity by population and total"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="SNP_Analysis_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+</section>
+<section id="calculating-fis-inbreeding-coeffecient" class="level2">
+<h2 class="anchored" data-anchor-id="calculating-fis-inbreeding-coeffecient">Calculating <em>F<sub>IS</sub></em> (Inbreeding Coeffecient)</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegenet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ade4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+   /// adegenet 2.1.10 is loaded ////////////
+
+   &gt; overview: '?adegenet'
+   &gt; tutorials/doc/questions: 'adegenetWeb()' 
+   &gt; bug reports/feature requests: adegenetIssues()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>my_genind <span class="ot">&lt;-</span> <span class="fu">vcfR2genind</span>(my_vcf)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>strata<span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../Example_Data/strata"</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>strata_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(strata)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="fu">strata</span>(my_genind) <span class="ot">&lt;-</span> strata_df</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">setPop</span>(my_genind) <span class="ot">&lt;-</span> <span class="er">~</span>Population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(hierfstat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'hierfstat'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:adegenet':
+
+    Hs, read.fstat</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>basicstat <span class="ot">&lt;-</span> <span class="fu">basic.stats</span>(my_genind, <span class="at">diploid =</span> <span class="cn">TRUE</span>, <span class="at">digits =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(basicstat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           Length Class      Mode   
+n.ind.samp 181551 -none-     numeric
+pop.freq    60517 -none-     list   
+Ho         181551 -none-     numeric
+Hs         181551 -none-     numeric
+Fis        181551 -none-     numeric
+perloc         10 data.frame list   
+overall        10 -none-     numeric</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(basicstat<span class="sc">$</span>Fis)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               PopB   PopA   PopC
+AX.574114010  0.458  0.774  0.772
+AX.564298109  0.030  0.200  0.200
+AX.564298112 -0.217 -0.120 -0.217
+AX.574114011  0.000  0.000  0.451
+AX.563423214 -0.083 -0.120 -0.037
+AX.575660822 -0.037  0.030  0.548</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>fis_df <span class="ot">&lt;-</span> <span class="fu">melt</span>(basicstat<span class="sc">$</span>Fis, <span class="at">varnames=</span><span class="fu">c</span>(<span class="st">'Index'</span>, <span class="st">'Sample'</span>), <span class="at">value.name =</span> <span class="st">'FIS'</span>, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(fis_df, <span class="fu">aes</span>(<span class="at">x=</span>Sample, <span class="at">y=</span>FIS)) <span class="sc">+</span> <span class="fu">geom_boxplot</span>(<span class="at">fill=</span><span class="st">"#1F78B4"</span>, <span class="at">notch=</span> <span class="cn">FALSE</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"Population"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"FIS"</span>)</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"FIS by population"</span>)</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="SNP_Analysis_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© CC-1.0</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
