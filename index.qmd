@@ -7,9 +7,9 @@ page-layout: full
 ## Location and Date
 Workshop held at the 2024 Northeast Aquaculture Conference & Exposition (NACE) and the 43rd Milford Aquaculture Seminar (MAS)
 
-Date: January 10, 2024 
-Time: 1:00 PM to 4:00 PM
-Location: Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)
+**Date:** January 10, 2024 
+**Time:** 1:00 PM to 4:00 PM
+**Location:** Omni Providence Hotel (1 W Exchange St, Providence, RI 02903)
 
 **Room:** Bristol/Kent
 
