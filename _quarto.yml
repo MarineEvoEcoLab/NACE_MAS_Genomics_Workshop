@@ -4,8 +4,8 @@ project:
 website: 
   page-navigation: true
   title: "Oyster genomics for everyone: applications to conservation, management, and aquaculture" 
-  site-url: "https://jpuritz.github.io/NACE_MAS_Genomics_Workshop/" 
-  repo-url: "https://github.com/jpuritz/NACE_MAS_Genomics_Workshop"
+  site-url: "https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/" 
+  repo-url: "https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop"
   repo-actions: [edit, source, issue]
   favicon: images/favicon.ico
   
