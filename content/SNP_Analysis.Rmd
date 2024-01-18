@@ -28,8 +28,11 @@ Here, we are using the program `plink` to convert the files we got from the geno
 
 #### Important part
 `--mind 0.1` This is saying we only want individuals with less than 10% missing data
+
 `--geno 0.05` This is saying we only want SNPs with less than 5% missing data
+
 `--max-alleles 2 --min-alleles 2` This says we only want SNPs with two alleles
+
 `--chr 1-10` This says we only want nuclear SNPs.  The array has other markser on it including mtDNA and pathogens, "chr 1-10" means only the SNPs on the 10 oyster genome chromosomes
 
 
@@ -37,8 +40,6 @@ It will help us to have both a `.bed` file and `.vcf` later one.  The code below
 ```{bash, eval=FALSE}
 plink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array
 ```
-
-
 
 
 ## Import data into R
@@ -51,7 +52,7 @@ my_vcf <- read.vcfR("../Processed_Data/array.vcf")
 
 Above, we load the library and then use a function to read our vcf and store it as `my_vcf`
 
-## Calculating heterozygosity
+# Calculating heterozygosity
 
 `.vcf` and `.bed` files do not contain information about populations or localities.  We need to tell our analyses which individuals below to which populations.  To do this, one was is to use a simple text table.  We can read the one I made for this data like so:
 
@@ -85,7 +86,7 @@ round(colMeans(het_results[,c(3:6)], na.rm = TRUE), digits = 3)
 
 Hs_PopA is the observed heterozygostiy for PopA and so on.  Ht is the observed across all individuals.
 
-### Plotting heterozygosity
+## Plotting heterozygosity
 I'm a fan of ggplot, but in order to use ggplot we need data in a "tidy" format.  We can use the package reshape to do this for us
 
 ```{r}
@@ -106,7 +107,7 @@ p <- p + theme_bw() + ggtitle("Observed Heterozygosity by population and total")
 p
 ```
 
-## Calculating *F<sub>IS</sub>* (Inbreeding Coeffecient)
+# Calculating *F<sub>IS</sub>* (Inbreeding Coeffecient)
 ```{r}
 library(adegenet)
 my_genind <- vcfR2genind(my_vcf)
@@ -135,5 +136,7 @@ p <- p + ylab("FIS")
 p <- p + theme_bw() + ggtitle("FIS by population")
 p
 ```
+
+
 
 

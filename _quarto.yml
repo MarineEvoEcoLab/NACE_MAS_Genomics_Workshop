@@ -34,10 +34,11 @@ website:
       - href: index.qmd
         text: Home
       - section: "Workshop"
-      - href: content/R_Intro.Rmd
-        text: Introduction to R
-      - href: content/SNP_Analysis.Rmd
-        text: Working with SNP data
+        contents:
+        - href: content/R_Intro.Rmd
+          text: Introduction to R
+        - href: content/SNP_Analysis.Rmd
+          text: Working with SNP data
       - href: content/acknowledgements.qmd
         text: Acknowledgements
 
