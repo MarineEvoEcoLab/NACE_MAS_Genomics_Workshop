@@ -38,7 +38,7 @@ website:
         - href: content/R_Intro.Rmd
           text: Introduction to R
         - href: content/SNP_Analysis.Rmd
-          text: Working with SNP data
+          text: Calculating Genetic Diversity
         - href: content/PCA.Rmd
           text: PCA and DAPC 
       - href: content/acknowledgements.qmd
