@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Oyster genomics for everyone: applications to conservation, management, and aquaculture - PCA and DAPC</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../content/acknowledgements.html" rel="next">
+<link href="../content/SNP_Analysis.html" rel="prev">
+<link href="../images/favicon.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/R_Intro.html">Workshop</a></li><li class="breadcrumb-item"><a href="../content/PCA.html">PCA and DAPC</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="https://raw.githubusercontent.com/MarineEvoEcoLab/Lab_Resources/master/LabLogo/PuritzMEE2.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://MarineEvoEco.com" rel="" title="Puritz Lab of Marine Evolutionary Ecology" class="quarto-navigation-tool px-1" aria-label="Puritz Lab of Marine Evolutionary Ecology"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/MarineEvoEcoLab" rel="" title="Puritz Lab of Marine Evolutionary Ecology Lab Github" class="quarto-navigation-tool px-1" aria-label="Puritz Lab of Marine Evolutionary Ecology Lab Github"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Home</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Workshop</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/R_Intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/SNP_Analysis.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Calculating Genetic Diversity</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/PCA.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">PCA and DAPC</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/acknowledgements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#pca" id="toc-pca" class="nav-link active" data-scroll-target="#pca">PCA</a>
+  <ul class="collapse">
+  <li><a href="#load-data" id="toc-load-data" class="nav-link" data-scroll-target="#load-data">Load data</a></li>
+  <li><a href="#examine-the-pcs" id="toc-examine-the-pcs" class="nav-link" data-scroll-target="#examine-the-pcs">Examine the PCs</a></li>
+  <li><a href="#dealing-with-linkage-using-ld-clumping" id="toc-dealing-with-linkage-using-ld-clumping" class="nav-link" data-scroll-target="#dealing-with-linkage-using-ld-clumping">Dealing with linkage using LD clumping</a></li>
+  <li><a href="#filter-data-for-pca-and-dapc" id="toc-filter-data-for-pca-and-dapc" class="nav-link" data-scroll-target="#filter-data-for-pca-and-dapc">Filter data for PCA and DAPC</a></li>
+  <li><a href="#dapc-with-inferred-groups" id="toc-dapc-with-inferred-groups" class="nav-link" data-scroll-target="#dapc-with-inferred-groups">DAPC with inferred groups</a>
+  <ul class="collapse">
+  <li><a href="#finding-clusters" id="toc-finding-clusters" class="nav-link" data-scroll-target="#finding-clusters">Finding clusters</a></li>
+  </ul></li>
+  <li><a href="#discriminant-analysis" id="toc-discriminant-analysis" class="nav-link" data-scroll-target="#discriminant-analysis">Discriminant Analysis</a></li>
+  <li><a href="#dapc-with-original-populations" id="toc-dapc-with-original-populations" class="nav-link" data-scroll-target="#dapc-with-original-populations">DAPC with original populations</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/edit/main/content/PCA.Rmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/blob/main/content/PCA.Rmd" class="toc-action">View source</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">PCA and DAPC</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="pca" class="level1">
+<h1>PCA</h1>
+<p>One important consideration is that we need to deal with linkage in our data set. We will use PCAdapt to help us with this and to illustrate why.</p>
+<section id="load-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-data">Load data</h2>
+<p>First, we load in the data and convert our previous <code>array.bed</code> file to pcadapt input</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pcadapt)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="fu">read.pcadapt</span>(<span class="st">"../Processed_Data/array.bed"</span>, <span class="at">type =</span> <span class="st">"bed"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="examine-the-pcs" class="level2">
+<h2 class="anchored" data-anchor-id="examine-the-pcs">Examine the PCs</h2>
+<p>First, we can start with a regular PCA. The first line of code below calculates the PCA with 5 PCs and the second line plots the amount of variance that each PC explains.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">pcadapt</span>(filename, <span class="at">K =</span> <span class="dv">5</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="at">option =</span> <span class="st">"screeplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use "none" instead as
+of ggplot2 3.3.4.
+ℹ The deprecated feature was likely used in the pcadapt package.
+  Please report the issue at &lt;https://github.com/bcm-uga/pcadapt/issues&gt;.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-2-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>For this analysis, the idea number of PCs is the one before the variance stars plateauing. Essentially, we’re looking for the “elbow.” Here, this would be 2.</p>
+<p>Let’s plot the PCA. First, we need to recreate the list of population assignments. We’ll do this the same way as the last section.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../Example_Data/strata"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>poplist.names <span class="ot">&lt;-</span> table<span class="sc">$</span>Population</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="at">option =</span> <span class="st">"scores"</span>, <span class="at">pop =</span> poplist.names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This might look normal, but you’ll notice that two of the populations are tightly grouped around PC1. We should check too make sure this pattern isn’t being driven by a linkage in the genome. To do this, we can look at the loading scores of the PCs. Loading scores show how much a particular SNP factors into a PC.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(res<span class="sc">$</span>loadings[, i], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> .<span class="dv">3</span>, <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Loadings PC"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-4-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>These values should be evenly distributed across the genome. You’ll notice that PC1 has a bit of a pattern to it. Let’s zoom in.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res<span class="sc">$</span>loadings[, <span class="dv">1</span>], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> .<span class="dv">3</span>, <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Loadings PC"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-5-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now, you can definitely see a weird pattern between Index 30,000 and 40,000. This is from several large genomic inversion in the oyster genome. All of those SNPs are highly linked and are driving a large porition of our PCA.</p>
+</section>
+<section id="dealing-with-linkage-using-ld-clumping" class="level2">
+<h2 class="anchored" data-anchor-id="dealing-with-linkage-using-ld-clumping">Dealing with linkage using LD clumping</h2>
+<p>Linkage Disequilibrium can affect ascertainment of population structure (<a href="https://www.nature.com/articles/ejhg201348">Abdellaoui et al.&nbsp;2013</a>). Users analyzing dense data such as SNP Array data should account for LD in their PCAs and PCA-based genome-scans.</p>
+<p>Thankfully, PCAdapt has a built in feature that allows us to clump SNPs by LD, basically reducing the data to a more informative subset.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">pcadapt</span>(filename, <span class="at">K =</span> <span class="dv">10</span>, <span class="at">LD.clumping =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">500</span>, <span class="at">thr =</span> <span class="fl">0.2</span>))</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="at">option =</span> <span class="st">"screeplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>This changed a bit, and we now have possibly 4 informative PCs. Let’s take a look at the loadings:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">pcadapt</span>(filename, <span class="at">K =</span> <span class="dv">4</span>, <span class="at">LD.clumping =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">500</span>, <span class="at">thr =</span> <span class="fl">0.2</span>))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(res<span class="sc">$</span>loadings[, i], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> .<span class="dv">3</span>, <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Loadings PC"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Great! Now, we no longer see strong patterns in the loading scores. We can proceed.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="at">option =</span> <span class="st">"scores"</span>, <span class="at">pop =</span> poplist.names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-8-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Now, we can see there is much more separation in PopA vs PopB than there was before.</p>
+</section>
+<section id="filter-data-for-pca-and-dapc" class="level2">
+<h2 class="anchored" data-anchor-id="filter-data-for-pca-and-dapc">Filter data for PCA and DAPC</h2>
+<p>PCAdapt is great for filtering and for looking for loci under selection (not covered in this tutorial), but there are other packages that are a little more handy for calculating and plotting PCAs and DAPCE. We can filter our VCF to only the post-clumped loci (those with less LD).</p>
+<p>First, we will reload our VCF file into R in case you’re starting from scratch, but we made this in the previous tutorial:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vcfR)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+   *****       ***   vcfR   ***       *****
+   This is vcfR 1.15.0 
+     browseVignettes('vcfR') # Documentation
+     citation('vcfR') # Citation
+   *****       *****      *****       *****</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>my_vcf <span class="ot">&lt;-</span> <span class="fu">read.vcfR</span>(<span class="st">"../Processed_Data/array.vcf"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Scanning file to determine attributes.
+File attributes:
+  meta lines: 15
+  header_line: 16
+  variant count: 60517
+  column count: 54
+
+Meta line 15 read in.
+All meta lines processed.
+gt matrix initialized.
+Character matrix gt created.
+  Character matrix gt rows: 60517
+  Character matrix gt cols: 54
+  skip: 0
+  nrows: 60517
+  row_num: 0
+
+Processed variant 1000
+Processed variant 2000
+Processed variant 3000
+Processed variant 4000
+Processed variant 5000
+Processed variant 6000
+Processed variant 7000
+Processed variant 8000
+Processed variant 9000
+Processed variant 10000
+Processed variant 11000
+Processed variant 12000
+Processed variant 13000
+Processed variant 14000
+Processed variant 15000
+Processed variant 16000
+Processed variant 17000
+Processed variant 18000
+Processed variant 19000
+Processed variant 20000
+Processed variant 21000
+Processed variant 22000
+Processed variant 23000
+Processed variant 24000
+Processed variant 25000
+Processed variant 26000
+Processed variant 27000
+Processed variant 28000
+Processed variant 29000
+Processed variant 30000
+Processed variant 31000
+Processed variant 32000
+Processed variant 33000
+Processed variant 34000
+Processed variant 35000
+Processed variant 36000
+Processed variant 37000
+Processed variant 38000
+Processed variant 39000
+Processed variant 40000
+Processed variant 41000
+Processed variant 42000
+Processed variant 43000
+Processed variant 44000
+Processed variant 45000
+Processed variant 46000
+Processed variant 47000
+Processed variant 48000
+Processed variant 49000
+Processed variant 50000
+Processed variant 51000
+Processed variant 52000
+Processed variant 53000
+Processed variant 54000
+Processed variant 55000
+Processed variant 56000
+Processed variant 57000
+Processed variant 58000
+Processed variant 59000
+Processed variant 60000
+Processed variant: 60517
+All variants processed</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ld_filtered_vcf <span class="ot">&lt;-</span> my_vcf[<span class="sc">!</span><span class="fu">is.na</span>(res<span class="sc">$</span>loadings[,<span class="dv">1</span>]),]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Next, we will convert our vcfR file to a genlight input which can be used by the package adegenet. We will also use the <code>strata</code> and <code>setPop</code> function to enter population level information. Remember, we made the strata_df in the previous tutorial, but we will remake it here just in case.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegenet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Loading required package: ade4</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+   /// adegenet 2.1.10 is loaded ////////////
+
+   &gt; overview: '?adegenet'
+   &gt; tutorials/doc/questions: 'adegenetWeb()' 
+   &gt; bug reports/feature requests: adegenetIssues()</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mygl <span class="ot">&lt;-</span> <span class="fu">vcfR2genlight</span>(ld_filtered_vcf,<span class="at">n.cores =</span><span class="dv">2</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>strata<span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../Example_Data/strata"</span>, <span class="at">header=</span><span class="cn">TRUE</span>)</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>strata_df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(strata)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">strata</span>(mygl) <span class="ot">&lt;-</span> strata_df</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">setPop</span>(mygl) <span class="ot">&lt;-</span> <span class="er">~</span>Population</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Below, we use the PCA function of adegent to create a PCA.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>oyster.pca <span class="ot">&lt;-</span> <span class="fu">glPca</span>(mygl, <span class="at">nf =</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s look at how much variance each PC explains:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="dv">100</span><span class="sc">*</span>oyster.pca<span class="sc">$</span>eig<span class="sc">/</span><span class="fu">sum</span>(oyster.pca<span class="sc">$</span>eig), <span class="at">col =</span> <span class="fu">heat.colors</span>(<span class="dv">50</span>), <span class="at">main=</span><span class="st">"PCA Variance Explained"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">ylab=</span><span class="st">"Percent of variance</span><span class="sc">\n</span><span class="st">explained"</span>, <span class="at">line =</span> <span class="dv">2</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">xlab=</span><span class="st">"PC"</span>, <span class="at">line =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-13-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We basically have three informative PCs here. Let’s plot the individuals on the first two PCs:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>myCol <span class="ot">&lt;-</span> <span class="fu">colorplot</span>(oyster.pca<span class="sc">$</span>scores,oyster.pca<span class="sc">$</span>scores, <span class="at">transp=</span><span class="cn">TRUE</span>, <span class="at">cex=</span><span class="dv">4</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">v=</span><span class="dv">0</span>, <span class="at">col=</span><span class="st">"grey"</span>)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add.scatter.eig</span>(oyster.pca<span class="sc">$</span>eig[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>, <span class="at">posi=</span><span class="st">"bottomright"</span>, <span class="at">ratio=</span>.<span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-14-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>The plot above is combining information from the first 3 PCs to color dots, and using the first two for x,y coordinates. We can see possibly four groups across all PCs.</p>
+<p>We can also port this to ggplot and color by population:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>oyster.pca.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(oyster.pca<span class="sc">$</span>scores)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>oyster.pca.df<span class="sc">$</span>pop <span class="ot">&lt;-</span> <span class="fu">pop</span>(mygl)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"#871a1a"</span>,<span class="st">"#33A02C"</span>,<span class="st">"#1F78B4"</span>)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(oyster.pca.df, <span class="fu">aes</span>(<span class="at">x=</span>PC1, <span class="at">y=</span>PC2, <span class="at">colour=</span>pop)) </span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">stat_ellipse</span>(<span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> cols) </span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) </span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) </span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-15-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>So, we can see that we have some subtle structuring within PopC.</p>
+<p>#DAPC</p>
+<p>Discriminant analysis of Principal Components (DAPC), allows us to either infer groups or put in groups <em>a priori</em>. DAPC seeks to maximize between group variance while minimizing within group variance. I’ll show you how this works both ways below.</p>
+</section>
+<section id="dapc-with-inferred-groups" class="level2">
+<h2 class="anchored" data-anchor-id="dapc-with-inferred-groups">DAPC with inferred groups</h2>
+<section id="finding-clusters" class="level3">
+<h3 class="anchored" data-anchor-id="finding-clusters">Finding clusters</h3>
+<p>Adegenet has a built in method for inferring population groupings or clusters. It runs interactively, so this code block below won’t run on it’s own. You need to paste it into the Console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>grp <span class="ot">&lt;-</span> <span class="fu">find.clusters</span>(mygl, <span class="at">max.n.clust=</span><span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>I’m going to simulate this experience below:</p>
+<p>First, you will see a screen like this: <img src="./img/Clust.png" class="img-fluid" alt="Clus"> For the purpose of picking clusters, the more PCs the better. Pick any number greater than 40.</p>
+<p>Next screen will be:</p>
+<p><img src="./img/BIC.png" class="img-fluid" alt="BIC"> We’d like to see an elbow here, where the lowest point would be the correct number. This doesn’t always work well for subtle structure. I’m going to pick 4 given the results above.</p>
+<p>We can make a simple table to see the assignments:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(<span class="fu">pop</span>(mygl), grp<span class="sc">$</span>grp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      
+        1  2  3  4
+  PopB  0  0 15  0
+  PopA  0  0  0 15
+  PopC  8  7  0  0</code></pre>
+</div>
+</div>
+<p>This makes sense given our PCA. Let’s run the DAPC.</p>
+</section>
+</section>
+<section id="discriminant-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="discriminant-analysis">Discriminant Analysis</h2>
+<p>This is another interactive function. Run in the console.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>oyster.dapc <span class="ot">&lt;-</span> <span class="fu">dapc</span>(mygl, grp<span class="sc">$</span>grp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Again, I simulate this experience below. First screen is: <img src="./img/PC.png" class="img-fluid" alt="PC"></p>
+<p><strong>Now this is different than finding clusters. You can overload the analysis with two many PCs.</strong> For this, you want to choose the lowes number that gets you &gt; 60% of the variance. I would choose 25 or 30.</p>
+<p>After you enter the number of PCs, you’ll see something like this:</p>
+<p><img src="./img/DA.png" class="img-fluid" alt="DA"> This is picking the number of discriminant functions. Because we put in four groups, there are only three. Truly, only the first two are informative. Let’s pick 2.</p>
+<p>Now, let’s plot the analysis</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(oyster.dapc,<span class="at">col=</span>cols,<span class="at">bg=</span><span class="st">"white"</span>, <span class="at">solid=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-21-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can also plot membership probabilities:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compoplot</span>(oyster.dapc, <span class="at">posi=</span><span class="st">"bottom"</span>,<span class="at">txt.leg=</span><span class="fu">paste</span>(<span class="st">"Cluster"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>), <span class="at">lab=</span><span class="st">""</span>, <span class="at">ncol=</span><span class="dv">4</span>, <span class="at">xlab=</span><span class="st">"individuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-22-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>We can use ggplot to make this easier to read and put in the populations for each individual:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>dapc.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(oyster.dapc<span class="sc">$</span>posterior)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>dapc.df<span class="sc">$</span>pop <span class="ot">&lt;-</span> <span class="fu">pop</span>(mygl)</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>dapc.df<span class="sc">$</span>indNames <span class="ot">&lt;-</span> <span class="fu">rownames</span>(dapc.df)</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>cols4 <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">"#871a1a"</span>,<span class="st">"#33A02C"</span>,<span class="st">"#1F78B4"</span>,<span class="st">"#FDBF6F"</span> )</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>dapc.df <span class="ot">&lt;-</span> <span class="fu">pivot_longer</span>(dapc.df, <span class="sc">-</span><span class="fu">c</span>(pop, indNames))</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(dapc.df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Original_Pop"</span>,<span class="st">"Sample"</span>,<span class="st">"Assigned_Pop"</span>,<span class="st">"Posterior_membership_probability"</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dapc.df, <span class="fu">aes</span>(<span class="at">x=</span>Sample, <span class="at">y=</span>Posterior_membership_probability, <span class="at">fill=</span>Assigned_Pop))</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="at">stat=</span><span class="st">'identity'</span>) </span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> cols4) </span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">facet_grid</span>(<span class="sc">~</span>Original_Pop, <span class="at">scales =</span> <span class="st">"free"</span>)</span>
+<span id="cb31-14"><a href="#cb31-14" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>, <span class="at">hjust =</span> <span class="dv">1</span>, <span class="at">size =</span> <span class="dv">8</span>))</span>
+<span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Posterior membership probability"</span>)</span>
+<span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-23-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="dapc-with-original-populations" class="level2">
+<h2 class="anchored" data-anchor-id="dapc-with-original-populations">DAPC with original populations</h2>
+<p>Again, instead of inferring groups, we can use our original populations.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>oyster.dapc <span class="ot">&lt;-</span> <span class="fu">dapc</span>(mygl, <span class="at">n.pca =</span> <span class="dv">25</span>, <span class="at">n.da =</span> <span class="dv">2</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(oyster.dapc, <span class="at">col =</span> cols, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>, <span class="at">clabel =</span> F, <span class="at">posi.leg =</span> <span class="st">"bottomleft"</span>, <span class="at">scree.pca =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">posi.pca =</span> <span class="st">"topleft"</span>, <span class="at">cleg =</span> <span class="fl">0.75</span>, <span class="at">posi.da =</span> <span class="st">"topright"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-24-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+<p>Let’s make this better with ggplot</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>dapc.df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(oyster.dapc<span class="sc">$</span>ind.coord)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>dapc.df<span class="sc">$</span>pop <span class="ot">&lt;-</span> <span class="fu">pop</span>(mygl)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>dapc.df<span class="sc">$</span>indNames <span class="ot">&lt;-</span> <span class="fu">rownames</span>(dapc.df)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(dapc.df, <span class="fu">aes</span>(<span class="at">x=</span>LD1, <span class="at">y=</span>LD2, <span class="at">colour=</span>pop)) </span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_point</span>(<span class="at">size=</span><span class="dv">2</span>)</span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">scale_color_manual</span>(<span class="at">values =</span> cols) </span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>) </span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>) </span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">theme_bw</span>()<span class="sc">+</span> <span class="fu">xlab</span>(<span class="st">"DA 1"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"DA 2"</span>)<span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">"DAPC with populations as groups"</span>)</span>
+<span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="PCA_files/figure-html/unnamed-chunk-25-1.svg" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'alternate';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../content/SNP_Analysis.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Calculating Genetic Diversity</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../content/acknowledgements.html" class="pagination-link">
+        <span class="nav-page-text">Acknowledgements</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© CC-1.0</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

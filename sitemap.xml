@@ -1,47 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/Extra_Resources/R Resources/Readme.html</loc>
-    <lastmod>2024-01-18T02:29:18.251Z</lastmod>
+    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/index.html</loc>
+    <lastmod>2024-01-18T15:40:15.582Z</lastmod>
   </url>
   <url>
     <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/rmarkdown.html</loc>
-    <lastmod>2024-01-18T02:29:17.659Z</lastmod>
-  </url>
-  <url>
-    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/SNP_Analysis.html</loc>
-    <lastmod>2024-01-18T02:29:16.131Z</lastmod>
+    <lastmod>2024-01-18T15:40:14.888Z</lastmod>
   </url>
   <url>
     <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/publishing.html</loc>
-    <lastmod>2024-01-18T02:26:42.292Z</lastmod>
-  </url>
-  <url>
-    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/rendering.html</loc>
-    <lastmod>2024-01-18T02:26:39.248Z</lastmod>
-  </url>
-  <url>
-    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/index.html</loc>
-    <lastmod>2024-01-18T02:26:37.344Z</lastmod>
+    <lastmod>2024-01-18T15:40:14.090Z</lastmod>
   </url>
   <url>
     <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/code.html</loc>
-    <lastmod>2024-01-18T02:26:38.936Z</lastmod>
-  </url>
-  <url>
-    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/R_Intro.html</loc>
-    <lastmod>2024-01-18T02:26:41.960Z</lastmod>
-  </url>
-  <url>
-    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/add-content.html</loc>
-    <lastmod>2024-01-18T02:26:42.580Z</lastmod>
+    <lastmod>2024-01-18T15:40:13.415Z</lastmod>
   </url>
   <url>
     <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/acknowledgements.html</loc>
-    <lastmod>2024-01-18T02:29:16.431Z</lastmod>
+    <lastmod>2024-01-18T15:40:12.564Z</lastmod>
+  </url>
+  <url>
+    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/R_Intro.html</loc>
+    <lastmod>2024-01-18T15:40:11.637Z</lastmod>
+  </url>
+  <url>
+    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/PCA.html</loc>
+    <lastmod>2024-01-18T15:40:10.975Z</lastmod>
+  </url>
+  <url>
+    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/SNP_Analysis.html</loc>
+    <lastmod>2024-01-18T15:40:12.269Z</lastmod>
+  </url>
+  <url>
+    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/add-content.html</loc>
+    <lastmod>2024-01-18T15:40:12.900Z</lastmod>
   </url>
   <url>
     <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/customizing.html</loc>
-    <lastmod>2024-01-18T02:29:17.967Z</lastmod>
+    <lastmod>2024-01-18T15:40:13.730Z</lastmod>
+  </url>
+  <url>
+    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/content/rendering.html</loc>
+    <lastmod>2024-01-18T15:40:14.403Z</lastmod>
+  </url>
+  <url>
+    <loc>https://marineevoecolab.github.io/NACE_MAS_Genomics_Workshop/Extra_Resources/R Resources/Readme.html</loc>
+    <lastmod>2024-01-18T15:40:15.184Z</lastmod>
   </url>
 </urlset>
