@@ -39,6 +39,8 @@ website:
           text: Introduction to R
         - href: content/SNP_Analysis.Rmd
           text: Working with SNP data
+        - href: content/PCA.Rmd
+          text: PCA and DAPC 
       - href: content/acknowledgements.qmd
         text: Acknowledgements
 
