@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/SNP_Analysis.html">Working with SNP data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/R_Intro.html">Workshop</a></li><li class="breadcrumb-item"><a href="../content/SNP_Analysis.html">Working with SNP data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -147,21 +147,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
-      <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Workshop</span></span>
-  </li>
-        <li class="sidebar-item">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">Workshop</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/R_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to R</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/SNP_Analysis.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Working with SNP data</span></a>
   </div>
 </li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/acknowledgements.html" class="sidebar-item-text sidebar-link">
@@ -226,7 +233,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><code>--allow-extra-chr</code> is a Plink specific setting needed when you’re not working with human data</p>
 <section id="important-part" class="level4">
 <h4 class="anchored" data-anchor-id="important-part">Important part</h4>
-<p><code>--mind 0.1</code> This is saying we only want individuals with less than 10% missing data <code>--geno 0.05</code> This is saying we only want SNPs with less than 5% missing data <code>--max-alleles 2 --min-alleles 2</code> This says we only want SNPs with two alleles <code>--chr 1-10</code> This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes</p>
+<p><code>--mind 0.1</code> This is saying we only want individuals with less than 10% missing data</p>
+<p><code>--geno 0.05</code> This is saying we only want SNPs with less than 5% missing data</p>
+<p><code>--max-alleles 2 --min-alleles 2</code> This says we only want SNPs with two alleles</p>
+<p><code>--chr 1-10</code> This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes</p>
 <p>It will help us to have both a <code>.bed</code> file and <code>.vcf</code> later one. The code below does the same as the above, but outputs a <code>.bed</code> file instead</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">plink2</span> <span class="at">--bfile</span> ../Example_Data/final <span class="at">--make-bed</span>  <span class="at">--mind</span> 0.1 <span class="at">--geno</span> 0.05 <span class="at">--max-alleles</span> 2 <span class="at">--min-alleles</span> 2 <span class="at">--chr</span> 1-10 <span class="at">--allow-extra-chr</span> <span class="at">--out</span> ../Processed_Data/array</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -332,8 +342,8 @@ All variants processed</code></pre>
 </div>
 <p>Above, we load the library and then use a function to read our vcf and store it as <code>my_vcf</code></p>
 </section>
-<section id="calculating-heterozygosity" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-heterozygosity">Calculating heterozygosity</h2>
+<section id="calculating-heterozygosity" class="level1">
+<h1>Calculating heterozygosity</h1>
 <p><code>.vcf</code> and <code>.bed</code> files do not contain information about populations or localities. We need to tell our analyses which individuals below to which populations. To do this, one was is to use a simple text table. We can read the one I made for this data like so:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>table <span class="ot">&lt;-</span> <span class="fu">read.table</span>(<span class="st">"../Example_Data/strata"</span>, <span class="at">header =</span> <span class="cn">TRUE</span>)</span>
@@ -393,8 +403,8 @@ All variants processed</code></pre>
 </div>
 </div>
 <p>Hs_PopA is the observed heterozygostiy for PopA and so on. Ht is the observed across all individuals.</p>
-<section id="plotting-heterozygosity" class="level3">
-<h3 class="anchored" data-anchor-id="plotting-heterozygosity">Plotting heterozygosity</h3>
+<section id="plotting-heterozygosity" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-heterozygosity">Plotting heterozygosity</h2>
 <p>I’m a fan of ggplot, but in order to use ggplot we need data in a “tidy” format. We can use the package reshape to do this for us</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(reshape2)</span>
@@ -427,8 +437,8 @@ All variants processed</code></pre>
 </div>
 </section>
 </section>
-<section id="calculating-fis-inbreeding-coeffecient" class="level2">
-<h2 class="anchored" data-anchor-id="calculating-fis-inbreeding-coeffecient">Calculating <em>F<sub>IS</sub></em> (Inbreeding Coeffecient)</h2>
+<section id="calculating-fis-inbreeding-coeffecient" class="level1">
+<h1>Calculating <em>F<sub>IS</sub></em> (Inbreeding Coeffecient)</h1>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(adegenet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
