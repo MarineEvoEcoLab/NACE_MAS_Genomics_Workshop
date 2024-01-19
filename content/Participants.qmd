@@ -1,0 +1,60 @@
+---
+title: Participants
+---
+
+# Participants
+
+| First Name  | Last Name          | Affiliation                              |
+|-------------|---------------------|------------------------------------------|
+| Samantha    | Pennino             | MIT                                      |
+| Brittany    | Lewis               | American Farmland Trust                  |
+| Megan       | Guidry              | University of Rhode Island               |
+| Cassandra   | Cerasia             | The University of Rhode Island           |
+| Amy         | Zyck                | University of Rhode Island               |
+| Kathryn     | Markey Lundgren     | USDA ARS                                 |
+| Katie       | McFarland           | NOAA                                     |
+| Keegan      | Hart                | USDA ARS                                 |
+| Christopher | Teufel              | Island Creek Oysters                     |
+| Sarah       | Donelan             | Umass Dartmouth                          |
+| Tirosh      | Shapira             | CAT                                      |
+| Dina        | Proestou            | USDA ARS                                 |
+| Samuel      | Gurr                | National Academies & NOAA                |
+| Carrie      | Byron               | UNE                                      |
+| Lexy        | McCarty             | Cherrystone Aqua-Farms                   |
+| Caitlin     | Randall             | University of Rhode Island               |
+| Alyssa      | Stasse              | University of New Hampshire              |
+| Arun        | Venugopalan         | Postdoc - Woods Hole Oceanographic Inst.|
+| Yuqing      | Chen                | Cornell University                       |
+| Ruby        | Krasnow             | University of Maine                      |
+| Mary        | Sullivan            | USDA ARS                                 |
+| Jon         | Puritz              | University of Rhode Island               |
+
+# Presenters
+
+| First Name  | Last Name          | Affiliation                              |
+|-------------|---------------------|------------------------------------------|
+| Jon         | Puritz              | University of Rhode Island               |
+| Amy         | Zyck                | University of Rhode Island               |
+| Kathryn     | Markey Lundgren     | USDA ARS                                 |
+| Yuqing      | Chen                | Cornell University                       |
+| Angel       | Carasaquillo        |University of Rhode Island                |
+
+# Career Roles of Participants
+```{r, echo =FALSE}
+data <- read.table("./img/data.table",sep = "\t", header = TRUE)
+library(ggplot2)
+library(dplyr)
+
+data <- data %>% 
+  arrange(desc(Role)) %>%
+  mutate(prop = round(Value / sum(data$Value), digits=4) *100) %>%
+  mutate(ypos = cumsum(prop)- 0.5*prop )
+
+ggplot(data, aes(x = "", y = prop, fill = Role)) +
+  geom_bar(width = 1, stat = "identity", color = "white") +
+  coord_polar("y", start = 0)+
+  geom_text(aes(y = ypos, label = paste(prop,"%",sep="")), color = "white")+
+  theme_void() + ggtitle("Professional Role of Participants")
+
+
+```
