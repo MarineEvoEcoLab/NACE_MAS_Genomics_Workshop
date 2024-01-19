@@ -11,6 +11,8 @@ Alternatively, if you're comfortable with `R` and GitHub, you can likely get thi
 ### Option 1- Installing the virtual machine (Recommended)
 First, you need to install the program VirtualBox (it's free and available at <https://www.virtualbox.org/wiki/Downloads>).  Once the software is installed, please download our virtual machine from this [link](https://drive.google.com/file/d/1CnEh_xvNVzm8LreVQVF-7iwwjPrEHEMz/view?usp=sharing).
 
+If you're a MacOS user with newer Apple Silicon Processors (eg. M1 or M2), you'll need a developmental version of VirtualBox.  See [here](https://www.virtualbox.org/download/testcase/VirtualBox-7.0.13_BETA4-161031-macOSArm64.dmg)
+
 You can then import the virtual machine following these instructions: 
 1.	Open VirtualBox
 2.	Click File → Import Appliance	
@@ -26,7 +28,7 @@ git pull
 Then you should open RStudio from the menu button by typing `rstudio` in the search bar
 
 ### Option 2-
-If you have your own RStudio working environment and access to GitHub, you can setup your own computer to perform the analyses that are part of this workshop.
+If you have your own RStudio working environment and access to GitHub, you can setup your own computer to perform the analyses that are part of this workshop.  You also need to install the program [Plink](https://www.cog-genomics.org/plink/2.0/), and make sure to get version 2.
 
 Open Rstudio and type the following in your Console:
 
