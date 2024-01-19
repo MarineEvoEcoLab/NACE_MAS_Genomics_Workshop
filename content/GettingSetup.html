@@ -123,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Pre Genomics</span></span>
+ <span class="menu-text">Setup and R Intro</span></span>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -139,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item sidebar-item-section">
       <span class="sidebar-item-text sidebar-link text-start">
- <span class="menu-text">Genomic analysis with the Eastern Oyster Breeding SNP Array</span></span>
+ <span class="menu-text">Genomic analysis</span></span>
   </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
@@ -155,6 +155,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/Participants.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Participants</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/ExtraResources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Extra Resources</span></a>
+  </div>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/acknowledgements.html" class="sidebar-item-text sidebar-link">
@@ -206,6 +218,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="option-1--installing-the-virtual-machine-recommended" class="level3">
 <h3 class="anchored" data-anchor-id="option-1--installing-the-virtual-machine-recommended">Option 1- Installing the virtual machine (Recommended)</h3>
 <p>First, you need to install the program VirtualBox (it’s free and available at <a href="https://www.virtualbox.org/wiki/Downloads" class="uri">https://www.virtualbox.org/wiki/Downloads</a>). Once the software is installed, please download our virtual machine from this <a href="https://drive.google.com/file/d/1CnEh_xvNVzm8LreVQVF-7iwwjPrEHEMz/view?usp=sharing">link</a>.</p>
+<p>If you’re a MacOS user with newer Apple Silicon Processors (eg. M1 or M2), you’ll need a developmental version of VirtualBox. See <a href="https://www.virtualbox.org/download/testcase/VirtualBox-7.0.13_BETA4-161031-macOSArm64.dmg">here</a></p>
 <p>You can then import the virtual machine following these instructions: 1. Open VirtualBox 2. Click File → Import Appliance<br>
 3. Select the file “GW_Linux.ova” that you downloaded from Google Drive</p>
 <p>After the machine is up and running, please open terminal and type the following commands:</p>
@@ -215,7 +228,7 @@ git pull</code></pre>
 </section>
 <section id="option-2-" class="level3">
 <h3 class="anchored" data-anchor-id="option-2-">Option 2-</h3>
-<p>If you have your own RStudio working environment and access to GitHub, you can setup your own computer to perform the analyses that are part of this workshop.</p>
+<p>If you have your own RStudio working environment and access to GitHub, you can setup your own computer to perform the analyses that are part of this workshop. You also need to install the program <a href="https://www.cog-genomics.org/plink/2.0/">Plink</a>, and make sure to get version 2.</p>
 <p>Open Rstudio and type the following in your Console:</p>
 <p><code>install.packages(c("ggplot2", "vcfR", "reshape2", "adegenet", "hierfstat", "pcadapt", "tidyr","rmarkdown", "knitr"))</code></p>
 <p>Clone the course repository to your computer:</p>
