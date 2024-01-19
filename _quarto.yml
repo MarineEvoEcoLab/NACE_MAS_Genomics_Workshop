@@ -37,16 +37,16 @@ website:
         contents:
           - section: "Setup and R Intro"
             contents:
-          - href: content/GettingSetup.qmd
-            text: Getting Set up
-          - href: content/R_Intro.Rmd
-            text: Introduction to R
+            - href: content/GettingSetup.qmd
+              text: Getting Set up
+            - href: content/R_Intro.Rmd
+              text: Introduction to R
           - section: "Genomic analysis"
             contents:
-          - href: content/SNP_Analysis.Rmd
-            text: Calculating Genetic Diversity
-          - href: content/PCA.Rmd
-            text: PCA and DAPC 
+            - href: content/SNP_Analysis.Rmd
+              text: Calculating Genetic Diversity
+            - href: content/PCA.Rmd
+              text: PCA and DAPC 
       - href: content/Participants.qmd
         text: Participants
       - href: content/ExtraResources.qmd
