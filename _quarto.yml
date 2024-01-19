@@ -36,13 +36,13 @@ website:
       - section: "Workshop"
         contents:
           - section: "Pre Genomics"
-          contents:
+            contents:
           - href: content/GettingSetup.qmd
             text: Getting Set up
           - href: content/R_Intro.Rmd
             text: Introduction to R
           - section: "Genomic analysis with the Eastern Oyster Breeding SNP Array"
-          contents:
+            contents:
           - href: content/SNP_Analysis.Rmd
             text: Calculating Genetic Diversity
           - href: content/PCA.Rmd
