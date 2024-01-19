@@ -1,0 +1,39 @@
+---
+title: Getting Setup for the Workshop
+---
+
+## Computer Setup
+
+The workshop is hands-on data analysis, and in an effort to make the class entirely portable and reproducible, we are providing a [Virtual Machine](https://www.vmware.com/topics/glossary/content/virtual-machine.html) to run the workshop on.  A virtual machine is like a small, simplified Operating System that operates within your existing computer and allows for a controlled computing environment.
+
+Alternatively, if you're comfortable with `R` and GitHub, you can likely get this analysis to easily work on your existing computer.  We'll provide instructions for setup using both methods below.  
+
+### Option 1- Installing the virtual machine (Recommended)
+First, you need to install the program VirtualBox (it's free and available at <https://www.virtualbox.org/wiki/Downloads>).  Once the software is installed, please download our virtual machine from this [link](https://drive.google.com/file/d/1CnEh_xvNVzm8LreVQVF-7iwwjPrEHEMz/view?usp=sharing).
+
+You can then import the virtual machine following these instructions: 
+1.	Open VirtualBox
+2.	Click File → Import Appliance	
+3.	Select the file "GW_Linux.ova" that you downloaded from Google Drive
+
+After the machine is up and running, please open terminal and type the following commands:
+
+```
+cd 2024_NACE_GenomicsWorkshop/Workshop
+git pull
+```
+
+Then you should open RStudio from the menu button by typing `rstudio` in the search bar
+
+### Option 2-
+If you have your own RStudio working environment and access to GitHub, you can setup your own computer to perform the analyses that are part of this workshop.
+
+Open Rstudio and type the following in your Console:
+
+`install.packages(c("ggplot2", "vcfR", "reshape2", "adegenet", "hierfstat", "pcadapt", "tidyr","rmarkdown", "knitr"))`
+
+Clone the course repository to your computer:
+
+`git clone https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop.git`
+
+Now, you're ready to go!
