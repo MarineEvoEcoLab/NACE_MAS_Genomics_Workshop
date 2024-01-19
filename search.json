@@ -263,7 +263,7 @@
     "href": "content/acknowledgements.html",
     "title": "Acknowledgments",
     "section": "",
-    "text": "This website was made with the quarto template from NOAA NMFS Open Science\nThis repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland.\nMany thanks to the NACE/MAS organizers for helping to facilitate this workshop!\n\nEmily Whitmore\nAnne Langston\nChristopher Davis\nLisa Wilke\n\nSpecial thanks to RI Sea Grant for supporting this workshop and participants!\nThanks to all presenters!"
+    "text": "This website was made with the quarto template from NOAA NMFS Open Science\nThis repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland.\nMany thanks to the NACE/MAS organizers for helping to facilitate this workshop!\n\nEmily Whitmore\nAnne Langston\nChristopher Davis\nLisa Wilke\n\nSpecial thanks to RI Sea Grant for supporting this workshop and participants!\nThanks to all presenters!\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
   },
   {
     "objectID": "content/code.html",
