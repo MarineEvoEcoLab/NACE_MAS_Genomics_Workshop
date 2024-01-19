@@ -197,11 +197,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#examine-the-pcs" id="toc-examine-the-pcs" class="nav-link" data-scroll-target="#examine-the-pcs">Examine the PCs</a></li>
   <li><a href="#dealing-with-linkage-using-ld-clumping" id="toc-dealing-with-linkage-using-ld-clumping" class="nav-link" data-scroll-target="#dealing-with-linkage-using-ld-clumping">Dealing with linkage using LD clumping</a></li>
   <li><a href="#filter-data-for-pca-and-dapc" id="toc-filter-data-for-pca-and-dapc" class="nav-link" data-scroll-target="#filter-data-for-pca-and-dapc">Filter data for PCA and DAPC</a></li>
+  </ul></li>
+  <li><a href="#dapc" id="toc-dapc" class="nav-link" data-scroll-target="#dapc">DAPC</a>
+  <ul class="collapse">
   <li><a href="#dapc-with-inferred-groups" id="toc-dapc-with-inferred-groups" class="nav-link" data-scroll-target="#dapc-with-inferred-groups">DAPC with inferred groups</a>
   <ul class="collapse">
   <li><a href="#finding-clusters" id="toc-finding-clusters" class="nav-link" data-scroll-target="#finding-clusters">Finding clusters</a></li>
-  </ul></li>
   <li><a href="#discriminant-analysis" id="toc-discriminant-analysis" class="nav-link" data-scroll-target="#discriminant-analysis">Discriminant Analysis</a></li>
+  </ul></li>
   <li><a href="#dapc-with-original-populations" id="toc-dapc-with-original-populations" class="nav-link" data-scroll-target="#dapc-with-original-populations">DAPC with original populations</a></li>
   </ul></li>
   </ul>
@@ -251,7 +254,7 @@ of ggplot2 3.3.4.
   Please report the issue at &lt;https://github.com/bcm-uga/pcadapt/issues&gt;.</code></pre>
 </div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-2-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>For this analysis, the idea number of PCs is the one before the variance stars plateauing. Essentially, we’re looking for the “elbow.” Here, this would be 2.</p>
@@ -262,7 +265,7 @@ of ggplot2 3.3.4.
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="at">option =</span> <span class="st">"scores"</span>, <span class="at">pop =</span> poplist.names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-3-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>This might look normal, but you’ll notice that two of the populations are tightly grouped around PC1. We should check too make sure this pattern isn’t being driven by a linkage in the genome. To do this, we can look at the loading scores of the PCs. Loading scores show how much a particular SNP factors into a PC.</p>
@@ -271,14 +274,14 @@ of ggplot2 3.3.4.
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(res<span class="sc">$</span>loadings[, i], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> .<span class="dv">3</span>, <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Loadings PC"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-4-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>These values should be evenly distributed across the genome. You’ll notice that PC1 has a bit of a pattern to it. Let’s zoom in.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res<span class="sc">$</span>loadings[, <span class="dv">1</span>], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> .<span class="dv">3</span>, <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Loadings PC"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-5-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Now, you can definitely see a weird pattern between Index 30,000 and 40,000. This is from several large genomic inversion in the oyster genome. All of those SNPs are highly linked and are driving a large porition of our PCA.</p>
@@ -291,7 +294,7 @@ of ggplot2 3.3.4.
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">pcadapt</span>(filename, <span class="at">K =</span> <span class="dv">10</span>, <span class="at">LD.clumping =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">500</span>, <span class="at">thr =</span> <span class="fl">0.2</span>))</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="at">option =</span> <span class="st">"screeplot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-6-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>This changed a bit, and we now have possibly 4 informative PCs. Let’s take a look at the loadings:</p>
@@ -301,14 +304,14 @@ of ggplot2 3.3.4.
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plot</span>(res<span class="sc">$</span>loadings[, i], <span class="at">pch =</span> <span class="dv">19</span>, <span class="at">cex =</span> .<span class="dv">3</span>, <span class="at">ylab =</span> <span class="fu">paste0</span>(<span class="st">"Loadings PC"</span>, i))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-7-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Great! Now, we no longer see strong patterns in the loading scores. We can proceed.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(res, <span class="at">option =</span> <span class="st">"scores"</span>, <span class="at">pop =</span> poplist.names)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-8-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Now, we can see there is much more separation in PopA vs PopB than there was before.</p>
@@ -445,7 +448,7 @@ All variants processed</code></pre>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">ylab=</span><span class="st">"Percent of variance</span><span class="sc">\n</span><span class="st">explained"</span>, <span class="at">line =</span> <span class="dv">2</span>)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span>(<span class="at">xlab=</span><span class="st">"PC"</span>, <span class="at">line =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-13-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We basically have three informative PCs here. Let’s plot the individuals on the first two PCs:</p>
@@ -454,7 +457,7 @@ All variants processed</code></pre>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h=</span><span class="dv">0</span>,<span class="at">v=</span><span class="dv">0</span>, <span class="at">col=</span><span class="st">"grey"</span>)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">add.scatter.eig</span>(oyster.pca<span class="sc">$</span>eig[<span class="dv">1</span><span class="sc">:</span><span class="dv">10</span>],<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">2</span>, <span class="at">posi=</span><span class="st">"bottomright"</span>, <span class="at">ratio=</span>.<span class="dv">16</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-14-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>The plot above is combining information from the first 3 PCs to color dots, and using the first two for x,y coordinates. We can see possibly four groups across all PCs.</p>
@@ -479,13 +482,15 @@ All variants processed</code></pre>
 <span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-15-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>So, we can see that we have some subtle structuring within PopC.</p>
-<p>#DAPC</p>
-<p>Discriminant analysis of Principal Components (DAPC), allows us to either infer groups or put in groups <em>a priori</em>. DAPC seeks to maximize between group variance while minimizing within group variance. I’ll show you how this works both ways below.</p>
 </section>
+</section>
+<section id="dapc" class="level1">
+<h1>DAPC</h1>
+<p>Discriminant analysis of Principal Components (DAPC), allows us to either infer groups or put in groups <em>a priori</em>. DAPC seeks to maximize between group variance while minimizing within group variance. I’ll show you how this works both ways below.</p>
 <section id="dapc-with-inferred-groups" class="level2">
 <h2 class="anchored" data-anchor-id="dapc-with-inferred-groups">DAPC with inferred groups</h2>
 <section id="finding-clusters" class="level3">
@@ -505,15 +510,14 @@ All variants processed</code></pre>
 <pre><code>      
         1  2  3  4
   PopB  0  0 15  0
-  PopA  0  0  0 15
-  PopC  8  7  0  0</code></pre>
+  PopA  0 15  0  0
+  PopC  7  0  0  8</code></pre>
 </div>
 </div>
 <p>This makes sense given our PCA. Let’s run the DAPC.</p>
 </section>
-</section>
-<section id="discriminant-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="discriminant-analysis">Discriminant Analysis</h2>
+<section id="discriminant-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="discriminant-analysis">Discriminant Analysis</h3>
 <p>This is another interactive function. Run in the console.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>oyster.dapc <span class="ot">&lt;-</span> <span class="fu">dapc</span>(mygl, grp<span class="sc">$</span>grp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -526,14 +530,14 @@ All variants processed</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(oyster.dapc,<span class="at">col=</span>cols,<span class="at">bg=</span><span class="st">"white"</span>, <span class="at">solid=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-21-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We can also plot membership probabilities:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">compoplot</span>(oyster.dapc, <span class="at">posi=</span><span class="st">"bottom"</span>,<span class="at">txt.leg=</span><span class="fu">paste</span>(<span class="st">"Cluster"</span>, <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>), <span class="at">lab=</span><span class="st">""</span>, <span class="at">ncol=</span><span class="dv">4</span>, <span class="at">xlab=</span><span class="st">"individuals"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-22-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>We can use ggplot to make this easier to read and put in the populations for each individual:</p>
@@ -555,9 +559,10 @@ All variants processed</code></pre>
 <span id="cb31-15"><a href="#cb31-15" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">"Posterior membership probability"</span>)</span>
 <span id="cb31-16"><a href="#cb31-16" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-23-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
+</section>
 </section>
 <section id="dapc-with-original-populations" class="level2">
 <h2 class="anchored" data-anchor-id="dapc-with-original-populations">DAPC with original populations</h2>
@@ -567,7 +572,7 @@ All variants processed</code></pre>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(oyster.dapc, <span class="at">col =</span> cols, <span class="at">cex =</span> <span class="dv">2</span>, <span class="at">legend =</span> <span class="cn">TRUE</span>, <span class="at">clabel =</span> F, <span class="at">posi.leg =</span> <span class="st">"bottomleft"</span>, <span class="at">scree.pca =</span> <span class="cn">TRUE</span>,</span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">posi.pca =</span> <span class="st">"topleft"</span>, <span class="at">cleg =</span> <span class="fl">0.75</span>, <span class="at">posi.da =</span> <span class="st">"topright"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-24-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-24-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 <p>Let’s make this better with ggplot</p>
@@ -585,7 +590,7 @@ All variants processed</code></pre>
 <span id="cb33-11"><a href="#cb33-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb33-12"><a href="#cb33-12" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="PCA_files/figure-html/unnamed-chunk-25-1.svg" class="img-fluid" width="672"></p>
+<p><img src="PCA_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
 
