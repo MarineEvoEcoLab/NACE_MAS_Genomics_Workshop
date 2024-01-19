@@ -35,81 +35,165 @@
     "text": "Support\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
   },
   {
-    "objectID": "content/rmarkdown.html",
-    "href": "content/rmarkdown.html",
-    "title": "R Markdown",
+    "objectID": "content/GettingSetup.html",
+    "href": "content/GettingSetup.html",
+    "title": "Getting Setup for the Workshop",
     "section": "",
-    "text": "You can include R Markdown files in your project."
+    "text": "The workshop is hands-on data analysis, and in an effort to make the class entirely portable and reproducible, we are providing a Virtual Machine to run the workshop on. A virtual machine is like a small, simplified Operating System that operates within your existing computer and allows for a controlled computing environment.\nAlternatively, if you’re comfortable with R and GitHub, you can likely get this analysis to easily work on your existing computer. We’ll provide instructions for setup using both methods below.\n\n\nFirst, you need to install the program VirtualBox (it’s free and available at https://www.virtualbox.org/wiki/Downloads). Once the software is installed, please download our virtual machine from this link.\nYou can then import the virtual machine following these instructions: 1. Open VirtualBox 2. Click File → Import Appliance\n3. Select the file “GW_Linux.ova” that you downloaded from Google Drive\nAfter the machine is up and running, please open terminal and type the following commands:\ncd 2024_NACE_GenomicsWorkshop/Workshop\ngit pull\nThen you should open RStudio from the menu button by typing rstudio in the search bar\n\n\n\nIf you have your own RStudio working environment and access to GitHub, you can setup your own computer to perform the analyses that are part of this workshop.\nOpen Rstudio and type the following in your Console:\ninstall.packages(c(\"ggplot2\", \"vcfR\", \"reshape2\", \"adegenet\", \"hierfstat\", \"pcadapt\", \"tidyr\",\"rmarkdown\", \"knitr\"))\nClone the course repository to your computer:\ngit clone https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop.git\nNow, you’re ready to go!"
   },
   {
-    "objectID": "content/rmarkdown.html#r-markdown",
-    "href": "content/rmarkdown.html#r-markdown",
-    "title": "R Markdown",
-    "section": "R Markdown",
-    "text": "R Markdown\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00"
-  },
-  {
-    "objectID": "content/rmarkdown.html#including-plots",
-    "href": "content/rmarkdown.html#including-plots",
-    "title": "R Markdown",
-    "section": "Including Plots",
-    "text": "Including Plots\nYou can also embed plots, for example:\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot."
-  },
-  {
-    "objectID": "content/publishing.html",
-    "href": "content/publishing.html",
-    "title": "Publishing",
+    "objectID": "content/GettingSetup.html#computer-setup",
+    "href": "content/GettingSetup.html#computer-setup",
+    "title": "Getting Setup for the Workshop",
     "section": "",
-    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
+    "text": "The workshop is hands-on data analysis, and in an effort to make the class entirely portable and reproducible, we are providing a Virtual Machine to run the workshop on. A virtual machine is like a small, simplified Operating System that operates within your existing computer and allows for a controlled computing environment.\nAlternatively, if you’re comfortable with R and GitHub, you can likely get this analysis to easily work on your existing computer. We’ll provide instructions for setup using both methods below.\n\n\nFirst, you need to install the program VirtualBox (it’s free and available at https://www.virtualbox.org/wiki/Downloads). Once the software is installed, please download our virtual machine from this link.\nYou can then import the virtual machine following these instructions: 1. Open VirtualBox 2. Click File → Import Appliance\n3. Select the file “GW_Linux.ova” that you downloaded from Google Drive\nAfter the machine is up and running, please open terminal and type the following commands:\ncd 2024_NACE_GenomicsWorkshop/Workshop\ngit pull\nThen you should open RStudio from the menu button by typing rstudio in the search bar\n\n\n\nIf you have your own RStudio working environment and access to GitHub, you can setup your own computer to perform the analyses that are part of this workshop.\nOpen Rstudio and type the following in your Console:\ninstall.packages(c(\"ggplot2\", \"vcfR\", \"reshape2\", \"adegenet\", \"hierfstat\", \"pcadapt\", \"tidyr\",\"rmarkdown\", \"knitr\"))\nClone the course repository to your computer:\ngit clone https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop.git\nNow, you’re ready to go!"
   },
   {
-    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
-    "title": "Publishing",
-    "section": "Turn on GitHub Pages for your repo",
-    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
-  },
-  {
-    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
-    "title": "Publishing",
-    "section": "Do your first publish to gh-pages",
-    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
-  },
-  {
-    "objectID": "content/publishing.html#dont-like-using-gh-pages",
-    "href": "content/publishing.html#dont-like-using-gh-pages",
-    "title": "Publishing",
-    "section": "Don’t like using gh-pages?",
-    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
-  },
-  {
-    "objectID": "content/code.html",
-    "href": "content/code.html",
-    "title": "Rendering with Code",
+    "objectID": "content/rendering.html",
+    "href": "content/rendering.html",
+    "title": "Rendering",
     "section": "",
-    "text": "You can have code (R, Python or Julia) in your qmd file. You will need to have these installed on your local computer, but presumably you do already if you are adding code to your qmd files.\nx &lt;- c(5, 15, 25, 35, 45, 55)\ny &lt;- c(5, 20, 14, 32, 22, 38)\nlm(x ~ y)\n\n\nCall:\nlm(formula = x ~ y)\n\nCoefficients:\n(Intercept)            y  \n      1.056        1.326"
+    "text": "The repo includes a GitHub Action that will render (build) the website automatically when you make changes to the files. It will be pushed to the gh-pages branch.\nBut when you are developing your content, you will want to render it locally."
   },
   {
-    "objectID": "content/code.html#modify-the-github-action",
-    "href": "content/code.html#modify-the-github-action",
-    "title": "Rendering with Code",
-    "section": "Modify the GitHub Action",
-    "text": "Modify the GitHub Action\nYou will need to change the GitHub Action in .github/workflows to install these and any needed packages in order for GitHub to be able to render your webpage. The GitHub Action install R since I used that in code.qmd. If you use Python or Julia instead, then you will need to update the GitHub Action to install those.\nIf getting the GitHub Action to work is too much hassle (and that definitely happens), you can alway render locally and publish to the gh-pages branch. If you do this, make sure to delete or rename the GitHub Action to something like\nrender-and-publish.old_yml\nso GitHub does not keep trying to run it. Nothing bad will happen if you don’t do this, but if you are not using the action (because it keeps failing), then you don’t need GitHub to run it."
+    "objectID": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
+    "href": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
+    "title": "Rendering",
+    "section": "Step 1. Make sure you have a recent RStudio",
+    "text": "Step 1. Make sure you have a recent RStudio\nHave you updated RStudio since about August 2022? No? Then update to a newer version of RStudio. In general, you want to keep RStudio updated and it is required to have a recent version to use Quarto."
   },
   {
-    "objectID": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
-    "href": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
-    "title": "Rendering with Code",
-    "section": "Render locally and publish to gh-pages branch",
-    "text": "Render locally and publish to gh-pages branch\nTo render locally and push up to the gh-pages branch, open a terminal window and then cd to the directory with the Quarto project. Type this in the terminal:\nquarto render gh-pages"
+    "objectID": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
+    "href": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
+    "title": "Rendering",
+    "section": "Step 2. Clone and create RStudio project",
+    "text": "Step 2. Clone and create RStudio project\nFirst, clone the repo onto your local computer. How? You can click File &gt; New Project and then select “Version Control”. Paste in the url of the repository. That will clone the repo on to your local computer. When you make changes, you will need to push those up."
   },
   {
-    "objectID": "content/acknowledgements.html",
-    "href": "content/acknowledgements.html",
-    "title": "Acknowledgments",
+    "objectID": "content/rendering.html#step-3.-render-within-rstudio",
+    "href": "content/rendering.html#step-3.-render-within-rstudio",
+    "title": "Rendering",
+    "section": "Step 3. Render within RStudio",
+    "text": "Step 3. Render within RStudio\nRStudio will recognize that this is a Quarto project by the presence of the _quarto.yml file and will see the “Build” tab. Click the “Render website” button to render to the _site folder.\nPreviewing: You can either click index.html in the _site folder and specify “preview in browser” or set up RStudio to preview to the viewer panel. To do the latter, go to Tools &gt; Global Options &gt; R Markdown. Then select “Show output preview in: Viewer panel”."
+  },
+  {
+    "objectID": "content/customizing.html",
+    "href": "content/customizing.html",
+    "title": "Customization",
     "section": "",
-    "text": "This website was made with the quarto template from NOAA NMFS Open Science This repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland."
+    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
+  },
+  {
+    "objectID": "content/customizing.html#quarto-documentation",
+    "href": "content/customizing.html#quarto-documentation",
+    "title": "Customization",
+    "section": "",
+    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
+  },
+  {
+    "objectID": "content/customizing.html#examples",
+    "href": "content/customizing.html#examples",
+    "title": "Customization",
+    "section": "Examples",
+    "text": "Examples\nLooking at other people’s Quarto code is a great way to figure out how to do stuff. Most will have a link to a GitHub repo where you can see the raw code. Look for a link to edit page or see source code. This will usually be on the right. Or look for the GitHub icon somewhere.\n\nQuarto gallery\nnmfs-openscapes\nFaye lab manual\nquarto-titlepages Note the link to edit is broken. Go to repo and look in documentation directory."
+  },
+  {
+    "objectID": "content/add-content.html",
+    "href": "content/add-content.html",
+    "title": "Customize",
+    "section": "",
+    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
+  },
+  {
+    "objectID": "content/add-content.html#edit-and-add-your-pages",
+    "href": "content/add-content.html#edit-and-add-your-pages",
+    "title": "Customize",
+    "section": "",
+    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
+  },
+  {
+    "objectID": "content/add-content.html#add-your-pages-the-project",
+    "href": "content/add-content.html#add-your-pages-the-project",
+    "title": "Customize",
+    "section": "Add your pages the project",
+    "text": "Add your pages the project\n\nAdd the files to _quarto.yml"
+  },
+  {
+    "objectID": "content/SNP_Analysis.html",
+    "href": "content/SNP_Analysis.html",
+    "title": "Working with SNP Data",
+    "section": "",
+    "text": "This actually happens outside of R. A cool feature of RStudio\n\n\n\nplink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out ../Processed_Data/array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10\n\nHere, we are using the program plink to convert the files we got from the genotyping service (final.ped, final.bed, final.fam). This command has several options:\n--bfile ../Example_Data/final this is saying the input is a binary and ../Example_Data/final is a relative PATH to the data files. In the virtual machine, this could aslo be written as /home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data or ~/NACE_MAS_Genomics_Workshop/Example_Data\n--recode vcf id-paste=iid is telling it to recode the file as a VCF file using the “individual id” from the .fam file as the individual label\n--out array is telling it to name the output files with the prefix “array”\n--allow-extra-chr is a Plink specific setting needed when you’re not working with human data\n\n\n--mind 0.1 This is saying we only want individuals with less than 10% missing data\n--geno 0.05 This is saying we only want SNPs with less than 5% missing data\n--max-alleles 2 --min-alleles 2 This says we only want SNPs with two alleles\n--chr 1-10 This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes\nIt will help us to have both a .bed file and .vcf later one. The code below does the same as the above, but outputs a .bed file instead\n\nplink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array"
+  },
+  {
+    "objectID": "content/SNP_Analysis.html#quick-filtering-and-management-of-array-data",
+    "href": "content/SNP_Analysis.html#quick-filtering-and-management-of-array-data",
+    "title": "Working with SNP Data",
+    "section": "",
+    "text": "This actually happens outside of R. A cool feature of RStudio\n\n\n\nplink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out ../Processed_Data/array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10\n\nHere, we are using the program plink to convert the files we got from the genotyping service (final.ped, final.bed, final.fam). This command has several options:\n--bfile ../Example_Data/final this is saying the input is a binary and ../Example_Data/final is a relative PATH to the data files. In the virtual machine, this could aslo be written as /home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data or ~/NACE_MAS_Genomics_Workshop/Example_Data\n--recode vcf id-paste=iid is telling it to recode the file as a VCF file using the “individual id” from the .fam file as the individual label\n--out array is telling it to name the output files with the prefix “array”\n--allow-extra-chr is a Plink specific setting needed when you’re not working with human data\n\n\n--mind 0.1 This is saying we only want individuals with less than 10% missing data\n--geno 0.05 This is saying we only want SNPs with less than 5% missing data\n--max-alleles 2 --min-alleles 2 This says we only want SNPs with two alleles\n--chr 1-10 This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes\nIt will help us to have both a .bed file and .vcf later one. The code below does the same as the above, but outputs a .bed file instead\n\nplink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array"
+  },
+  {
+    "objectID": "content/SNP_Analysis.html#import-data-into-r",
+    "href": "content/SNP_Analysis.html#import-data-into-r",
+    "title": "Working with SNP Data",
+    "section": "Import data into R",
+    "text": "Import data into R\nNow we’re ready to import that data into R for processing. We will first use the library vcfR to do this\n\nlibrary(vcfR)\n\n\n   *****       ***   vcfR   ***       *****\n   This is vcfR 1.15.0 \n     browseVignettes('vcfR') # Documentation\n     citation('vcfR') # Citation\n   *****       *****      *****       *****\n\nmy_vcf &lt;- read.vcfR(\"../Processed_Data/array.vcf\")\n\nScanning file to determine attributes.\nFile attributes:\n  meta lines: 15\n  header_line: 16\n  variant count: 60517\n  column count: 54\n\nMeta line 15 read in.\nAll meta lines processed.\ngt matrix initialized.\nCharacter matrix gt created.\n  Character matrix gt rows: 60517\n  Character matrix gt cols: 54\n  skip: 0\n  nrows: 60517\n  row_num: 0\n\nProcessed variant 1000\nProcessed variant 2000\nProcessed variant 3000\nProcessed variant 4000\nProcessed variant 5000\nProcessed variant 6000\nProcessed variant 7000\nProcessed variant 8000\nProcessed variant 9000\nProcessed variant 10000\nProcessed variant 11000\nProcessed variant 12000\nProcessed variant 13000\nProcessed variant 14000\nProcessed variant 15000\nProcessed variant 16000\nProcessed variant 17000\nProcessed variant 18000\nProcessed variant 19000\nProcessed variant 20000\nProcessed variant 21000\nProcessed variant 22000\nProcessed variant 23000\nProcessed variant 24000\nProcessed variant 25000\nProcessed variant 26000\nProcessed variant 27000\nProcessed variant 28000\nProcessed variant 29000\nProcessed variant 30000\nProcessed variant 31000\nProcessed variant 32000\nProcessed variant 33000\nProcessed variant 34000\nProcessed variant 35000\nProcessed variant 36000\nProcessed variant 37000\nProcessed variant 38000\nProcessed variant 39000\nProcessed variant 40000\nProcessed variant 41000\nProcessed variant 42000\nProcessed variant 43000\nProcessed variant 44000\nProcessed variant 45000\nProcessed variant 46000\nProcessed variant 47000\nProcessed variant 48000\nProcessed variant 49000\nProcessed variant 50000\nProcessed variant 51000\nProcessed variant 52000\nProcessed variant 53000\nProcessed variant 54000\nProcessed variant 55000\nProcessed variant 56000\nProcessed variant 57000\nProcessed variant 58000\nProcessed variant 59000\nProcessed variant 60000\nProcessed variant: 60517\nAll variants processed\n\n\nAbove, we load the library and then use a function to read our vcf and store it as my_vcf"
+  },
+  {
+    "objectID": "content/SNP_Analysis.html#plotting-heterozygosity",
+    "href": "content/SNP_Analysis.html#plotting-heterozygosity",
+    "title": "Working with SNP Data",
+    "section": "Plotting heterozygosity",
+    "text": "Plotting heterozygosity\nI’m a fan of ggplot, but in order to use ggplot we need data in a “tidy” format. We can use the package reshape to do this for us\n\nlibrary(reshape2)\nhet_df &lt;- melt(het_results[,c(3:6)], varnames=c('Index', 'Sample'), value.name = 'Heterozygosity', na.rm=TRUE)\n\nNo id variables; using all as measure variables\n\nhead(het_df)\n\n  variable Heterozygosity\n1  Hs_PopA     0.27777778\n2  Hs_PopA     0.32000000\n3  Hs_PopA     0.23111111\n4  Hs_PopA     0.06444444\n5  Hs_PopA     0.23111111\n6  Hs_PopA     0.46444444\n\n\nNow we can easily plot with ggplot. I’m going to use a simple box plot.\n\nlibrary(ggplot2)\np &lt;- ggplot(het_df, aes(x=variable, y=Heterozygosity)) + geom_boxplot(fill=\"#1F78B4\")\np &lt;- p + xlab(\"Population\")\np &lt;- p + ylab(\"Observed Heterozygosity\")\np &lt;- p + theme_bw() + ggtitle(\"Observed Heterozygosity by population and total\")\np"
+  },
+  {
+    "objectID": "content/PCA.html",
+    "href": "content/PCA.html",
+    "title": "PCA and DAPC",
+    "section": "",
+    "text": "One important consideration is that we need to deal with linkage in our data set. We will use PCAdapt to help us with this and to illustrate why.\n\n\nFirst, we load in the data and convert our previous array.bed file to pcadapt input\n\nlibrary(pcadapt)\nfilename &lt;- read.pcadapt(\"../Processed_Data/array.bed\", type = \"bed\")\n\n\n\n\nFirst, we can start with a regular PCA. The first line of code below calculates the PCA with 5 PCs and the second line plots the amount of variance that each PC explains.\n\nres &lt;- pcadapt(filename, K = 5)\nplot(res, option = \"screeplot\")\n\nWarning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use \"none\" instead as\nof ggplot2 3.3.4.\nℹ The deprecated feature was likely used in the pcadapt package.\n  Please report the issue at &lt;https://github.com/bcm-uga/pcadapt/issues&gt;.\n\n\n\n\n\nFor this analysis, the idea number of PCs is the one before the variance stars plateauing. Essentially, we’re looking for the “elbow.” Here, this would be 2.\nLet’s plot the PCA. First, we need to recreate the list of population assignments. We’ll do this the same way as the last section.\n\ntable &lt;- read.table(\"../Example_Data/strata\", header = TRUE)\npoplist.names &lt;- table$Population\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nThis might look normal, but you’ll notice that two of the populations are tightly grouped around PC1. We should check too make sure this pattern isn’t being driven by a linkage in the genome. To do this, we can look at the loading scores of the PCs. Loading scores show how much a particular SNP factors into a PC.\n\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nThese values should be evenly distributed across the genome. You’ll notice that PC1 has a bit of a pattern to it. Let’s zoom in.\n\nplot(res$loadings[, 1], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nNow, you can definitely see a weird pattern between Index 30,000 and 40,000. This is from several large genomic inversion in the oyster genome. All of those SNPs are highly linked and are driving a large porition of our PCA.\n\n\n\nLinkage Disequilibrium can affect ascertainment of population structure (Abdellaoui et al. 2013). Users analyzing dense data such as SNP Array data should account for LD in their PCAs and PCA-based genome-scans.\nThankfully, PCAdapt has a built in feature that allows us to clump SNPs by LD, basically reducing the data to a more informative subset.\n\nres &lt;- pcadapt(filename, K = 10, LD.clumping = list(size = 500, thr = 0.2))\nplot(res, option = \"screeplot\")\n\n\n\n\nThis changed a bit, and we now have possibly 4 informative PCs. Let’s take a look at the loadings:\n\nres &lt;- pcadapt(filename, K = 4, LD.clumping = list(size = 500, thr = 0.2))\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nGreat! Now, we no longer see strong patterns in the loading scores. We can proceed.\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nNow, we can see there is much more separation in PopA vs PopB than there was before.\n\n\n\nPCAdapt is great for filtering and for looking for loci under selection (not covered in this tutorial), but there are other packages that are a little more handy for calculating and plotting PCAs and DAPCE. We can filter our VCF to only the post-clumped loci (those with less LD).\nFirst, we will reload our VCF file into R in case you’re starting from scratch, but we made this in the previous tutorial:\n\nlibrary(vcfR)\n\n\n   *****       ***   vcfR   ***       *****\n   This is vcfR 1.15.0 \n     browseVignettes('vcfR') # Documentation\n     citation('vcfR') # Citation\n   *****       *****      *****       *****\n\nmy_vcf &lt;- read.vcfR(\"../Processed_Data/array.vcf\")\n\nScanning file to determine attributes.\nFile attributes:\n  meta lines: 15\n  header_line: 16\n  variant count: 60517\n  column count: 54\n\nMeta line 15 read in.\nAll meta lines processed.\ngt matrix initialized.\nCharacter matrix gt created.\n  Character matrix gt rows: 60517\n  Character matrix gt cols: 54\n  skip: 0\n  nrows: 60517\n  row_num: 0\n\nProcessed variant 1000\nProcessed variant 2000\nProcessed variant 3000\nProcessed variant 4000\nProcessed variant 5000\nProcessed variant 6000\nProcessed variant 7000\nProcessed variant 8000\nProcessed variant 9000\nProcessed variant 10000\nProcessed variant 11000\nProcessed variant 12000\nProcessed variant 13000\nProcessed variant 14000\nProcessed variant 15000\nProcessed variant 16000\nProcessed variant 17000\nProcessed variant 18000\nProcessed variant 19000\nProcessed variant 20000\nProcessed variant 21000\nProcessed variant 22000\nProcessed variant 23000\nProcessed variant 24000\nProcessed variant 25000\nProcessed variant 26000\nProcessed variant 27000\nProcessed variant 28000\nProcessed variant 29000\nProcessed variant 30000\nProcessed variant 31000\nProcessed variant 32000\nProcessed variant 33000\nProcessed variant 34000\nProcessed variant 35000\nProcessed variant 36000\nProcessed variant 37000\nProcessed variant 38000\nProcessed variant 39000\nProcessed variant 40000\nProcessed variant 41000\nProcessed variant 42000\nProcessed variant 43000\nProcessed variant 44000\nProcessed variant 45000\nProcessed variant 46000\nProcessed variant 47000\nProcessed variant 48000\nProcessed variant 49000\nProcessed variant 50000\nProcessed variant 51000\nProcessed variant 52000\nProcessed variant 53000\nProcessed variant 54000\nProcessed variant 55000\nProcessed variant 56000\nProcessed variant 57000\nProcessed variant 58000\nProcessed variant 59000\nProcessed variant 60000\nProcessed variant: 60517\nAll variants processed\n\n\n\nld_filtered_vcf &lt;- my_vcf[!is.na(res$loadings[,1]),]\n\nNext, we will convert our vcfR file to a genlight input which can be used by the package adegenet. We will also use the strata and setPop function to enter population level information. Remember, we made the strata_df in the previous tutorial, but we will remake it here just in case.\n\nlibrary(adegenet)\n\nLoading required package: ade4\n\n\n\n   /// adegenet 2.1.10 is loaded ////////////\n\n   &gt; overview: '?adegenet'\n   &gt; tutorials/doc/questions: 'adegenetWeb()' \n   &gt; bug reports/feature requests: adegenetIssues()\n\nmygl &lt;- vcfR2genlight(ld_filtered_vcf,n.cores =2)\n\nstrata&lt;- read.table(\"../Example_Data/strata\", header=TRUE)\nstrata_df &lt;- data.frame(strata)\n\nstrata(mygl) &lt;- strata_df\nsetPop(mygl) &lt;- ~Population\n\nBelow, we use the PCA function of adegent to create a PCA.\n\noyster.pca &lt;- glPca(mygl, nf = 3)\n\nLet’s look at how much variance each PC explains:\n\nbarplot(100*oyster.pca$eig/sum(oyster.pca$eig), col = heat.colors(50), main=\"PCA Variance Explained\")\ntitle(ylab=\"Percent of variance\\nexplained\", line = 2)\ntitle(xlab=\"PC\", line = 1)\n\n\n\n\nWe basically have three informative PCs here. Let’s plot the individuals on the first two PCs:\n\nmyCol &lt;- colorplot(oyster.pca$scores,oyster.pca$scores, transp=TRUE, cex=4)\nabline(h=0,v=0, col=\"grey\")\nadd.scatter.eig(oyster.pca$eig[1:10],2,1,2, posi=\"bottomright\", ratio=.16)\n\n\n\n\nThe plot above is combining information from the first 3 PCs to color dots, and using the first two for x,y coordinates. We can see possibly four groups across all PCs.\nWe can also port this to ggplot and color by population:\n\nlibrary(ggplot2)\noyster.pca.df &lt;- as.data.frame(oyster.pca$scores)\noyster.pca.df$pop &lt;- pop(mygl)\ncols &lt;-c(\"#871a1a\",\"#33A02C\",\"#1F78B4\")\n\np &lt;- ggplot(oyster.pca.df, aes(x=PC1, y=PC2, colour=pop)) \np &lt;- p + geom_point(size=2)\np &lt;- p + stat_ellipse(level = 0.95, size = 1)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\np &lt;- p + scale_color_manual(values = cols) \np &lt;- p + geom_hline(yintercept = 0) \np &lt;- p + geom_vline(xintercept = 0) \np &lt;- p + theme_bw()\n\np\n\n\n\n\nSo, we can see that we have some subtle structuring within PopC."
+  },
+  {
+    "objectID": "content/PCA.html#load-data",
+    "href": "content/PCA.html#load-data",
+    "title": "PCA and DAPC",
+    "section": "",
+    "text": "First, we load in the data and convert our previous array.bed file to pcadapt input\n\nlibrary(pcadapt)\nfilename &lt;- read.pcadapt(\"../Processed_Data/array.bed\", type = \"bed\")"
+  },
+  {
+    "objectID": "content/PCA.html#examine-the-pcs",
+    "href": "content/PCA.html#examine-the-pcs",
+    "title": "PCA and DAPC",
+    "section": "",
+    "text": "First, we can start with a regular PCA. The first line of code below calculates the PCA with 5 PCs and the second line plots the amount of variance that each PC explains.\n\nres &lt;- pcadapt(filename, K = 5)\nplot(res, option = \"screeplot\")\n\nWarning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use \"none\" instead as\nof ggplot2 3.3.4.\nℹ The deprecated feature was likely used in the pcadapt package.\n  Please report the issue at &lt;https://github.com/bcm-uga/pcadapt/issues&gt;.\n\n\n\n\n\nFor this analysis, the idea number of PCs is the one before the variance stars plateauing. Essentially, we’re looking for the “elbow.” Here, this would be 2.\nLet’s plot the PCA. First, we need to recreate the list of population assignments. We’ll do this the same way as the last section.\n\ntable &lt;- read.table(\"../Example_Data/strata\", header = TRUE)\npoplist.names &lt;- table$Population\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nThis might look normal, but you’ll notice that two of the populations are tightly grouped around PC1. We should check too make sure this pattern isn’t being driven by a linkage in the genome. To do this, we can look at the loading scores of the PCs. Loading scores show how much a particular SNP factors into a PC.\n\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nThese values should be evenly distributed across the genome. You’ll notice that PC1 has a bit of a pattern to it. Let’s zoom in.\n\nplot(res$loadings[, 1], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nNow, you can definitely see a weird pattern between Index 30,000 and 40,000. This is from several large genomic inversion in the oyster genome. All of those SNPs are highly linked and are driving a large porition of our PCA."
+  },
+  {
+    "objectID": "content/PCA.html#dealing-with-linkage-using-ld-clumping",
+    "href": "content/PCA.html#dealing-with-linkage-using-ld-clumping",
+    "title": "PCA and DAPC",
+    "section": "",
+    "text": "Linkage Disequilibrium can affect ascertainment of population structure (Abdellaoui et al. 2013). Users analyzing dense data such as SNP Array data should account for LD in their PCAs and PCA-based genome-scans.\nThankfully, PCAdapt has a built in feature that allows us to clump SNPs by LD, basically reducing the data to a more informative subset.\n\nres &lt;- pcadapt(filename, K = 10, LD.clumping = list(size = 500, thr = 0.2))\nplot(res, option = \"screeplot\")\n\n\n\n\nThis changed a bit, and we now have possibly 4 informative PCs. Let’s take a look at the loadings:\n\nres &lt;- pcadapt(filename, K = 4, LD.clumping = list(size = 500, thr = 0.2))\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nGreat! Now, we no longer see strong patterns in the loading scores. We can proceed.\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nNow, we can see there is much more separation in PopA vs PopB than there was before."
+  },
+  {
+    "objectID": "content/PCA.html#filter-data-for-pca-and-dapc",
+    "href": "content/PCA.html#filter-data-for-pca-and-dapc",
+    "title": "PCA and DAPC",
+    "section": "",
+    "text": "PCAdapt is great for filtering and for looking for loci under selection (not covered in this tutorial), but there are other packages that are a little more handy for calculating and plotting PCAs and DAPCE. We can filter our VCF to only the post-clumped loci (those with less LD).\nFirst, we will reload our VCF file into R in case you’re starting from scratch, but we made this in the previous tutorial:\n\nlibrary(vcfR)\n\n\n   *****       ***   vcfR   ***       *****\n   This is vcfR 1.15.0 \n     browseVignettes('vcfR') # Documentation\n     citation('vcfR') # Citation\n   *****       *****      *****       *****\n\nmy_vcf &lt;- read.vcfR(\"../Processed_Data/array.vcf\")\n\nScanning file to determine attributes.\nFile attributes:\n  meta lines: 15\n  header_line: 16\n  variant count: 60517\n  column count: 54\n\nMeta line 15 read in.\nAll meta lines processed.\ngt matrix initialized.\nCharacter matrix gt created.\n  Character matrix gt rows: 60517\n  Character matrix gt cols: 54\n  skip: 0\n  nrows: 60517\n  row_num: 0\n\nProcessed variant 1000\nProcessed variant 2000\nProcessed variant 3000\nProcessed variant 4000\nProcessed variant 5000\nProcessed variant 6000\nProcessed variant 7000\nProcessed variant 8000\nProcessed variant 9000\nProcessed variant 10000\nProcessed variant 11000\nProcessed variant 12000\nProcessed variant 13000\nProcessed variant 14000\nProcessed variant 15000\nProcessed variant 16000\nProcessed variant 17000\nProcessed variant 18000\nProcessed variant 19000\nProcessed variant 20000\nProcessed variant 21000\nProcessed variant 22000\nProcessed variant 23000\nProcessed variant 24000\nProcessed variant 25000\nProcessed variant 26000\nProcessed variant 27000\nProcessed variant 28000\nProcessed variant 29000\nProcessed variant 30000\nProcessed variant 31000\nProcessed variant 32000\nProcessed variant 33000\nProcessed variant 34000\nProcessed variant 35000\nProcessed variant 36000\nProcessed variant 37000\nProcessed variant 38000\nProcessed variant 39000\nProcessed variant 40000\nProcessed variant 41000\nProcessed variant 42000\nProcessed variant 43000\nProcessed variant 44000\nProcessed variant 45000\nProcessed variant 46000\nProcessed variant 47000\nProcessed variant 48000\nProcessed variant 49000\nProcessed variant 50000\nProcessed variant 51000\nProcessed variant 52000\nProcessed variant 53000\nProcessed variant 54000\nProcessed variant 55000\nProcessed variant 56000\nProcessed variant 57000\nProcessed variant 58000\nProcessed variant 59000\nProcessed variant 60000\nProcessed variant: 60517\nAll variants processed\n\n\n\nld_filtered_vcf &lt;- my_vcf[!is.na(res$loadings[,1]),]\n\nNext, we will convert our vcfR file to a genlight input which can be used by the package adegenet. We will also use the strata and setPop function to enter population level information. Remember, we made the strata_df in the previous tutorial, but we will remake it here just in case.\n\nlibrary(adegenet)\n\nLoading required package: ade4\n\n\n\n   /// adegenet 2.1.10 is loaded ////////////\n\n   &gt; overview: '?adegenet'\n   &gt; tutorials/doc/questions: 'adegenetWeb()' \n   &gt; bug reports/feature requests: adegenetIssues()\n\nmygl &lt;- vcfR2genlight(ld_filtered_vcf,n.cores =2)\n\nstrata&lt;- read.table(\"../Example_Data/strata\", header=TRUE)\nstrata_df &lt;- data.frame(strata)\n\nstrata(mygl) &lt;- strata_df\nsetPop(mygl) &lt;- ~Population\n\nBelow, we use the PCA function of adegent to create a PCA.\n\noyster.pca &lt;- glPca(mygl, nf = 3)\n\nLet’s look at how much variance each PC explains:\n\nbarplot(100*oyster.pca$eig/sum(oyster.pca$eig), col = heat.colors(50), main=\"PCA Variance Explained\")\ntitle(ylab=\"Percent of variance\\nexplained\", line = 2)\ntitle(xlab=\"PC\", line = 1)\n\n\n\n\nWe basically have three informative PCs here. Let’s plot the individuals on the first two PCs:\n\nmyCol &lt;- colorplot(oyster.pca$scores,oyster.pca$scores, transp=TRUE, cex=4)\nabline(h=0,v=0, col=\"grey\")\nadd.scatter.eig(oyster.pca$eig[1:10],2,1,2, posi=\"bottomright\", ratio=.16)\n\n\n\n\nThe plot above is combining information from the first 3 PCs to color dots, and using the first two for x,y coordinates. We can see possibly four groups across all PCs.\nWe can also port this to ggplot and color by population:\n\nlibrary(ggplot2)\noyster.pca.df &lt;- as.data.frame(oyster.pca$scores)\noyster.pca.df$pop &lt;- pop(mygl)\ncols &lt;-c(\"#871a1a\",\"#33A02C\",\"#1F78B4\")\n\np &lt;- ggplot(oyster.pca.df, aes(x=PC1, y=PC2, colour=pop)) \np &lt;- p + geom_point(size=2)\np &lt;- p + stat_ellipse(level = 0.95, size = 1)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\np &lt;- p + scale_color_manual(values = cols) \np &lt;- p + geom_hline(yintercept = 0) \np &lt;- p + geom_vline(xintercept = 0) \np &lt;- p + theme_bw()\n\np\n\n\n\n\nSo, we can see that we have some subtle structuring within PopC."
+  },
+  {
+    "objectID": "content/PCA.html#dapc-with-inferred-groups",
+    "href": "content/PCA.html#dapc-with-inferred-groups",
+    "title": "PCA and DAPC",
+    "section": "DAPC with inferred groups",
+    "text": "DAPC with inferred groups\n\nFinding clusters\nAdegenet has a built in method for inferring population groupings or clusters. It runs interactively, so this code block below won’t run on it’s own. You need to paste it into the Console.\n\ngrp &lt;- find.clusters(mygl, max.n.clust=10)\n\nI’m going to simulate this experience below:\nFirst, you will see a screen like this:  For the purpose of picking clusters, the more PCs the better. Pick any number greater than 40.\nNext screen will be:\n We’d like to see an elbow here, where the lowest point would be the correct number. This doesn’t always work well for subtle structure. I’m going to pick 4 given the results above.\nWe can make a simple table to see the assignments:\n\ntable(pop(mygl), grp$grp)\n\n      \n        1  2  3  4\n  PopB  0  0  0 15\n  PopA 15  0  0  0\n  PopC  0  7  8  0\n\n\nThis makes sense given our PCA. Let’s run the DAPC.\n\n\nDiscriminant Analysis\nThis is another interactive function. Run in the console.\n\noyster.dapc &lt;- dapc(mygl, grp$grp)\n\nAgain, I simulate this experience below. First screen is: \nNow this is different than finding clusters. You can overload the analysis with two many PCs. For this, you want to choose the lowes number that gets you &gt; 60% of the variance. I would choose 25 or 30.\nAfter you enter the number of PCs, you’ll see something like this:\n This is picking the number of discriminant functions. Because we put in four groups, there are only three. Truly, only the first two are informative. Let’s pick 2.\nNow, let’s plot the analysis\n\nscatter(oyster.dapc,col=cols,bg=\"white\", solid=1)\n\n\n\n\nWe can also plot membership probabilities:\n\ncompoplot(oyster.dapc, posi=\"bottom\",txt.leg=paste(\"Cluster\", 1:4), lab=\"\", ncol=4, xlab=\"individuals\")\n\n\n\n\nWe can use ggplot to make this easier to read and put in the populations for each individual:\n\nlibrary(tidyr)\ndapc.df &lt;- as.data.frame(oyster.dapc$posterior)\ndapc.df$pop &lt;- pop(mygl)\ndapc.df$indNames &lt;- rownames(dapc.df)\ncols4 &lt;-c(\"#871a1a\",\"#33A02C\",\"#1F78B4\",\"#FDBF6F\" )\n\ndapc.df &lt;- pivot_longer(dapc.df, -c(pop, indNames))\ncolnames(dapc.df) &lt;- c(\"Original_Pop\",\"Sample\",\"Assigned_Pop\",\"Posterior_membership_probability\")\n\np &lt;- ggplot(dapc.df, aes(x=Sample, y=Posterior_membership_probability, fill=Assigned_Pop))\np &lt;- p + geom_bar(stat='identity') \np &lt;- p + scale_fill_manual(values = cols4) \np &lt;- p + facet_grid(~Original_Pop, scales = \"free\")\np &lt;- p + theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))\np &lt;- p + ylab(\"Posterior membership probability\")\np"
+  },
+  {
+    "objectID": "content/PCA.html#dapc-with-original-populations",
+    "href": "content/PCA.html#dapc-with-original-populations",
+    "title": "PCA and DAPC",
+    "section": "DAPC with original populations",
+    "text": "DAPC with original populations\nAgain, instead of inferring groups, we can use our original populations.\n\noyster.dapc &lt;- dapc(mygl, n.pca = 25, n.da = 2)\nscatter(oyster.dapc, col = cols, cex = 2, legend = TRUE, clabel = F, posi.leg = \"bottomleft\", scree.pca = TRUE,\n        posi.pca = \"topleft\", cleg = 0.75, posi.da = \"topright\")\n\n\n\n\nLet’s make this better with ggplot\n\ndapc.df &lt;- as.data.frame(oyster.dapc$ind.coord)\ndapc.df$pop &lt;- pop(mygl)\ndapc.df$indNames &lt;- rownames(dapc.df)\n\np &lt;- ggplot(dapc.df, aes(x=LD1, y=LD2, colour=pop)) \np &lt;- p + geom_point(size=2)\np &lt;- p + scale_color_manual(values = cols) \np &lt;- p + geom_hline(yintercept = 0) \np &lt;- p + geom_vline(xintercept = 0) \np &lt;- p + theme_bw()+ xlab(\"DA 1\") + ylab(\"DA 2\")+ ggtitle(\"DAPC with populations as groups\")\n\np"
   },
   {
     "objectID": "content/R_Intro.html",
@@ -168,151 +252,81 @@
     "text": "RStudio and RMarkdown allow you to run commands through a system terminal. This means we can embed BASH code to run on the machine\n\necho \"Hi, I'm a BASH code output\"\n\nHi, I'm a BASH code output\n\n\n\necho -e \"The Current Directory is $(pwd)\"\n\nThe Current Directory is /home/jpuritz/NACE_MAS_Genomics_Workshop/content"
   },
   {
-    "objectID": "content/PCA.html",
-    "href": "content/PCA.html",
-    "title": "PCA and DAPC",
+    "objectID": "content/acknowledgements.html",
+    "href": "content/acknowledgements.html",
+    "title": "Acknowledgments",
     "section": "",
-    "text": "One important consideration is that we need to deal with linkage in our data set. We will use PCAdapt to help us with this and to illustrate why.\n\n\nFirst, we load in the data and convert our previous array.bed file to pcadapt input\n\nlibrary(pcadapt)\nfilename &lt;- read.pcadapt(\"../Processed_Data/array.bed\", type = \"bed\")\n\n\n\n\nFirst, we can start with a regular PCA. The first line of code below calculates the PCA with 5 PCs and the second line plots the amount of variance that each PC explains.\n\nres &lt;- pcadapt(filename, K = 5)\nplot(res, option = \"screeplot\")\n\nWarning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use \"none\" instead as\nof ggplot2 3.3.4.\nℹ The deprecated feature was likely used in the pcadapt package.\n  Please report the issue at &lt;https://github.com/bcm-uga/pcadapt/issues&gt;.\n\n\n\n\n\nFor this analysis, the idea number of PCs is the one before the variance stars plateauing. Essentially, we’re looking for the “elbow.” Here, this would be 2.\nLet’s plot the PCA. First, we need to recreate the list of population assignments. We’ll do this the same way as the last section.\n\ntable &lt;- read.table(\"../Example_Data/strata\", header = TRUE)\npoplist.names &lt;- table$Population\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nThis might look normal, but you’ll notice that two of the populations are tightly grouped around PC1. We should check too make sure this pattern isn’t being driven by a linkage in the genome. To do this, we can look at the loading scores of the PCs. Loading scores show how much a particular SNP factors into a PC.\n\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nThese values should be evenly distributed across the genome. You’ll notice that PC1 has a bit of a pattern to it. Let’s zoom in.\n\nplot(res$loadings[, 1], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nNow, you can definitely see a weird pattern between Index 30,000 and 40,000. This is from several large genomic inversion in the oyster genome. All of those SNPs are highly linked and are driving a large porition of our PCA.\n\n\n\nLinkage Disequilibrium can affect ascertainment of population structure (Abdellaoui et al. 2013). Users analyzing dense data such as SNP Array data should account for LD in their PCAs and PCA-based genome-scans.\nThankfully, PCAdapt has a built in feature that allows us to clump SNPs by LD, basically reducing the data to a more informative subset.\n\nres &lt;- pcadapt(filename, K = 10, LD.clumping = list(size = 500, thr = 0.2))\nplot(res, option = \"screeplot\")\n\n\n\n\nThis changed a bit, and we now have possibly 4 informative PCs. Let’s take a look at the loadings:\n\nres &lt;- pcadapt(filename, K = 4, LD.clumping = list(size = 500, thr = 0.2))\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nGreat! Now, we no longer see strong patterns in the loading scores. We can proceed.\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nNow, we can see there is much more separation in PopA vs PopB than there was before.\n\n\n\nPCAdapt is great for filtering and for looking for loci under selection (not covered in this tutorial), but there are other packages that are a little more handy for calculating and plotting PCAs and DAPCE. We can filter our VCF to only the post-clumped loci (those with less LD).\nFirst, we will reload our VCF file into R in case you’re starting from scratch, but we made this in the previous tutorial:\n\nlibrary(vcfR)\n\n\n   *****       ***   vcfR   ***       *****\n   This is vcfR 1.15.0 \n     browseVignettes('vcfR') # Documentation\n     citation('vcfR') # Citation\n   *****       *****      *****       *****\n\nmy_vcf &lt;- read.vcfR(\"../Processed_Data/array.vcf\")\n\nScanning file to determine attributes.\nFile attributes:\n  meta lines: 15\n  header_line: 16\n  variant count: 60517\n  column count: 54\n\nMeta line 15 read in.\nAll meta lines processed.\ngt matrix initialized.\nCharacter matrix gt created.\n  Character matrix gt rows: 60517\n  Character matrix gt cols: 54\n  skip: 0\n  nrows: 60517\n  row_num: 0\n\nProcessed variant 1000\nProcessed variant 2000\nProcessed variant 3000\nProcessed variant 4000\nProcessed variant 5000\nProcessed variant 6000\nProcessed variant 7000\nProcessed variant 8000\nProcessed variant 9000\nProcessed variant 10000\nProcessed variant 11000\nProcessed variant 12000\nProcessed variant 13000\nProcessed variant 14000\nProcessed variant 15000\nProcessed variant 16000\nProcessed variant 17000\nProcessed variant 18000\nProcessed variant 19000\nProcessed variant 20000\nProcessed variant 21000\nProcessed variant 22000\nProcessed variant 23000\nProcessed variant 24000\nProcessed variant 25000\nProcessed variant 26000\nProcessed variant 27000\nProcessed variant 28000\nProcessed variant 29000\nProcessed variant 30000\nProcessed variant 31000\nProcessed variant 32000\nProcessed variant 33000\nProcessed variant 34000\nProcessed variant 35000\nProcessed variant 36000\nProcessed variant 37000\nProcessed variant 38000\nProcessed variant 39000\nProcessed variant 40000\nProcessed variant 41000\nProcessed variant 42000\nProcessed variant 43000\nProcessed variant 44000\nProcessed variant 45000\nProcessed variant 46000\nProcessed variant 47000\nProcessed variant 48000\nProcessed variant 49000\nProcessed variant 50000\nProcessed variant 51000\nProcessed variant 52000\nProcessed variant 53000\nProcessed variant 54000\nProcessed variant 55000\nProcessed variant 56000\nProcessed variant 57000\nProcessed variant 58000\nProcessed variant 59000\nProcessed variant 60000\nProcessed variant: 60517\nAll variants processed\n\n\n\nld_filtered_vcf &lt;- my_vcf[!is.na(res$loadings[,1]),]\n\nNext, we will convert our vcfR file to a genlight input which can be used by the package adegenet. We will also use the strata and setPop function to enter population level information. Remember, we made the strata_df in the previous tutorial, but we will remake it here just in case.\n\nlibrary(adegenet)\n\nLoading required package: ade4\n\n\n\n   /// adegenet 2.1.10 is loaded ////////////\n\n   &gt; overview: '?adegenet'\n   &gt; tutorials/doc/questions: 'adegenetWeb()' \n   &gt; bug reports/feature requests: adegenetIssues()\n\nmygl &lt;- vcfR2genlight(ld_filtered_vcf,n.cores =2)\n\nstrata&lt;- read.table(\"../Example_Data/strata\", header=TRUE)\nstrata_df &lt;- data.frame(strata)\n\nstrata(mygl) &lt;- strata_df\nsetPop(mygl) &lt;- ~Population\n\nBelow, we use the PCA function of adegent to create a PCA.\n\noyster.pca &lt;- glPca(mygl, nf = 3)\n\nLet’s look at how much variance each PC explains:\n\nbarplot(100*oyster.pca$eig/sum(oyster.pca$eig), col = heat.colors(50), main=\"PCA Variance Explained\")\ntitle(ylab=\"Percent of variance\\nexplained\", line = 2)\ntitle(xlab=\"PC\", line = 1)\n\n\n\n\nWe basically have three informative PCs here. Let’s plot the individuals on the first two PCs:\n\nmyCol &lt;- colorplot(oyster.pca$scores,oyster.pca$scores, transp=TRUE, cex=4)\nabline(h=0,v=0, col=\"grey\")\nadd.scatter.eig(oyster.pca$eig[1:10],2,1,2, posi=\"bottomright\", ratio=.16)\n\n\n\n\nThe plot above is combining information from the first 3 PCs to color dots, and using the first two for x,y coordinates. We can see possibly four groups across all PCs.\nWe can also port this to ggplot and color by population:\n\nlibrary(ggplot2)\noyster.pca.df &lt;- as.data.frame(oyster.pca$scores)\noyster.pca.df$pop &lt;- pop(mygl)\ncols &lt;-c(\"#871a1a\",\"#33A02C\",\"#1F78B4\")\n\np &lt;- ggplot(oyster.pca.df, aes(x=PC1, y=PC2, colour=pop)) \np &lt;- p + geom_point(size=2)\np &lt;- p + stat_ellipse(level = 0.95, size = 1)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\np &lt;- p + scale_color_manual(values = cols) \np &lt;- p + geom_hline(yintercept = 0) \np &lt;- p + geom_vline(xintercept = 0) \np &lt;- p + theme_bw()\n\np\n\n\n\n\nSo, we can see that we have some subtle structuring within PopC."
+    "text": "This website was made with the quarto template from NOAA NMFS Open Science This repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland."
   },
   {
-    "objectID": "content/PCA.html#load-data",
-    "href": "content/PCA.html#load-data",
-    "title": "PCA and DAPC",
+    "objectID": "content/code.html",
+    "href": "content/code.html",
+    "title": "Rendering with Code",
     "section": "",
-    "text": "First, we load in the data and convert our previous array.bed file to pcadapt input\n\nlibrary(pcadapt)\nfilename &lt;- read.pcadapt(\"../Processed_Data/array.bed\", type = \"bed\")"
+    "text": "You can have code (R, Python or Julia) in your qmd file. You will need to have these installed on your local computer, but presumably you do already if you are adding code to your qmd files.\nx &lt;- c(5, 15, 25, 35, 45, 55)\ny &lt;- c(5, 20, 14, 32, 22, 38)\nlm(x ~ y)\n\n\nCall:\nlm(formula = x ~ y)\n\nCoefficients:\n(Intercept)            y  \n      1.056        1.326"
   },
   {
-    "objectID": "content/PCA.html#examine-the-pcs",
-    "href": "content/PCA.html#examine-the-pcs",
-    "title": "PCA and DAPC",
+    "objectID": "content/code.html#modify-the-github-action",
+    "href": "content/code.html#modify-the-github-action",
+    "title": "Rendering with Code",
+    "section": "Modify the GitHub Action",
+    "text": "Modify the GitHub Action\nYou will need to change the GitHub Action in .github/workflows to install these and any needed packages in order for GitHub to be able to render your webpage. The GitHub Action install R since I used that in code.qmd. If you use Python or Julia instead, then you will need to update the GitHub Action to install those.\nIf getting the GitHub Action to work is too much hassle (and that definitely happens), you can alway render locally and publish to the gh-pages branch. If you do this, make sure to delete or rename the GitHub Action to something like\nrender-and-publish.old_yml\nso GitHub does not keep trying to run it. Nothing bad will happen if you don’t do this, but if you are not using the action (because it keeps failing), then you don’t need GitHub to run it."
+  },
+  {
+    "objectID": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
+    "href": "content/code.html#render-locally-and-publish-to-gh-pages-branch",
+    "title": "Rendering with Code",
+    "section": "Render locally and publish to gh-pages branch",
+    "text": "Render locally and publish to gh-pages branch\nTo render locally and push up to the gh-pages branch, open a terminal window and then cd to the directory with the Quarto project. Type this in the terminal:\nquarto render gh-pages"
+  },
+  {
+    "objectID": "content/publishing.html",
+    "href": "content/publishing.html",
+    "title": "Publishing",
     "section": "",
-    "text": "First, we can start with a regular PCA. The first line of code below calculates the PCA with 5 PCs and the second line plots the amount of variance that each PC explains.\n\nres &lt;- pcadapt(filename, K = 5)\nplot(res, option = \"screeplot\")\n\nWarning: The `&lt;scale&gt;` argument of `guides()` cannot be `FALSE`. Use \"none\" instead as\nof ggplot2 3.3.4.\nℹ The deprecated feature was likely used in the pcadapt package.\n  Please report the issue at &lt;https://github.com/bcm-uga/pcadapt/issues&gt;.\n\n\n\n\n\nFor this analysis, the idea number of PCs is the one before the variance stars plateauing. Essentially, we’re looking for the “elbow.” Here, this would be 2.\nLet’s plot the PCA. First, we need to recreate the list of population assignments. We’ll do this the same way as the last section.\n\ntable &lt;- read.table(\"../Example_Data/strata\", header = TRUE)\npoplist.names &lt;- table$Population\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nThis might look normal, but you’ll notice that two of the populations are tightly grouped around PC1. We should check too make sure this pattern isn’t being driven by a linkage in the genome. To do this, we can look at the loading scores of the PCs. Loading scores show how much a particular SNP factors into a PC.\n\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nThese values should be evenly distributed across the genome. You’ll notice that PC1 has a bit of a pattern to it. Let’s zoom in.\n\nplot(res$loadings[, 1], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nNow, you can definitely see a weird pattern between Index 30,000 and 40,000. This is from several large genomic inversion in the oyster genome. All of those SNPs are highly linked and are driving a large porition of our PCA."
+    "text": "To get your Quarto webpage to show up with the url\nyou have a few steps."
   },
   {
-    "objectID": "content/PCA.html#dealing-with-linkage-using-ld-clumping",
-    "href": "content/PCA.html#dealing-with-linkage-using-ld-clumping",
-    "title": "PCA and DAPC",
+    "objectID": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "href": "content/publishing.html#turn-on-github-pages-for-your-repo",
+    "title": "Publishing",
+    "section": "Turn on GitHub Pages for your repo",
+    "text": "Turn on GitHub Pages for your repo\n\nTurn on GitHub Pages under Settings &gt; Pages . You will set pages to be made from the gh-pages branch and the root directory.\nTurn on GitHub Actions under Settings &gt; Actions &gt; General\n\nThe GitHub Action will automatically recreate your website when you push to GitHub after you do the initial gh-pages set-up"
+  },
+  {
+    "objectID": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "href": "content/publishing.html#do-your-first-publish-to-gh-pages",
+    "title": "Publishing",
+    "section": "Do your first publish to gh-pages",
+    "text": "Do your first publish to gh-pages\nThe first time you publish to gh-pages, you need to do so locally.\n\nOn your local computer, open a terminal window and cd to your repo directory. Here is what that cd command looks like for me. You command will look different because your local repo will be somewhere else on your computer.\n\ncd ~/Documents/GitHub/NOAA-quarto-simple\n\nPublish to the gh-pages. In the terminal type\n\nquarto publish gh-pages\nThis is going to render your webpage and then push the _site contents to the gh-pages branch."
+  },
+  {
+    "objectID": "content/publishing.html#dont-like-using-gh-pages",
+    "href": "content/publishing.html#dont-like-using-gh-pages",
+    "title": "Publishing",
+    "section": "Don’t like using gh-pages?",
+    "text": "Don’t like using gh-pages?\nIn some cases, you don’t want your website on the gh-pages branch. For example, if you are creating releases and you want the website pages archived in that release, then you won’t want your website pages on the gh-pages branch.\nHere are the changes you need to make if you to avoid gh-pages branch.\n\nAt the top of _quarto.yml add the following:\n\nproject: \n  type: website\n  output-dir: docs\n\nOn GitHub under Settings &gt; Pages set pages to be made from the main branch and the docs directory.\nMake sure docs is not listed in .gitignore\nPublish the site the first time locally using quarto publish from the terminal\nChange the GitHub Action because you can’t use quarto publish gh-pages. You’ll need to push to the main branch yourself (in the GitHub Action)\n\non:\n  push:\n    branches: main\n\nname: Render and Publish\n\njobs:\n  build-deploy:\n    runs-on: ubuntu-latest\n    env:\n      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}\n\n    steps:\n      - name: Check out repository\n        uses: actions/checkout@v2 \n        \n      - name: Set up R (needed for Rmd)\n        uses: r-lib/actions/setup-r@v2\n\n      - name: Install packages (needed for Rmd)\n        run: Rscript -e 'install.packages(c(\"rmarkdown\", \"knitr\", \"jsonlite\"))'\n\n      - name: Set up Quarto\n        uses: quarto-dev/quarto-actions/setup@v2\n        with:\n          # To install LaTeX to build PDF book \n          # tinytex: true \n          # uncomment below and fill to pin a version\n          # version: 0.9.600\n      \n      - name: Render Quarto Project\n        uses: quarto-dev/quarto-actions/render@v2\n        with:\n          to: html\n\n      - name: Set up Git\n        run: |\n          git config --local user.email \"actions@github.com\"\n          git config --local user.name \"GitHub Actions\"\n\n      - name: Commit all changes and push\n        run: |\n          git add -A && git commit -m 'Build site' || echo \"No changes to commit\"\n          git push origin || echo \"No changes to commit\""
+  },
+  {
+    "objectID": "content/rmarkdown.html",
+    "href": "content/rmarkdown.html",
+    "title": "R Markdown",
     "section": "",
-    "text": "Linkage Disequilibrium can affect ascertainment of population structure (Abdellaoui et al. 2013). Users analyzing dense data such as SNP Array data should account for LD in their PCAs and PCA-based genome-scans.\nThankfully, PCAdapt has a built in feature that allows us to clump SNPs by LD, basically reducing the data to a more informative subset.\n\nres &lt;- pcadapt(filename, K = 10, LD.clumping = list(size = 500, thr = 0.2))\nplot(res, option = \"screeplot\")\n\n\n\n\nThis changed a bit, and we now have possibly 4 informative PCs. Let’s take a look at the loadings:\n\nres &lt;- pcadapt(filename, K = 4, LD.clumping = list(size = 500, thr = 0.2))\npar(mfrow = c(2, 2))\nfor (i in 1:4)\n  plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0(\"Loadings PC\", i))\n\n\n\n\nGreat! Now, we no longer see strong patterns in the loading scores. We can proceed.\n\nplot(res, option = \"scores\", pop = poplist.names)\n\n\n\n\nNow, we can see there is much more separation in PopA vs PopB than there was before."
+    "text": "You can include R Markdown files in your project."
   },
   {
-    "objectID": "content/PCA.html#filter-data-for-pca-and-dapc",
-    "href": "content/PCA.html#filter-data-for-pca-and-dapc",
-    "title": "PCA and DAPC",
-    "section": "",
-    "text": "PCAdapt is great for filtering and for looking for loci under selection (not covered in this tutorial), but there are other packages that are a little more handy for calculating and plotting PCAs and DAPCE. We can filter our VCF to only the post-clumped loci (those with less LD).\nFirst, we will reload our VCF file into R in case you’re starting from scratch, but we made this in the previous tutorial:\n\nlibrary(vcfR)\n\n\n   *****       ***   vcfR   ***       *****\n   This is vcfR 1.15.0 \n     browseVignettes('vcfR') # Documentation\n     citation('vcfR') # Citation\n   *****       *****      *****       *****\n\nmy_vcf &lt;- read.vcfR(\"../Processed_Data/array.vcf\")\n\nScanning file to determine attributes.\nFile attributes:\n  meta lines: 15\n  header_line: 16\n  variant count: 60517\n  column count: 54\n\nMeta line 15 read in.\nAll meta lines processed.\ngt matrix initialized.\nCharacter matrix gt created.\n  Character matrix gt rows: 60517\n  Character matrix gt cols: 54\n  skip: 0\n  nrows: 60517\n  row_num: 0\n\nProcessed variant 1000\nProcessed variant 2000\nProcessed variant 3000\nProcessed variant 4000\nProcessed variant 5000\nProcessed variant 6000\nProcessed variant 7000\nProcessed variant 8000\nProcessed variant 9000\nProcessed variant 10000\nProcessed variant 11000\nProcessed variant 12000\nProcessed variant 13000\nProcessed variant 14000\nProcessed variant 15000\nProcessed variant 16000\nProcessed variant 17000\nProcessed variant 18000\nProcessed variant 19000\nProcessed variant 20000\nProcessed variant 21000\nProcessed variant 22000\nProcessed variant 23000\nProcessed variant 24000\nProcessed variant 25000\nProcessed variant 26000\nProcessed variant 27000\nProcessed variant 28000\nProcessed variant 29000\nProcessed variant 30000\nProcessed variant 31000\nProcessed variant 32000\nProcessed variant 33000\nProcessed variant 34000\nProcessed variant 35000\nProcessed variant 36000\nProcessed variant 37000\nProcessed variant 38000\nProcessed variant 39000\nProcessed variant 40000\nProcessed variant 41000\nProcessed variant 42000\nProcessed variant 43000\nProcessed variant 44000\nProcessed variant 45000\nProcessed variant 46000\nProcessed variant 47000\nProcessed variant 48000\nProcessed variant 49000\nProcessed variant 50000\nProcessed variant 51000\nProcessed variant 52000\nProcessed variant 53000\nProcessed variant 54000\nProcessed variant 55000\nProcessed variant 56000\nProcessed variant 57000\nProcessed variant 58000\nProcessed variant 59000\nProcessed variant 60000\nProcessed variant: 60517\nAll variants processed\n\n\n\nld_filtered_vcf &lt;- my_vcf[!is.na(res$loadings[,1]),]\n\nNext, we will convert our vcfR file to a genlight input which can be used by the package adegenet. We will also use the strata and setPop function to enter population level information. Remember, we made the strata_df in the previous tutorial, but we will remake it here just in case.\n\nlibrary(adegenet)\n\nLoading required package: ade4\n\n\n\n   /// adegenet 2.1.10 is loaded ////////////\n\n   &gt; overview: '?adegenet'\n   &gt; tutorials/doc/questions: 'adegenetWeb()' \n   &gt; bug reports/feature requests: adegenetIssues()\n\nmygl &lt;- vcfR2genlight(ld_filtered_vcf,n.cores =2)\n\nstrata&lt;- read.table(\"../Example_Data/strata\", header=TRUE)\nstrata_df &lt;- data.frame(strata)\n\nstrata(mygl) &lt;- strata_df\nsetPop(mygl) &lt;- ~Population\n\nBelow, we use the PCA function of adegent to create a PCA.\n\noyster.pca &lt;- glPca(mygl, nf = 3)\n\nLet’s look at how much variance each PC explains:\n\nbarplot(100*oyster.pca$eig/sum(oyster.pca$eig), col = heat.colors(50), main=\"PCA Variance Explained\")\ntitle(ylab=\"Percent of variance\\nexplained\", line = 2)\ntitle(xlab=\"PC\", line = 1)\n\n\n\n\nWe basically have three informative PCs here. Let’s plot the individuals on the first two PCs:\n\nmyCol &lt;- colorplot(oyster.pca$scores,oyster.pca$scores, transp=TRUE, cex=4)\nabline(h=0,v=0, col=\"grey\")\nadd.scatter.eig(oyster.pca$eig[1:10],2,1,2, posi=\"bottomright\", ratio=.16)\n\n\n\n\nThe plot above is combining information from the first 3 PCs to color dots, and using the first two for x,y coordinates. We can see possibly four groups across all PCs.\nWe can also port this to ggplot and color by population:\n\nlibrary(ggplot2)\noyster.pca.df &lt;- as.data.frame(oyster.pca$scores)\noyster.pca.df$pop &lt;- pop(mygl)\ncols &lt;-c(\"#871a1a\",\"#33A02C\",\"#1F78B4\")\n\np &lt;- ggplot(oyster.pca.df, aes(x=PC1, y=PC2, colour=pop)) \np &lt;- p + geom_point(size=2)\np &lt;- p + stat_ellipse(level = 0.95, size = 1)\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\np &lt;- p + scale_color_manual(values = cols) \np &lt;- p + geom_hline(yintercept = 0) \np &lt;- p + geom_vline(xintercept = 0) \np &lt;- p + theme_bw()\n\np\n\n\n\n\nSo, we can see that we have some subtle structuring within PopC."
+    "objectID": "content/rmarkdown.html#r-markdown",
+    "href": "content/rmarkdown.html#r-markdown",
+    "title": "R Markdown",
+    "section": "R Markdown",
+    "text": "R Markdown\nThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00"
   },
   {
-    "objectID": "content/PCA.html#dapc-with-inferred-groups",
-    "href": "content/PCA.html#dapc-with-inferred-groups",
-    "title": "PCA and DAPC",
-    "section": "DAPC with inferred groups",
-    "text": "DAPC with inferred groups\n\nFinding clusters\nAdegenet has a built in method for inferring population groupings or clusters. It runs interactively, so this code block below won’t run on it’s own. You need to paste it into the Console.\n\ngrp &lt;- find.clusters(mygl, max.n.clust=10)\n\nI’m going to simulate this experience below:\nFirst, you will see a screen like this:  For the purpose of picking clusters, the more PCs the better. Pick any number greater than 40.\nNext screen will be:\n We’d like to see an elbow here, where the lowest point would be the correct number. This doesn’t always work well for subtle structure. I’m going to pick 4 given the results above.\nWe can make a simple table to see the assignments:\n\ntable(pop(mygl), grp$grp)\n\n      \n        1  2  3  4\n  PopB  0  0 15  0\n  PopA  0 15  0  0\n  PopC  7  0  0  8\n\n\nThis makes sense given our PCA. Let’s run the DAPC.\n\n\nDiscriminant Analysis\nThis is another interactive function. Run in the console.\n\noyster.dapc &lt;- dapc(mygl, grp$grp)\n\nAgain, I simulate this experience below. First screen is: \nNow this is different than finding clusters. You can overload the analysis with two many PCs. For this, you want to choose the lowes number that gets you &gt; 60% of the variance. I would choose 25 or 30.\nAfter you enter the number of PCs, you’ll see something like this:\n This is picking the number of discriminant functions. Because we put in four groups, there are only three. Truly, only the first two are informative. Let’s pick 2.\nNow, let’s plot the analysis\n\nscatter(oyster.dapc,col=cols,bg=\"white\", solid=1)\n\n\n\n\nWe can also plot membership probabilities:\n\ncompoplot(oyster.dapc, posi=\"bottom\",txt.leg=paste(\"Cluster\", 1:4), lab=\"\", ncol=4, xlab=\"individuals\")\n\n\n\n\nWe can use ggplot to make this easier to read and put in the populations for each individual:\n\nlibrary(tidyr)\ndapc.df &lt;- as.data.frame(oyster.dapc$posterior)\ndapc.df$pop &lt;- pop(mygl)\ndapc.df$indNames &lt;- rownames(dapc.df)\ncols4 &lt;-c(\"#871a1a\",\"#33A02C\",\"#1F78B4\",\"#FDBF6F\" )\n\ndapc.df &lt;- pivot_longer(dapc.df, -c(pop, indNames))\ncolnames(dapc.df) &lt;- c(\"Original_Pop\",\"Sample\",\"Assigned_Pop\",\"Posterior_membership_probability\")\n\np &lt;- ggplot(dapc.df, aes(x=Sample, y=Posterior_membership_probability, fill=Assigned_Pop))\np &lt;- p + geom_bar(stat='identity') \np &lt;- p + scale_fill_manual(values = cols4) \np &lt;- p + facet_grid(~Original_Pop, scales = \"free\")\np &lt;- p + theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 8))\np &lt;- p + ylab(\"Posterior membership probability\")\np"
-  },
-  {
-    "objectID": "content/PCA.html#dapc-with-original-populations",
-    "href": "content/PCA.html#dapc-with-original-populations",
-    "title": "PCA and DAPC",
-    "section": "DAPC with original populations",
-    "text": "DAPC with original populations\nAgain, instead of inferring groups, we can use our original populations.\n\noyster.dapc &lt;- dapc(mygl, n.pca = 25, n.da = 2)\nscatter(oyster.dapc, col = cols, cex = 2, legend = TRUE, clabel = F, posi.leg = \"bottomleft\", scree.pca = TRUE,\n        posi.pca = \"topleft\", cleg = 0.75, posi.da = \"topright\")\n\n\n\n\nLet’s make this better with ggplot\n\ndapc.df &lt;- as.data.frame(oyster.dapc$ind.coord)\ndapc.df$pop &lt;- pop(mygl)\ndapc.df$indNames &lt;- rownames(dapc.df)\n\np &lt;- ggplot(dapc.df, aes(x=LD1, y=LD2, colour=pop)) \np &lt;- p + geom_point(size=2)\np &lt;- p + scale_color_manual(values = cols) \np &lt;- p + geom_hline(yintercept = 0) \np &lt;- p + geom_vline(xintercept = 0) \np &lt;- p + theme_bw()+ xlab(\"DA 1\") + ylab(\"DA 2\")+ ggtitle(\"DAPC with populations as groups\")\n\np"
-  },
-  {
-    "objectID": "content/SNP_Analysis.html",
-    "href": "content/SNP_Analysis.html",
-    "title": "Working with SNP Data",
-    "section": "",
-    "text": "This actually happens outside of R. A cool feature of RStudio\n\n\n\nplink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out ../Processed_Data/array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10\n\nHere, we are using the program plink to convert the files we got from the genotyping service (final.ped, final.bed, final.fam). This command has several options:\n--bfile ../Example_Data/final this is saying the input is a binary and ../Example_Data/final is a relative PATH to the data files. In the virtual machine, this could aslo be written as /home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data or ~/NACE_MAS_Genomics_Workshop/Example_Data\n--recode vcf id-paste=iid is telling it to recode the file as a VCF file using the “individual id” from the .fam file as the individual label\n--out array is telling it to name the output files with the prefix “array”\n--allow-extra-chr is a Plink specific setting needed when you’re not working with human data\n\n\n--mind 0.1 This is saying we only want individuals with less than 10% missing data\n--geno 0.05 This is saying we only want SNPs with less than 5% missing data\n--max-alleles 2 --min-alleles 2 This says we only want SNPs with two alleles\n--chr 1-10 This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes\nIt will help us to have both a .bed file and .vcf later one. The code below does the same as the above, but outputs a .bed file instead\n\nplink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array"
-  },
-  {
-    "objectID": "content/SNP_Analysis.html#quick-filtering-and-management-of-array-data",
-    "href": "content/SNP_Analysis.html#quick-filtering-and-management-of-array-data",
-    "title": "Working with SNP Data",
-    "section": "",
-    "text": "This actually happens outside of R. A cool feature of RStudio\n\n\n\nplink2 --bfile ../Example_Data/final --recode vcf id-paste=iid --out ../Processed_Data/array --allow-extra-chr --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10\n\nHere, we are using the program plink to convert the files we got from the genotyping service (final.ped, final.bed, final.fam). This command has several options:\n--bfile ../Example_Data/final this is saying the input is a binary and ../Example_Data/final is a relative PATH to the data files. In the virtual machine, this could aslo be written as /home/eogwparticipant/NACE_MAS_Genomics_Workshop/Example_Data or ~/NACE_MAS_Genomics_Workshop/Example_Data\n--recode vcf id-paste=iid is telling it to recode the file as a VCF file using the “individual id” from the .fam file as the individual label\n--out array is telling it to name the output files with the prefix “array”\n--allow-extra-chr is a Plink specific setting needed when you’re not working with human data\n\n\n--mind 0.1 This is saying we only want individuals with less than 10% missing data\n--geno 0.05 This is saying we only want SNPs with less than 5% missing data\n--max-alleles 2 --min-alleles 2 This says we only want SNPs with two alleles\n--chr 1-10 This says we only want nuclear SNPs. The array has other markser on it including mtDNA and pathogens, “chr 1-10” means only the SNPs on the 10 oyster genome chromosomes\nIt will help us to have both a .bed file and .vcf later one. The code below does the same as the above, but outputs a .bed file instead\n\nplink2 --bfile ../Example_Data/final --make-bed  --mind 0.1 --geno 0.05 --max-alleles 2 --min-alleles 2 --chr 1-10 --allow-extra-chr --out ../Processed_Data/array"
-  },
-  {
-    "objectID": "content/SNP_Analysis.html#import-data-into-r",
-    "href": "content/SNP_Analysis.html#import-data-into-r",
-    "title": "Working with SNP Data",
-    "section": "Import data into R",
-    "text": "Import data into R\nNow we’re ready to import that data into R for processing. We will first use the library vcfR to do this\n\nlibrary(vcfR)\n\n\n   *****       ***   vcfR   ***       *****\n   This is vcfR 1.15.0 \n     browseVignettes('vcfR') # Documentation\n     citation('vcfR') # Citation\n   *****       *****      *****       *****\n\nmy_vcf &lt;- read.vcfR(\"../Processed_Data/array.vcf\")\n\nScanning file to determine attributes.\nFile attributes:\n  meta lines: 15\n  header_line: 16\n  variant count: 60517\n  column count: 54\n\nMeta line 15 read in.\nAll meta lines processed.\ngt matrix initialized.\nCharacter matrix gt created.\n  Character matrix gt rows: 60517\n  Character matrix gt cols: 54\n  skip: 0\n  nrows: 60517\n  row_num: 0\n\nProcessed variant 1000\nProcessed variant 2000\nProcessed variant 3000\nProcessed variant 4000\nProcessed variant 5000\nProcessed variant 6000\nProcessed variant 7000\nProcessed variant 8000\nProcessed variant 9000\nProcessed variant 10000\nProcessed variant 11000\nProcessed variant 12000\nProcessed variant 13000\nProcessed variant 14000\nProcessed variant 15000\nProcessed variant 16000\nProcessed variant 17000\nProcessed variant 18000\nProcessed variant 19000\nProcessed variant 20000\nProcessed variant 21000\nProcessed variant 22000\nProcessed variant 23000\nProcessed variant 24000\nProcessed variant 25000\nProcessed variant 26000\nProcessed variant 27000\nProcessed variant 28000\nProcessed variant 29000\nProcessed variant 30000\nProcessed variant 31000\nProcessed variant 32000\nProcessed variant 33000\nProcessed variant 34000\nProcessed variant 35000\nProcessed variant 36000\nProcessed variant 37000\nProcessed variant 38000\nProcessed variant 39000\nProcessed variant 40000\nProcessed variant 41000\nProcessed variant 42000\nProcessed variant 43000\nProcessed variant 44000\nProcessed variant 45000\nProcessed variant 46000\nProcessed variant 47000\nProcessed variant 48000\nProcessed variant 49000\nProcessed variant 50000\nProcessed variant 51000\nProcessed variant 52000\nProcessed variant 53000\nProcessed variant 54000\nProcessed variant 55000\nProcessed variant 56000\nProcessed variant 57000\nProcessed variant 58000\nProcessed variant 59000\nProcessed variant 60000\nProcessed variant: 60517\nAll variants processed\n\n\nAbove, we load the library and then use a function to read our vcf and store it as my_vcf"
-  },
-  {
-    "objectID": "content/SNP_Analysis.html#plotting-heterozygosity",
-    "href": "content/SNP_Analysis.html#plotting-heterozygosity",
-    "title": "Working with SNP Data",
-    "section": "Plotting heterozygosity",
-    "text": "Plotting heterozygosity\nI’m a fan of ggplot, but in order to use ggplot we need data in a “tidy” format. We can use the package reshape to do this for us\n\nlibrary(reshape2)\nhet_df &lt;- melt(het_results[,c(3:6)], varnames=c('Index', 'Sample'), value.name = 'Heterozygosity', na.rm=TRUE)\n\nNo id variables; using all as measure variables\n\nhead(het_df)\n\n  variable Heterozygosity\n1  Hs_PopA     0.27777778\n2  Hs_PopA     0.32000000\n3  Hs_PopA     0.23111111\n4  Hs_PopA     0.06444444\n5  Hs_PopA     0.23111111\n6  Hs_PopA     0.46444444\n\n\nNow we can easily plot with ggplot. I’m going to use a simple box plot.\n\nlibrary(ggplot2)\np &lt;- ggplot(het_df, aes(x=variable, y=Heterozygosity)) + geom_boxplot(fill=\"#1F78B4\")\np &lt;- p + xlab(\"Population\")\np &lt;- p + ylab(\"Observed Heterozygosity\")\np &lt;- p + theme_bw() + ggtitle(\"Observed Heterozygosity by population and total\")\np"
-  },
-  {
-    "objectID": "content/add-content.html",
-    "href": "content/add-content.html",
-    "title": "Customize",
-    "section": "",
-    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
-  },
-  {
-    "objectID": "content/add-content.html#edit-and-add-your-pages",
-    "href": "content/add-content.html#edit-and-add-your-pages",
-    "title": "Customize",
-    "section": "",
-    "text": "Edit the qmd or md files in the content folder. qmd files can include code (R, Python, Julia) and lots of Quarto markdown bells and whistles (like call-outs, cross-references, auto-citations and much more).\nEach page should start with\n---\ntitle: your title\n---\nand the first header will be the 2nd level, so ##. Note, there are situations where you leave off\n---\ntitle: your title\n---\nand start the qmd file with a level header #, but if using the default title yaml (in the --- fence) is a good habit since it makes it easy for Quarto convert your qmd file to other formats (like into a presentation)."
-  },
-  {
-    "objectID": "content/add-content.html#add-your-pages-the-project",
-    "href": "content/add-content.html#add-your-pages-the-project",
-    "title": "Customize",
-    "section": "Add your pages the project",
-    "text": "Add your pages the project\n\nAdd the files to _quarto.yml"
-  },
-  {
-    "objectID": "content/customizing.html",
-    "href": "content/customizing.html",
-    "title": "Customization",
-    "section": "",
-    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
-  },
-  {
-    "objectID": "content/customizing.html#quarto-documentation",
-    "href": "content/customizing.html#quarto-documentation",
-    "title": "Customization",
-    "section": "",
-    "text": "Quarto allow many bells and whistles to make nice output. Read the documentation here Quarto documentation."
-  },
-  {
-    "objectID": "content/customizing.html#examples",
-    "href": "content/customizing.html#examples",
-    "title": "Customization",
-    "section": "Examples",
-    "text": "Examples\nLooking at other people’s Quarto code is a great way to figure out how to do stuff. Most will have a link to a GitHub repo where you can see the raw code. Look for a link to edit page or see source code. This will usually be on the right. Or look for the GitHub icon somewhere.\n\nQuarto gallery\nnmfs-openscapes\nFaye lab manual\nquarto-titlepages Note the link to edit is broken. Go to repo and look in documentation directory."
-  },
-  {
-    "objectID": "content/rendering.html",
-    "href": "content/rendering.html",
-    "title": "Rendering",
-    "section": "",
-    "text": "The repo includes a GitHub Action that will render (build) the website automatically when you make changes to the files. It will be pushed to the gh-pages branch.\nBut when you are developing your content, you will want to render it locally."
-  },
-  {
-    "objectID": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
-    "href": "content/rendering.html#step-1.-make-sure-you-have-a-recent-rstudio",
-    "title": "Rendering",
-    "section": "Step 1. Make sure you have a recent RStudio",
-    "text": "Step 1. Make sure you have a recent RStudio\nHave you updated RStudio since about August 2022? No? Then update to a newer version of RStudio. In general, you want to keep RStudio updated and it is required to have a recent version to use Quarto."
-  },
-  {
-    "objectID": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
-    "href": "content/rendering.html#step-2.-clone-and-create-rstudio-project",
-    "title": "Rendering",
-    "section": "Step 2. Clone and create RStudio project",
-    "text": "Step 2. Clone and create RStudio project\nFirst, clone the repo onto your local computer. How? You can click File &gt; New Project and then select “Version Control”. Paste in the url of the repository. That will clone the repo on to your local computer. When you make changes, you will need to push those up."
-  },
-  {
-    "objectID": "content/rendering.html#step-3.-render-within-rstudio",
-    "href": "content/rendering.html#step-3.-render-within-rstudio",
-    "title": "Rendering",
-    "section": "Step 3. Render within RStudio",
-    "text": "Step 3. Render within RStudio\nRStudio will recognize that this is a Quarto project by the presence of the _quarto.yml file and will see the “Build” tab. Click the “Render website” button to render to the _site folder.\nPreviewing: You can either click index.html in the _site folder and specify “preview in browser” or set up RStudio to preview to the viewer panel. To do the latter, go to Tools &gt; Global Options &gt; R Markdown. Then select “Show output preview in: Viewer panel”."
+    "objectID": "content/rmarkdown.html#including-plots",
+    "href": "content/rmarkdown.html#including-plots",
+    "title": "R Markdown",
+    "section": "Including Plots",
+    "text": "Including Plots\nYou can also embed plots, for example:\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot."
   },
   {
     "objectID": "Extra_Resources/R Resources/Readme.html",

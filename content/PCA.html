@@ -110,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../content/R_Intro.html">Workshop</a></li><li class="breadcrumb-item"><a href="../content/PCA.html">PCA and DAPC</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshop</li><li class="breadcrumb-item"><a href="../content/PCA.html">PCA and DAPC</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -155,12 +155,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Pre Genomics</span></span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../content/GettingSetup.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Set up</span></a>
+  </div>
+</li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/R_Intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to R</span></a>
   </div>
 </li>
+          <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Genomic analysis with the Eastern Oyster Breeding SNP Array</span></span>
+  </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../content/SNP_Analysis.html" class="sidebar-item-text sidebar-link">
@@ -207,6 +221,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#dapc-with-original-populations" id="toc-dapc-with-original-populations" class="nav-link" data-scroll-target="#dapc-with-original-populations">DAPC with original populations</a></li>
   </ul></li>
+  <li><a href="#works-cited-and-acknowledgements" id="toc-works-cited-and-acknowledgements" class="nav-link" data-scroll-target="#works-cited-and-acknowledgements">Works cited and acknowledgements</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/edit/main/content/PCA.Rmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/blob/main/content/PCA.Rmd" class="toc-action">View source</a></p><p><a href="https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -509,9 +524,9 @@ All variants processed</code></pre>
 <div class="cell-output cell-output-stdout">
 <pre><code>      
         1  2  3  4
-  PopB  0  0 15  0
-  PopA  0 15  0  0
-  PopC  7  0  0  8</code></pre>
+  PopB  0  0  0 15
+  PopA 15  0  0  0
+  PopC  0  7  8  0</code></pre>
 </div>
 </div>
 <p>This makes sense given our PCA. Let’s run the DAPC.</p>
@@ -593,9 +608,18 @@ All variants processed</code></pre>
 <p><img src="PCA_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid" width="672"></p>
 </div>
 </div>
-
-
 </section>
+</section>
+<section id="works-cited-and-acknowledgements" class="level1">
+<h1>Works cited and acknowledgements</h1>
+<p>Code for this tutorial was adapted from the following sources:</p>
+<ol type="1">
+<li><a href="https://knausb.github.io/vcfR_documentation/" class="uri">https://knausb.github.io/vcfR_documentation/</a></li>
+<li><a href="https://grunwaldlab.github.io/Population_Genetics_in_R/gbs_analysis.html" class="uri">https://grunwaldlab.github.io/Population_Genetics_in_R/gbs_analysis.html</a></li>
+<li>Documentation from the <a href="https://github.com/thibautjombart/adegenet">Adegenet R Package</a></li>
+</ol>
+
+
 </section>
 
 </main> <!-- /main -->
