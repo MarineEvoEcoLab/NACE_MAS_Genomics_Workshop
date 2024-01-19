@@ -12,6 +12,9 @@ Tutorial and the source of much of this content [LINK](https://grunwaldlab.githu
 [Quick R](https://www.statmethods.net/interface/help.html) by datacamp
 [Short Introduction to R](https://andyteucher.ca/rcourse_site/index.html)
 
-### For Reproducible Research:
+## For Reproducible Research:
 1. RopenSci Guide to Reproducible Research [LINK](https://brunj7.github.io/reproducibility-guide/)
 2. More Open Science Guidance! [LINK](http://grunwaldlab.github.io/Reproducible-science-in-R/)
+
+# SNP Array Resources
+[Paper](../Extra_Resources/Papers/Guo et al. 2023 - Development and Evaluation of High-Density SNP Arrays for the Eastern Oyster Crassostrea virginica.pdf) describing the Eastern Oyster Breeding SNP Array
