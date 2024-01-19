@@ -12,7 +12,7 @@ One important consideration is that we need to deal with linkage in our data set
 
 ## Load data
 First, we load in the data and convert our previous `array.bed` file to pcadapt input
-```{r}
+```{r, warning = FALSE}
 library(pcadapt)
 filename <- read.pcadapt("../Processed_Data/array.bed", type = "bed")
 
@@ -21,7 +21,7 @@ filename <- read.pcadapt("../Processed_Data/array.bed", type = "bed")
 ## Examine the PCs
 First, we can start with a regular PCA.  The first line of code below calculates the PCA with 5 PCs and the second line plots the amount of variance that each PC explains.
 
-```{r}
+```{r, warning = FALSE}
 res <- pcadapt(filename, K = 5)
 plot(res, option = "screeplot")
 ```
@@ -31,7 +31,7 @@ For this analysis, the idea number of PCs is the one before the variance stars p
 Let's plot the PCA.  First, we need to recreate the list of population assignments.  We'll do this the same way as the last section.
 
 
-```{r, warning=FALSE}
+```{r, warning =FALSE}
 table <- read.table("../Example_Data/strata", header = TRUE)
 poplist.names <- table$Population
 
@@ -41,7 +41,7 @@ plot(res, option = "scores", pop = poplist.names)
 This might look normal, but you'll notice that two of the populations are tightly grouped around PC1.  We should check too make sure this pattern isn't being driven by a linkage in the genome.  To do this, we can look at the loading scores of the PCs.  Loading scores show how much a particular SNP factors into a PC. 
 
 
-```{r}
+```{r, warning = FALSE}
 par(mfrow = c(2, 2))
 for (i in 1:4)
   plot(res$loadings[, i], pch = 19, cex = .3, ylab = paste0("Loadings PC", i))
@@ -49,7 +49,7 @@ for (i in 1:4)
 These values should be evenly distributed across the genome.  You'll notice that PC1 has a bit of a pattern to it.  Let's zoom in.
 
 
-```{r}
+```{r, warning = FALSE}
 plot(res$loadings[, 1], pch = 19, cex = .3, ylab = paste0("Loadings PC", i))
 
 ```
@@ -60,7 +60,7 @@ Now, you can definitely see a weird pattern between Index 30,000 and 40,000.  Th
 Linkage Disequilibrium can affect ascertainment of population structure ([Abdellaoui et al. 2013](https://www.nature.com/articles/ejhg201348)).  Users analyzing dense data such as SNP Array data should account for LD in their PCAs and PCA-based genome-scans.
 
 Thankfully, PCAdapt has a built in feature that allows us to clump SNPs by LD, basically reducing the data to a more informative subset.
-```{r}
+```{r, warning = FALSE}
 res <- pcadapt(filename, K = 10, LD.clumping = list(size = 500, thr = 0.2))
 plot(res, option = "screeplot")
 ```
@@ -68,7 +68,7 @@ plot(res, option = "screeplot")
 This changed a bit, and we now have possibly 4 informative PCs.  Let's take a look at the loadings:
 
 
-```{r}
+```{r, warning = FALSE}
 res <- pcadapt(filename, K = 4, LD.clumping = list(size = 500, thr = 0.2))
 par(mfrow = c(2, 2))
 for (i in 1:4)
@@ -88,18 +88,18 @@ PCAdapt is great for filtering and for looking for loci under selection (not cov
 
 First, we will reload our VCF file into R in case you're starting from scratch, but we made this in the previous tutorial:
 
-```{r}
+```{r, warning = FALSE}
 library(vcfR)
 my_vcf <- read.vcfR("../Processed_Data/array.vcf")
 ```
 
-```{r}
+```{r, warning = FALSE}
 ld_filtered_vcf <- my_vcf[!is.na(res$loadings[,1]),]
 ```
 
 
 Next, we will convert our vcfR file to a genlight input which can be used by the package adegenet.  We will also use the `strata` and `setPop` function to enter population level information.  Remember, we made the strata_df in the previous tutorial, but we will remake it here just in case.
-```{r}
+```{r, warning = FALSE}
 library(adegenet)
 mygl <- vcfR2genlight(ld_filtered_vcf,n.cores =2)
 
@@ -113,13 +113,13 @@ setPop(mygl) <- ~Population
 
 
 Below, we use the PCA function of adegent to create a PCA.
-```{r}
+```{r, warning = FALSE}
 oyster.pca <- glPca(mygl, nf = 3)
 
 ```
 
 Let's look at how much variance each PC explains:
-```{r}
+```{r, warning = FALSE}
 barplot(100*oyster.pca$eig/sum(oyster.pca$eig), col = heat.colors(50), main="PCA Variance Explained")
 title(ylab="Percent of variance\nexplained", line = 2)
 title(xlab="PC", line = 1)
@@ -127,7 +127,7 @@ title(xlab="PC", line = 1)
 ```
 We basically have three informative PCs here.  Let's plot the individuals on the first two PCs:
 
-```{r}
+```{r, warning = FALSE}
 
 myCol <- colorplot(oyster.pca$scores,oyster.pca$scores, transp=TRUE, cex=4)
 abline(h=0,v=0, col="grey")
@@ -139,7 +139,7 @@ The plot above is combining information from the first 3 PCs to color dots, and 
 
 We can also port this to ggplot and color by population:
 
-```{r}
+```{r, warning = FALSE}
 library(ggplot2)
 oyster.pca.df <- as.data.frame(oyster.pca$scores)
 oyster.pca.df$pop <- pop(mygl)
@@ -183,7 +183,7 @@ Next screen will be:
 ![BIC](./img/BIC.png)
 We'd like to see an elbow here, where the lowest point would be the correct number.  This doesn't always work well for subtle structure.  I'm going to pick 4 given the results above.
 
-```{r, echo =FALSE}
+```{r}
 grp <- find.clusters(mygl, max.n.clust=10, n.pca =100, n.clust =4)
 ```
 
@@ -211,7 +211,7 @@ After you enter the number of PCs, you'll see something like this:
 This is picking the number of discriminant functions.  Because we put in four groups, there are only three.  Truly, only the first two are informative.  Let's pick 2.
 
 
-```{r, echo = FALSE}
+```{r}
 oyster.dapc <- dapc(mygl, n.pca = 25, n.da = 2, grp$grp)
 ```
 
@@ -221,12 +221,12 @@ scatter(oyster.dapc,col=cols,bg="white", solid=1)
 ```
 
 We can also plot membership probabilities:
-```{r}
+```{r, warning = FALSE}
 compoplot(oyster.dapc, posi="bottom",txt.leg=paste("Cluster", 1:4), lab="", ncol=4, xlab="individuals")
 ```
 We can use ggplot to make this easier to read and put in the populations for each individual:
 
-```{r}
+```{r, warning = FALSE}
 library(tidyr)
 dapc.df <- as.data.frame(oyster.dapc$posterior)
 dapc.df$pop <- pop(mygl)
@@ -248,14 +248,14 @@ p
 ## DAPC with original populations
 Again, instead of inferring groups, we can use our original populations.
 
-```{r}
+```{r, warning = FALSE}
 oyster.dapc <- dapc(mygl, n.pca = 25, n.da = 2)
 scatter(oyster.dapc, col = cols, cex = 2, legend = TRUE, clabel = F, posi.leg = "bottomleft", scree.pca = TRUE,
         posi.pca = "topleft", cleg = 0.75, posi.da = "topright")
 ```
 
 Let's make this better with ggplot
-```{r}
+```{r, warning = FALSE}
 dapc.df <- as.data.frame(oyster.dapc$ind.coord)
 dapc.df$pop <- pop(mygl)
 dapc.df$indNames <- rownames(dapc.df)
