@@ -163,5 +163,3 @@ echo "Hi, I'm a BASH code output"
 ```{bash}
 echo -e "The Current Directory is $(pwd)"
 ```
-
-

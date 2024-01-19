@@ -5,8 +5,6 @@ title: "Working with SNP Data"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-
 ## Quick Filtering and Management of Array Data
 This actually happens outside of R.  A cool feature of RStudio
 
@@ -138,5 +136,10 @@ p
 ```
 
 
+# Works cited and acknowledgements
+Code for this tutorial was adapted from the following sources:
 
+1. <https://knausb.github.io/vcfR_documentation/>
+2. <https://grunwaldlab.github.io/Population_Genetics_in_R/gbs_analysis.html>
+3. Documentation from the [Adegenet R Package](https://github.com/thibautjombart/adegenet)
 

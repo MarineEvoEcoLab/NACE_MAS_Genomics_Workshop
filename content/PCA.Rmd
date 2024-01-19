@@ -158,7 +158,7 @@ p
 
 So, we can see that we have some subtle structuring within PopC.
 
-#DAPC
+# DAPC
 
 Discriminant analysis of Principal Components (DAPC), allows us to either infer groups or put in groups *a priori*.  DAPC seeks to maximize between group variance while minimizing within group variance.  I'll show you how this works both ways below.  
 
@@ -194,7 +194,7 @@ table(pop(mygl), grp$grp)
 ```
 This makes sense given our PCA.  Let's run the DAPC.
 
-## Discriminant Analysis
+### Discriminant Analysis
 
 This is another interactive function.  Run in the console.
 ```{r, eval=FALSE}
@@ -273,5 +273,11 @@ p
 
 ```
 
+# Works cited and acknowledgements
+Code for this tutorial was adapted from the following sources:
+
+1. <https://knausb.github.io/vcfR_documentation/>
+2. <https://grunwaldlab.github.io/Population_Genetics_in_R/gbs_analysis.html>
+3. Documentation from the [Adegenet R Package](https://github.com/thibautjombart/adegenet)
 
 
