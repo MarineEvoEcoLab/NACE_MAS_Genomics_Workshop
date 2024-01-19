@@ -40,7 +40,7 @@ title: Participants
 | Angel       | Carasaquillo        |University of Rhode Island                |
 
 # Career Roles of Participants
-```{r, echo =FALSE}
+```{r, echo =FALSE, warning=FALSE}
 data <- read.table("./img/data.table",sep = "\t", header = TRUE)
 library(ggplot2)
 library(dplyr)
