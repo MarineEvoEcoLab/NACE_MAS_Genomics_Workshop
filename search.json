@@ -35,11 +35,25 @@
     "text": "Support\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
   },
   {
+    "objectID": "index.html#feedback",
+    "href": "index.html#feedback",
+    "title": "Oyster genomics for everyone: applications to conservation, management, and aquaculture",
+    "section": "Feedback",
+    "text": "Feedback\nHow did we do hosting this workshop? Please take five minutes to fill out this evaluation: https://forms.gle/HR5NuU2tdvgPsuAR6"
+  },
+  {
     "objectID": "content/Participants.html",
     "href": "content/Participants.html",
     "title": "Participants",
     "section": "",
-    "text": "Participants\n\n\n\n\n\n\n\n\nFirst Name\nLast Name\nAffiliation\n\n\n\n\nSamantha\nPennino\nMIT\n\n\nBrittany\nLewis\nAmerican Farmland Trust\n\n\nMegan\nGuidry\nUniversity of Rhode Island\n\n\nCassandra\nCerasia\nThe University of Rhode Island\n\n\nAmy\nZyck\nUniversity of Rhode Island\n\n\nKathryn\nMarkey Lundgren\nUSDA ARS\n\n\nKatie\nMcFarland\nNOAA\n\n\nKeegan\nHart\nUSDA ARS\n\n\nChristopher\nTeufel\nIsland Creek Oysters\n\n\nSarah\nDonelan\nUmass Dartmouth\n\n\nTirosh\nShapira\nCAT\n\n\nDina\nProestou\nUSDA ARS\n\n\nSamuel\nGurr\nNational Academies & NOAA\n\n\nCarrie\nByron\nUNE\n\n\nLexy\nMcCarty\nCherrystone Aqua-Farms\n\n\nCaitlin\nRandall\nUniversity of Rhode Island\n\n\nAlyssa\nStasse\nUniversity of New Hampshire\n\n\nArun\nVenugopalan\nPostdoc - Woods Hole Oceanographic Inst.\n\n\nYuqing\nChen\nCornell University\n\n\nRuby\nKrasnow\nUniversity of Maine\n\n\nMary\nSullivan\nUSDA ARS\n\n\nJon\nPuritz\nUniversity of Rhode Island\n\n\n\n\n\nPresenters\n\n\n\n\n\n\n\n\nFirst Name\nLast Name\nAffiliation\n\n\n\n\nJon\nPuritz\nUniversity of Rhode Island\n\n\nAmy\nZyck\nUniversity of Rhode Island\n\n\nKathryn\nMarkey Lundgren\nUSDA ARS\n\n\nYuqing\nChen\nCornell University\n\n\nAngel\nCarasaquillo\nUniversity of Rhode Island\n\n\n\n\n\nCareer Roles of Participants"
+    "text": "First Name\nLast Name\nAffiliation\n\n\n\n\nSamantha\nPennino\nMIT\n\n\nBrittany\nLewis\nAmerican Farmland Trust\n\n\nMegan\nGuidry\nUniversity of Rhode Island\n\n\nCassandra\nCerasia\nThe University of Rhode Island\n\n\nAmy\nZyck\nUniversity of Rhode Island\n\n\nKathryn\nMarkey Lundgren\nUSDA ARS\n\n\nKatie\nMcFarland\nNOAA\n\n\nKeegan\nHart\nUSDA ARS\n\n\nChristopher\nTeufel\nIsland Creek Oysters\n\n\nSarah\nDonelan\nUmass Dartmouth\n\n\nTirosh\nShapira\nCAT\n\n\nDina\nProestou\nUSDA ARS\n\n\nSamuel\nGurr\nNational Academies & NOAA\n\n\nCarrie\nByron\nUNE\n\n\nLexy\nMcCarty\nCherrystone Aqua-Farms\n\n\nCaitlin\nRandall\nUniversity of Rhode Island\n\n\nAlyssa\nStasse\nUniversity of New Hampshire\n\n\nArun\nVenugopalan\nPostdoc - Woods Hole Oceanographic Inst.\n\n\nYuqing\nChen\nCornell University\n\n\nRuby\nKrasnow\nUniversity of Maine\n\n\nMary\nSullivan\nUSDA ARS\n\n\nJon\nPuritz\nUniversity of Rhode Island"
+  },
+  {
+    "objectID": "content/Participants.html#feedback",
+    "href": "content/Participants.html#feedback",
+    "title": "Participants",
+    "section": "Feedback",
+    "text": "Feedback\nHow did we do hosting this workshop? Please take five minutes to fill out this evaluation: https://forms.gle/HR5NuU2tdvgPsuAR6"
   },
   {
     "objectID": "content/GettingSetup.html",
@@ -263,7 +277,14 @@
     "href": "content/acknowledgements.html",
     "title": "Acknowledgments",
     "section": "",
-    "text": "This website was made with the quarto template from NOAA NMFS Open Science\nThis repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland.\nMany thanks to the NACE/MAS organizers for helping to facilitate this workshop!\n\nEmily Whitmore\nAnne Langston\nChristopher Davis\nLisa Wilke\n\nSpecial thanks to RI Sea Grant for supporting this workshop and participants!\nThanks to all presenters!\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
+    "text": "This website was made with the quarto template from NOAA NMFS Open Science\nThis repo and GitHub Action was based on the tutorial by Openscapes quarto-website-tutorial by Julia Lowndes and Stefanie Butland.\nMany thanks to the NACE/MAS organizers for helping to facilitate this workshop!\nSpecial thanks to RI Sea Grant for supporting this workshop and participants!\nThanks to all presenters!\nSupport for the workshop and participants was provided by RI Sea Grant from award R/1822-2022-104-01 to J. Puritz."
+  },
+  {
+    "objectID": "content/acknowledgements.html#feedback",
+    "href": "content/acknowledgements.html#feedback",
+    "title": "Acknowledgments",
+    "section": "Feedback",
+    "text": "Feedback\nHow did we do hosting this workshop? Please take five minutes to fill out this evaluation: https://forms.gle/HR5NuU2tdvgPsuAR6"
   },
   {
     "objectID": "content/code.html",
