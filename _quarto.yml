@@ -8,6 +8,7 @@ website:
   repo-url: "https://github.com/MarineEvoEcoLab/NACE_MAS_Genomics_Workshop"
   repo-actions: [edit, source, issue]
   favicon: images/favicon.ico
+  google-analytics: "G-M3GR4KXEG6"
   
   page-footer:
     right: "This page is built with [Quarto](https://quarto.org/)."
