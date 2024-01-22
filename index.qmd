@@ -24,7 +24,7 @@ Come learn about exciting new genomic tools for the eastern oyster that can be u
 | || Part 1: What can genomic data answer?||
 | 13:10 | 13:18| [Understanding Oyster Population Connectivity and Adaptation in Narragansett Bay](Presentation_Slides/Zyck_NACE_GenomicsWorkshop_20240108.pdf)| Amy Zyck |
 | 13:20 | 13:28| [Genomic and phenotypic variation in wild and selectively bred oysters](Presentation_Slides/Carrasquillo NACE Workshop.pptx) | Angel Carrasquillo|
-| 13:30 | 13:40| [Do farm oysters contribute to ecosystem services? Assessing interbreeding between aquaculture strains and native stocks](Presentation_Slides/) | Yuqing Chen |
+| 13:30 | 13:40| [Do farm oysters contribute to ecosystem services? Assessing interbreeding between aquaculture strains and native stocks](Presentation_Slides/Chen_NACE_MAS2024_forDistribution.pptx) | Yuqing Chen |
 | 13:42 | 13:50| [No oysters were harmed in the making of this: how to non-destructively sample oyster DNA](Presentation_Slides/Non-destructive sampling of Crassostrea virginica mantle tissue_FINAL.pptx) | Kathryn Markey Lundgren |
 | 13:50 | 14:05| Break||
 | || Part 2: Hands-on workshop with the Eastern Oyster SNP Breeding Array ||
