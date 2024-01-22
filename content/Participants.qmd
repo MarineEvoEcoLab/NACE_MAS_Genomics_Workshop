@@ -4,7 +4,7 @@ title: Participants
 
 # Participants
 
-| First Name  | Last Name          | Affiliation                              |
+| First Name  | Last Name           | Affiliation                               |
 |-------------|---------------------|------------------------------------------|
 | Samantha    | Pennino             | MIT                                      |
 | Brittany    | Lewis               | American Farmland Trust                  |
@@ -27,7 +27,10 @@ title: Participants
 | Yuqing      | Chen                | Cornell University                       |
 | Ruby        | Krasnow             | University of Maine                      |
 | Mary        | Sullivan            | USDA ARS                                 |
+| Angel       | Carasaquillo        | University of Rhode Island                |
+| Julia       | McDonough           | University of Massachusetts Lowell
 | Jon         | Puritz              | University of Rhode Island               |
+
 
 # Presenters
 
