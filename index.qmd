@@ -29,7 +29,7 @@ Come learn about exciting new genomic tools for the eastern oyster that can be u
 | 13:50 | 14:05| Break||
 | || Part 2: Hands-on workshop with the Eastern Oyster SNP Breeding Array ||
 | 14:05 | 14:20| [From DNA to SNP and what is a SNP anyway?](Presentation_Slides/DNAtoSNPs.pptx) | Jon Puritz |
-| 14:20 | 14:40| [Introduction to R](R_Intro.Rmd) | Jon Puritz |
+| 14:20 | 14:40| [Introduction to R](/content/R_Intro.Rmd) | Jon Puritz |
 | 14:40 | 15:20| [Calculating Genetic Diversity](Presentation_Slides/GeneticDiversity.pptx)  | Jon Puritz |
 | 15:20 | 16:00| [Principal Component Analysis and Discrimininant Analysis](Presentation_Slides/PCAandDACP.pptx) | Jon Puritz |
 
